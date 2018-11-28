@@ -1,0 +1,34 @@
+.pre-list {
+  margin: 0 15rpx;
+  min-height: 48rpx;
+}
+
+.pre-list .pre-list-item {
+  float: left;
+  width: 330rpx;
+  height: 300rpx;
+  margin: 15rpx;
+}
+
+.pre-list .pre-list-item .img-group {
+  position: absolute;
+  display: inline-block;
+  width: 330rpx;
+  height: 300rpx;
+}
+
+.pre-list .pre-list-item .img-group image {
+  width: 100%;
+  height: 100%;
+}
+
+.pre-list .pre-list-item .img-group .img-tip {
+  position: absolute;
+  top: 120rpx;
+  font-size: 60rpx;
+  color: #fff;
+  opacity: 1;
+  display: block;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<swiper class="imgbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='pre-block'>
+  <view class='pre-block-title'>站点</view>
+  <view class='pre-block-more' bindtap='toSiteList'>更多></view>
+</view>
+<view class='pre-list'>
+  <view class='pre-list-item'>
+    <view class='img-group'>
+      <image src="/resource/images/index_z1.png" />
+      <text class='img-tip'>广州</text>
+    </view>
+  </view>
+  <view class='pre-list-item'>
+    <view class='img-group'>
+      <image src="/resource/images/index_z1.png" />
+      <text class='img-tip'>佛山</text>
+    </view>
+  </view>
+  <view class='pre-list-item'>
+    <view class='img-group'>
+      <image src="/resource/images/index_z1.png" />
+      <text class='img-tip'>深圳</text>
+    </view>
+  </view>
+  <view class='pre-list-item'>
+    <view class='img-group'>
+      <image src="/resource/images/index_z1.png" />
+      <text class='img-tip'>珠海</text>
+    </view>
+  </view>
+  <view class='pre-list-item'>
+    <view class='img-group'>
+      <image src="/resource/images/index_z2.png" />
+      <text class='img-tip'>东莞</text>
+    </view>
+  </view>
+</view>

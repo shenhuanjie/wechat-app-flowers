@@ -1,0 +1,37 @@
+.pre-block {
+  margin: 30rpx 30rpx;
+  min-height: 48rpx;
+}
+
+.page_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.search {
+  width: 100%;
+}
+
+.search_arr {
+  background-color: #ecf1f0;
+  border-radius: 10rpx;
+}
+
+.search_arr input {
+  margin-left: 60rpx;
+  color: #70a795;
+  padding: 10rpx;
+  height: 60rpx;
+  border-radius: 5px;
+}
+
+.search_icon {
+  margin: 20rpx 10rpx 10rpx 10rpx;
+  position: absolute;
+  font-size: 30rpx;
+  left: 30rpx;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
