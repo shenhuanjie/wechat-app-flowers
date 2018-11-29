@@ -23,7 +23,7 @@
     <button>登录</button>
     <view class='pre-text'>
       <text>还不是缤纷会员？</text>
-      <text class='pre-color-red'>立即注册</text>
+      <text class='pre-color-red' bindtap='toRegister'>立即注册</text>
       <text class='pre-color-red'>找回密码？</text>
     </view>
   </view>

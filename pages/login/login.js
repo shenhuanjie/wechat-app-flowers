@@ -62,5 +62,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 跳转注册页面
+   */
+  toRegister:function(){
+    wx.navigateTo({
+      url: '../../pages/register/register',
+    })
   }
 })
