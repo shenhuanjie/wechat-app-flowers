@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
+    "pages/register/register",
     "pages/items/items",
     "pages/sites/sites",
     "pages/favorite/favorite",

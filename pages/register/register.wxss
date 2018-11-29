@@ -1,4 +1,4 @@
-/* pages/login/login.wxss */
+/* pages/register/register.wxss */
 
 .pre-warp {
   height: 1197rpx;
@@ -17,14 +17,14 @@
   height: auto;
   margin: 0 42rpx;
   position: absolute;
-  top: 389rpx;
+  top: 339rpx;
 }
 
 .pre-warp .pre-content .pre-form {
   width: 667rpx;
   min-height: 310rpx;
   height: auto;
-  margin-bottom: 42rpx;
+  margin-bottom: 32rpx;
   background-color: #fff;
 }
 
