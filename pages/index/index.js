@@ -15,7 +15,7 @@ Page({
   /**
    * 跳转站点列表页面
    */
-  toSiteList: function() {
+  toSiteList: function () {
     wx.navigateTo({
       url: '../../pages/sites/sites'
     })

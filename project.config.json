@@ -23,27 +23,21 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
-					"name": "cart",
-					"pathName": "pages/cart/cart",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "sites",
-					"pathName": "pages/sites/sites"
+					"name": "login",
+					"pathName": "pages/login/login"
 				}
 			]
 		}

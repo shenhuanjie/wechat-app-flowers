@@ -1,5 +1,5 @@
 <!-- 站点列表 -->
-<!--pages/sites/sites.wxml-->
+<!-- pages/sites/sites.wxml -->
 <!-- 顶部搜索框 -->
 <view class='pre-block page_row'>
   <view class="search">
@@ -9,7 +9,6 @@
     </view>
   </view>
 </view>
-
 <view class='pre-list'>
   <view class='pre-list-item'>
     <view class='img-group'>

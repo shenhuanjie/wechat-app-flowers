@@ -2,17 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
-    "pages/register/register",
-    "pages/sites/sites",
     "pages/items/items",
-    "pages/product/product",
-    "pages/order/order",
-    "pages/address/address",
-    "pages/add_address/add_address",
+    "pages/sites/sites",
     "pages/favorite/favorite",
     "pages/cart/cart",
-    "pages/setting/setting",
-    "pages/logs/logs"
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,4 +1,4 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <swiper class="imgbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
