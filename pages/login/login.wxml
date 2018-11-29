@@ -1,2 +1,30 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class='pre-warp'>
+  <image src="../../resource/images/img_login_bg.png" class='pre-image-bg'></image>
+  <view class='pre-content'>
+    <view class='pre-form'>
+      <view class="pre-form-cell">
+        <label>用户名：</label>
+        <input class="" name="input" placeholder-class="phcolor" placeholder="请输入用户名" />
+      </view>
+      <view class="pre-form-cell">
+        <text decode="true" space="true">密&nbsp;&nbsp;&nbsp;码：</text>
+        <input class="" name="input" placeholder-class="phcolor" placeholder="请输入密码" />
+      </view>
+
+      <view class="pre-form-cell">
+        <label>验证码：</label>
+        <input class="" name="input" placeholder-class="phcolor" placeholder="请输入验证码" />
+      </view>
+    </view>
+    <label class='pre-chk-save'>
+      <checkbox value="savePwd" /> 记住密码
+    </label>
+    <button>登录</button>
+    <view class='pre-text'>
+      <text>还不是缤纷会员？</text>
+      <text class='pre-color-red'>立即注册</text>
+      <text class='pre-color-red'>找回密码？</text>
+    </view>
+  </view>
+</view>
