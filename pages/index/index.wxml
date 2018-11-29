@@ -11,7 +11,7 @@
   <view class='pre-block-more' bindtap='toSiteList'>更多></view>
 </view>
 <view class='pre-list'>
-  <view class='pre-list-item'>
+  <view class='pre-list-item' bindtap='toBrands'>
     <view class='img-group'>
       <image src="/resource/images/index_z1.png" />
       <text class='img-tip'>广州</text>

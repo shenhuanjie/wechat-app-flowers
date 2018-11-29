@@ -1,0 +1,14 @@
+@import "../../resource/styles/preSearch.wxss";
+
+/* pages/brands/brands.wxss */
+
+.pre-block text {
+  display: inline-block;
+  border: 1rpx solid #c1c2c2;
+  height: 36rpx;
+  border-radius: 5rpx;
+  background-color: #f4f4f4;
+  padding: 10rpx;
+  margin: 15rpx 15rpx;
+  font-size: 24rpx;
+}

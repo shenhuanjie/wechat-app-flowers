@@ -19,5 +19,14 @@ Page({
     wx.navigateTo({
       url: '../../pages/sites/sites'
     })
+  },
+
+  /**
+   * 跳转品牌列表
+   */
+  toBrands: function () {
+    wx.navigateTo({
+      url: '../../pages/brands/brands',
+    })
   }
 })

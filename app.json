@@ -5,6 +5,7 @@
     "pages/register/register",
     "pages/items/items",
     "pages/sites/sites",
+    "pages/brands/brands",
     "pages/favorite/favorite",
     "pages/cart/cart",
     "pages/setting/setting"

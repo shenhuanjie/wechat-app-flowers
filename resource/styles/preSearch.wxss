@@ -16,6 +16,20 @@
   background-color: #ecf1f0;
   border-radius: 10rpx;
 }
+.search_hbtn{
+  width: 552rpx;
+  display:inline-block;
+}
+.search button{
+  width: 128rpx;
+  float: right;
+  margin:0 0 0 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #7bcfb5;
+  color: #fff;
+  
+}
 
 .search_arr input {
   margin-left: 60rpx;
