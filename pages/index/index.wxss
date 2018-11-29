@@ -1,5 +1,6 @@
 /* preImageList.wxss */
 @import "../../resource/styles/preImageList.wxss";
+@import "../../resource/styles/preSearch.wxss";
 /**index.wxss**/
 
 swiper {
