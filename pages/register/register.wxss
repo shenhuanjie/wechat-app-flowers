@@ -1,14 +1,15 @@
 /* pages/register/register.wxss */
 
 .pre-warp {
-  height: 1197rpx;
+  height: 100%;
   position: relative;
   background-color: #f4f8f7;
+  overflow: hidden;
 }
 
 .pre-warp image {
   width: 750rpx;
-  height: 1197rpx;
+  height: 1334rpx;
 }
 
 .pre-warp .pre-content {
@@ -17,7 +18,7 @@
   height: auto;
   margin: 0 42rpx;
   position: absolute;
-  top: 339rpx;
+  top: 269rpx;
 }
 
 .pre-warp .pre-content .pre-form {
@@ -37,23 +38,28 @@
   line-height: 56rpx;
 }
 
-.pre-warp .pre-content .pre-form .pre-form-cell label,.pre-warp .pre-content .pre-form .pre-form-cell text {
+.pre-warp .pre-content .pre-form .pre-form-cell label,
+.pre-warp .pre-content .pre-form .pre-form-cell text {
   width: 162rpx;
   float: left;
+  line-height: 48rpx;
+  height: 48rpx;
 }
-
 
 .pre-warp .pre-content .pre-form .pre-form-cell input {
   width: 420rpx;
   /* border: 1px solid red; */
+  line-height: 48rpx;
+  height: 48rpx;
 }
 
 .phcolor {
   /* placeholder颜色  */
   color: #d1d1d1;
 }
-.pre-chk-save{
-  margin-bottom:32rpx; 
+
+.pre-chk-save {
+  margin-bottom: 32rpx;
   display: block;
   font-size: 32rpx;
   line-height: 32rpx;

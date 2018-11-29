@@ -1,14 +1,15 @@
 /* pages/login/login.wxss */
 
 .pre-warp {
-  height: 1197rpx;
+  height: 100%;
   position: relative;
   background-color: #f4f8f7;
+  overflow: hidden;
 }
 
 .pre-warp image {
   width: 750rpx;
-  height: 1197rpx;
+  height: 1334rpx;
 }
 
 .pre-warp .pre-content {
@@ -40,12 +41,16 @@
 .pre-warp .pre-content .pre-form .pre-form-cell label,.pre-warp .pre-content .pre-form .pre-form-cell text {
   width: 162rpx;
   float: left;
+  line-height: 48rpx;
+  height: 48rpx;
 }
 
 
 .pre-warp .pre-content .pre-form .pre-form-cell input {
   width: 420rpx;
   /* border: 1px solid red; */
+  line-height: 48rpx;
+  height: 48rpx;
 }
 
 .phcolor {
