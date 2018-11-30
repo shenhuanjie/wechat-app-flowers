@@ -19,7 +19,7 @@ Page({
         id: 'view',
         name: '发货查询'
       }, {
-        id: 'view',
+          id: 'password-revise',
         name: '修改密码'
       }, {
         id: 'view',

@@ -9,7 +9,8 @@
     "pages/search/search",
     "pages/favorite/favorite",
     "pages/cart/cart",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/password-revise/password-revise"
   ],
   "window": {
     "backgroundTextStyle": "light",
