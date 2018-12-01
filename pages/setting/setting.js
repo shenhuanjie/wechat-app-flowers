@@ -28,7 +28,7 @@ Page({
         id: 'comments',
         name: '提交留言'
       }, {
-        id: 'view',
+          id: 'logistics',
         name: '物流信息'
       }, {
         id: 'view',

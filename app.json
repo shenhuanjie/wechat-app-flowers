@@ -12,6 +12,7 @@
     "pages/setting/setting",
     "pages/store/store",
     "pages/comments/comments",
+    "pages/logistics/logistics",
     "pages/password-revise/password-revise"
   ],
   "window": {
