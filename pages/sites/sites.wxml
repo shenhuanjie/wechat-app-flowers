@@ -5,7 +5,7 @@
   <view class="search">
     <view class="search_arr">
       <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='请输入你要搜索的内容'/>
+      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder=''/>
     </view>
   </view>
 </view>

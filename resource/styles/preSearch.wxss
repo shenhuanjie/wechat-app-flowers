@@ -16,31 +16,32 @@
   background-color: #ecf1f0;
   border-radius: 10rpx;
 }
-.search_hbtn{
+
+.search_hbtn {
   width: 552rpx;
-  display:inline-block;
+  display: inline-block;
 }
-.search button{
+
+.search button {
   width: 128rpx;
   float: right;
-  margin:0 0 0 10rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+  margin: 0 0 0 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   background-color: #7bcfb5;
   color: #fff;
-  
 }
 
 .search_arr input {
   margin-left: 60rpx;
   color: #70a795;
-  padding: 10rpx;
-  height: 60rpx;
+  padding: 5rpx;
+  height: 20rpx;
   border-radius: 5px;
 }
 
 .search_icon {
-  margin: 20rpx 10rpx 10rpx 10rpx;
+  margin: 10rpx 10rpx 10rpx 10rpx;
   position: absolute;
   font-size: 30rpx;
   left: 30rpx;

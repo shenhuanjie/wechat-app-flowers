@@ -1,14 +1,17 @@
 @import "../../resource/styles/preSearch.wxss";
 
 /* pages/brands/brands.wxss */
-
-.pre-block text {
+.pre-warp{
+margin:10rpx 15rpx;
+min-height:48rpx;
+}
+.pre-warp text {
   display: inline-block;
   border: 1rpx solid #c1c2c2;
   height: 36rpx;
-  border-radius: 5rpx;
+  border-radius: 10rpx;
   background-color: #f4f4f4;
-  padding: 10rpx;
+  padding: 15rpx 40rpx;
   margin: 15rpx 15rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
 }

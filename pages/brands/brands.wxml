@@ -2,39 +2,26 @@
 <!-- 顶部搜索框 -->
 <view class='pre-block page_row'>
   <view class="search">
-    <view class="search_arr search_hbtn">
+    <view class="search_arr">
       <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='请输入你要搜索的内容' />
+      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
     </view>
-    <button>确定</button>
   </view>
 </view>
 
 <!-- 品牌列表 -->
-<view class='pre-block'>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百年好合》</text>
-  <text>《七里香》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百年好合》</text>
-  <text>《七里香》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百年好合》</text>
-  <text>《七里香》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
-  <text>《百合》</text>
+<view class='pre-warp'>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>妃子笑</text>
+  <text>子孙满堂</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
+  <text>桂飞</text>
 </view>
