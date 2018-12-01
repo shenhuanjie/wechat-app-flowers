@@ -38,6 +38,7 @@
   padding: 5rpx;
   height: 60rpx;
   border-radius: 5px;
+  padding-left:30rpx;
 }
 
 .search_icon {

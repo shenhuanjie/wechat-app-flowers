@@ -1,3 +1,41 @@
 /* preImageList.wxss */
 @import "../../resource/styles/preSearch.wxss";
+
 /* pages/store/store.wxss */
+
+.pre-list {
+  margin: 0 15rpx;
+  min-height: 48rpx;
+}
+
+.pre-list .pre-list-item {
+  float: left;
+  width: 330rpx;
+  height: 598rpx;
+  margin: 15rpx;
+}
+
+.pre-list .pre-list-item  image {
+  width: 330rpx;
+  height: 442rpx;
+}
+
+.pre-list .pre-list-item  text {
+  display: block;
+  /* font-size: 23rpx; */
+}
+
+.store-title {
+  color: red;
+  width: 330rpx;
+  overflow: hidden;
+  font-size: 32rpx;
+  padding: 10rpx 0;
+}
+
+.store-content {
+  font-size: 23rpx;
+  max-height: 73rpx;
+  overflow: hidden;
+  line-height: 1.6;
+}
