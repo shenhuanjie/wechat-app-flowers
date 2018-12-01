@@ -22,7 +22,7 @@ Page({
         id: 'password-revise',
         name: '修改密码'
       }, {
-        id: 'view',
+          id: 'complaint',
         name: '投诉建议'
       }, {
         id: 'comments',

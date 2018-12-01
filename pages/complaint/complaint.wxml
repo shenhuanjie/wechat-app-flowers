@@ -1,0 +1,20 @@
+<!--pages/complaint/complaint.wxml-->
+<view class='pre-block'>
+  <view class='pre-block-item'>
+    <label>主题：</label>
+    <input></input>
+  </view>
+  <view class='pre-block-item'>
+    <label>类型：</label>
+    <picker mode="region"></picker>
+  </view>
+  <view class='pre-block-item'>
+    <label>投诉建议内容：</label>
+  </view>
+  <view class='pre-block-item'>
+    <textarea placeholder='' placeholder-class=''></textarea>
+  </view>
+  <view class='pre-block-item'>
+    <button bindtap='onComment'>提交投诉</button>
+  </view>
+</view>

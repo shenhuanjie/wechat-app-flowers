@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -85,7 +85,13 @@
 				{
 					"id": -1,
 					"name": "logistics",
-					"pathName": "pages/logistics/logistics"
+					"pathName": "pages/logistics/logistics",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "complaint",
+					"pathName": "pages/complaint/complaint"
 				}
 			]
 		}

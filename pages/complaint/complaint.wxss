@@ -1,0 +1,41 @@
+/* pages/complaint/complaint.wxss */
+
+.pre-block {
+  margin: 30rpx 30rpx;
+  min-height: 48rpx;
+}
+
+.pre-block label {
+  font-size: 28rpx;
+}
+
+.pre-block-item {
+  margin-bottom: 30rpx;
+}
+
+.pre-block-item label {
+  width: 15%;
+}
+.pre-block-item input {
+  float: right;
+  width: 85%;
+  border: 1rpx solid #e8e8e8;
+  background-color: #fff;
+}
+
+.pre-block textarea {
+  padding: 15rpx;
+  font-size: 28rpx;
+  width: 660rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #e8e8e8;
+  box-shadow: 5rpx;
+  color: #000;
+  background-color: #fff;
+  margin-bottom: 60rpx;
+}
+
+.pre-block button {
+  color: #fff;
+  background-color: #7bcfb5;
+}
