@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -61,7 +61,25 @@
 				{
 					"id": -1,
 					"name": "password-revise",
-					"pathName": "pages/password-revise/password-revise"
+					"pathName": "pages/password-revise/password-revise",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "store",
+					"pathName": "pages/store/store",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "comments",
+					"pathName": "pages/comments/comments"
 				}
 			]
 		}

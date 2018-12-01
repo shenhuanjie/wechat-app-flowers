@@ -1,0 +1,23 @@
+/* pages/comments/comments.wxss */
+
+.pre-block {
+  margin: 30rpx 30rpx;
+  min-height: 48rpx;
+}
+
+.pre-block textarea {
+  padding: 15rpx;
+  font-size: 28rpx;
+  width: 660rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #e8e8e8;
+  box-shadow: 5rpx;
+  color: #000;
+  background-color: #fff;
+  margin-bottom: 60rpx;
+}
+
+.pre-block button {
+  color: #fff;
+  background-color: #7bcfb5;
+}

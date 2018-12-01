@@ -1,2 +1,28 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<!-- 顶部搜索框 -->
+<view class='pre-block page_row'>
+  <view class="search">
+    <view class="search_arr">
+      <icon class="search_icon" size='20' type='search'></icon>
+      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
+    </view>
+  </view>
+</view>
+
+<!-- 搜索分类 -->
+<view class='pre-warp search-type'>
+  <text>竞购商品</text>
+  <text>特价商品</text>
+  <text>鲜花</text>
+</view>
+
+<view class='search-title'>
+  <text>热门搜索</text>
+</view>
+
+<!-- 热门搜索 -->
+<view class='pre-warp search-hot'>
+  <text>玫瑰</text>
+  <text>多肉</text>
+  <text>凤梨</text>
+</view>

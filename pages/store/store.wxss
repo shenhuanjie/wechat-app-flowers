@@ -1,0 +1,3 @@
+/* preImageList.wxss */
+@import "../../resource/styles/preSearch.wxss";
+/* pages/store/store.wxss */

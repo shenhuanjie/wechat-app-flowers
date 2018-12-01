@@ -10,6 +10,8 @@
     "pages/favorite/favorite",
     "pages/cart/cart",
     "pages/setting/setting",
+    "pages/store/store",
+    "pages/comments/comments",
     "pages/password-revise/password-revise"
   ],
   "window": {

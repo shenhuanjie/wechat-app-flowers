@@ -19,13 +19,13 @@ Page({
         id: 'view',
         name: '发货查询'
       }, {
-          id: 'password-revise',
+        id: 'password-revise',
         name: '修改密码'
       }, {
         id: 'view',
         name: '投诉建议'
       }, {
-        id: 'view',
+        id: 'comments',
         name: '提交留言'
       }, {
         id: 'view',

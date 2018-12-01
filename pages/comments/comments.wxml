@@ -1,0 +1,7 @@
+<!--pages/comments/comments.wxml-->
+<view class='pre-block'>
+  <textarea placeholder='请输入你要写的文字' placeholder-class=''></textarea>
+</view>
+<view class='pre-block'>
+  <button bindtap='onComment'>提交留言</button>
+</view>

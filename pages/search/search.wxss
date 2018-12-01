@@ -1,1 +1,33 @@
+@import "../../resource/styles/preSearch.wxss";
+
 /* pages/search/search.wxss */
+
+.pre-warp {
+  margin: 10rpx 15rpx;
+  min-height: 48rpx;
+}
+
+.pre-warp text {
+  display: inline-block;
+  border: 1rpx solid #c1c2c2;
+  height: 36rpx;
+  border-radius: 10rpx;
+  background-color: #f4f4f4;
+  padding: 15rpx 40rpx;
+  margin: 15rpx 15rpx;
+  font-size: 28rpx;
+}
+
+.search-type text {
+  background-color: #ecf1f0;
+  border: 1rpx solid #e8e8e8;
+}
+
+.search-title {
+  margin: 30rpx 30rpx 0 30rpx;
+}
+
+.search-hot text {
+  background-color: #f6f6f6;
+  border: 1rpx solid #e8e8e8;
+}

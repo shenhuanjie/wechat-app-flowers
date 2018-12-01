@@ -36,17 +36,17 @@
   margin-left: 60rpx;
   color: #70a795;
   padding: 5rpx;
-  height: 20rpx;
+  height: 60rpx;
   border-radius: 5px;
 }
 
 .search_icon {
   margin: 10rpx 10rpx 10rpx 10rpx;
   position: absolute;
-  font-size: 30rpx;
-  left: 30rpx;
+  font-size: 40rpx;
+  left: 20rpx;
   z-index: 2;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   text-align: center;
 }
