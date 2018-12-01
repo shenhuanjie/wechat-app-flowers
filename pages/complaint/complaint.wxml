@@ -1,12 +1,12 @@
 <!--pages/complaint/complaint.wxml-->
 <view class='pre-block'>
-  <view class='pre-block-item'>
+  <view class='pre-block-item' style='margin-bottom:40rpx;'>
     <label>主题：</label>
     <input></input>
   </view>
-  <view class='pre-block-item'>
+  <view class='pre-block-item' style='margin-bottom:60rpx;'>
     <label>类型：</label>
-    <picker mode="region"></picker>
+    <input></input>
   </view>
   <view class='pre-block-item'>
     <label>投诉建议内容：</label>

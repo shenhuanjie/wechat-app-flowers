@@ -5,20 +5,21 @@
   min-height: 48rpx;
 }
 
-.pre-block label {
-  font-size: 28rpx;
-}
-
 .pre-block-item {
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .pre-block-item label {
-  width: 15%;
+  font-size: 28rpx;
 }
+
 .pre-block-item input {
+  border-radius: 10rpx;
   float: right;
-  width: 85%;
+  font-size: 28rpx;
+  padding: 0 15rpx;
+  height: 64rpx;
+  width: 540rpx;
   border: 1rpx solid #e8e8e8;
   background-color: #fff;
 }
