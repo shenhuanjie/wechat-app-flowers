@@ -82,3 +82,19 @@
 .pre-color-red {
   color: red;
 }
+#imgCode {
+  width: 150rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 251rpx;
+  top: 25rpx;
+}
+
+.codeTip {
+  color: red;
+  font-size: 22rpx;
+  position: absolute;
+  right: 85rpx;
+  top: 25rpx;
+  text-decoration: underline;
+}

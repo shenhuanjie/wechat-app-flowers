@@ -5,6 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    login: "登录",
+    account: {
+      userName: "请登录",
+      balance: 0
+    },
     list: [{
       id: 'view',
       name: '视图容器',
@@ -22,13 +27,13 @@ Page({
         id: 'password-revise',
         name: '修改密码'
       }, {
-          id: 'complaint',
+        id: 'complaint',
         name: '投诉建议'
       }, {
         id: 'comments',
         name: '提交留言'
       }, {
-          id: 'logistics',
+        id: 'logistics',
         name: '物流信息'
       }, {
         id: 'view',
@@ -41,7 +46,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var _that = this;
+    wx.getStorage({
+      key: 'memName',
+      success(res) {
+        console.log(res.data);
+        _that.setData({
+          account: {
+            userName: res.data,
+            balance: 0
+          },
+          login: "退出登录"
+        })
+      }
+    })
   },
 
   /**
@@ -97,6 +115,7 @@ Page({
    * 用户点击退出登录
    */
   onLogout: function() {
+    wx.clearStorage();
     wx.navigateTo({
       url: '../../pages/login/login'
     })

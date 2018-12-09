@@ -1,20 +1,23 @@
 var app = getApp();
-// pages/sites/sites.js
+// pages/products/products.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue: "",
-    saleSite: {}
+    brand: null,
+    searchValue: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getSaleSite();
+    this.setData({
+      brand: options.brand,
+      searchValue: options.brand,
+    })
   },
 
   /**
@@ -64,32 +67,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  getSaleSite: function() {
-    var _that = this;
-    wx.request({
-      url: app.globalData.appUrl + '/Product/GetSaleSite',
-      data: {
-        adType: '1'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-        _that.setData({
-          "saleSite": res.data
-        })
-      }
-    })
-  },
-  /**
-   * 跳转品牌列表
-   */
-  toBrands: function(e) {
-    var _site = e.currentTarget.dataset.site;
-    wx.navigateTo({
-      url: '../../pages/brands/brands?site=' + _site,
-    })
   }
 })

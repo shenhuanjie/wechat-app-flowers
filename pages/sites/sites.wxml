@@ -5,45 +5,15 @@
   <view class="search">
     <view class="search_arr">
       <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder=''/>
+      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
     </view>
   </view>
 </view>
 <view class='pre-list'>
-  <view class='pre-list-item' bindtap='toBrands'>
-    <view class='img-group'>
+  <view class='pre-list-item' wx:for="{{saleSite.Rows}}" wx:key="id">
+    <view class='img-group' bindtap='toBrands' data-site="{{item.Ssite}}">
       <image src="/resource/images/index_z1.png" />
-      <text class='img-tip'>广州</text>
-    </view>
-  </view>
-  <view class='pre-list-item'>
-    <view class='img-group'>
-      <image src="/resource/images/index_z1.png" />
-      <text class='img-tip'>佛山</text>
-    </view>
-  </view>
-  <view class='pre-list-item'>
-    <view class='img-group'>
-      <image src="/resource/images/index_z1.png" />
-      <text class='img-tip'>深圳</text>
-    </view>
-  </view>
-  <view class='pre-list-item'>
-    <view class='img-group'>
-      <image src="/resource/images/index_z1.png" />
-      <text class='img-tip'>昆明</text>
-    </view>
-  </view>
-  <view class='pre-list-item'>
-    <view class='img-group'>
-      <image src="/resource/images/index_z2.png" />
-      <text class='img-tip'>湖南</text>
-    </view>
-  </view>
-  <view class='pre-list-item'>
-    <view class='img-group'>
-      <image src="/resource/images/index_z2.png" />
-      <text class='img-tip'>惠州</text>
+      <text class='img-tip'>{{item.Ssite}}</text>
     </view>
   </view>
 </view>

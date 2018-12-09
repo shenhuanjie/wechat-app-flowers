@@ -34,7 +34,7 @@
 
 .search_arr input {
   margin-left: 60rpx;
-  color: #70a795;
+  color: #000;
   padding: 5rpx;
   height: 60rpx;
   border-radius: 5px;

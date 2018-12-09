@@ -11,17 +11,5 @@
 
 <!-- 品牌列表 -->
 <view class='pre-warp'>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>妃子笑</text>
-  <text>子孙满堂</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
-  <text>桂飞</text>
+  <text wx:for="{{brandList.Rows}}" wx:key="{{id}}" bindtap='toProductList' data-brand="{{item.Brand}}">{{item.Brand}}</text>
 </view>

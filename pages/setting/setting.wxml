@@ -2,10 +2,10 @@
 <navigator url="pages/{{page.id}}/{{page.id}}" class="navigator navigator-header-bg">
   <view class="navigator-text">
     <view class='navigator-text-item' style='font-size: 28rpx;margin-bottom:10rpx;'>账号：
-      <text style=''>沈焕杰</text>
+      <text style=''>{{account.userName}}</text>
     </view>
     <view style='font-size: 28rpx;'>余额：
-      <text style='color:red;'>2000元</text>
+      <text style='color:red;'>{{account.balance}}元</text>
     </view>
   </view>
   <view class="navigator-arrow"></view>
@@ -32,5 +32,5 @@
 </view>
 
 <view class='pre-block'>
-  <button bindtap='onLogout'>退出登录</button>
+  <button bindtap='onLogout'>{{login}}</button>
 </view>
