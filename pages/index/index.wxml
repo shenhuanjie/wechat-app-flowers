@@ -3,7 +3,7 @@
 <swiper class="imgbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
   <block wx:for="{{advertList.Rows}}" wx:key="id">
     <swiper-item>
-      <image src="{{imgPrefix}}{{item.Picpath}}" class="slide-image" />
+      <image src="{{imgPrefix}}{{item.Picpath}}" mode="{{imgMode}}" class="slide-image" />
     </swiper-item>
   </block>
 </swiper>

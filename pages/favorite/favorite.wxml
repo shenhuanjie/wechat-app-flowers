@@ -1,2 +1,4 @@
 <!--pages/favorite/favorite.wxml-->
-
+<view class='container'>
+  <text>{{nofavorite}}</text>
+</view>

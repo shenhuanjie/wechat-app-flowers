@@ -1,6 +1,7 @@
 /* preImageList.wxss */
 @import "../../resource/styles/preImageList.wxss";
 @import "../../resource/styles/preSearch.wxss";
+
 /**index.wxss**/
 
 swiper {
@@ -10,7 +11,7 @@ swiper {
 
 .slide-image {
   display: block;
-  width: 100%;
+  width: 750rpx;
   height: 460rpx;
 }
 

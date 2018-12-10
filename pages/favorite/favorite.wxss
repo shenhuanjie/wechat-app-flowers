@@ -1,1 +1,9 @@
 /* pages/favorite/favorite.wxss */
+
+.container {
+  margin: 15rpx;
+}
+
+text {
+  font-size: 32rpx;
+}

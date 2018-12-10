@@ -4,6 +4,7 @@ var app = getApp();
 Page({
   data: {
     imgPrefix: app.globalData.imgPrefix,
+    imgMode:"top",
     advertList: {},
     indicatorDots: true,
     autoplay: true,

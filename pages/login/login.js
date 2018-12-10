@@ -182,7 +182,14 @@ Page({
   toIndex() {
     console.log("onLogin");
     wx.switchTab({
-      url: '../../pages/index/index',
+      url: '../../pages/setting/setting',
+      success(res) {
+        let page = getCurrentPages().pop()
+        if (page == undefined || page == null) {
+          return
+        }
+        page.onLoad()
+      }
     })
   },
 
