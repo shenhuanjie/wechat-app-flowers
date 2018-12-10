@@ -15,7 +15,8 @@
     "pages/comments/comments",
     "pages/logistics/logistics",
     "pages/complaint/complaint",
-    "pages/password-revise/password-revise"
+    "pages/password-revise/password-revise",
+    "pages/member-info/member-info"
   ],
   "window": {
     "backgroundTextStyle": "light",

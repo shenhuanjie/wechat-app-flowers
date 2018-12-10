@@ -1,0 +1,21 @@
+/* pages/member-info/member-info.wxss */
+
+.container {
+  margin: 15px;
+}
+
+.container text {
+  font-size: 28rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #afafaf73;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+.text-right {
+  text-align: right;
+}

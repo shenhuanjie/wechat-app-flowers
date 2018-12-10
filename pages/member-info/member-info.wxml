@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="info-list">
+    <block wx:for="{{infoList}}" wx:key="{{id}}">
+      <view class='info-item'>
+        <text style='width:300rpx;'>{{item.title}}：</text>
+        <text class='text-right'>{{item.value}}</text>
+      </view>
+    </block>
+  </view>
+</view>

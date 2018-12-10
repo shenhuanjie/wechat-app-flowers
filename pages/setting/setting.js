@@ -1,3 +1,4 @@
+var app = getApp();
 // pages/setting/setting.js
 Page({
 
@@ -5,11 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    memcode: null,
+    member: null,
     login: "登录",
-    account: {
-      userName: "请登录",
-      balance: 0
-    },
+    topmemcode: "请登录",
+    lblAccount: "--",
     list: [{
       id: 'view',
       name: '视图容器',
@@ -47,17 +48,20 @@ Page({
    */
   onLoad: function(options) {
     var _that = this;
+    var member = this.data.member;
+    var memcode = this.data.memcode;
     wx.getStorage({
-      key: 'memName',
-      success(res) {
-        console.log(res.data);
+      key: 'memcode',
+      success: function(res) {
+        var memcode = res.data;
+        console.log('memcode:' + memcode);
         _that.setData({
-          account: {
-            userName: res.data,
-            balance: 0
-          },
-          login: "退出登录"
-        })
+          memcode: memcode
+        });
+        _that.getMemberByCode();
+      },
+      fail: function(res) {
+        _that.onLogout();
       }
     })
   },
@@ -118,6 +122,46 @@ Page({
     wx.clearStorage();
     wx.navigateTo({
       url: '../../pages/login/login'
+    })
+  },
+  toMemberInfo: function() {
+    wx.navigateTo({
+      url: '../../pages/member-info/member-info'
+    })
+  },
+  getMemberByCode: function() {
+    var _that = this;
+    var memcode = _that.data.memcode;
+    wx.request({
+      url: app.globalData.appUrl + '/Member/GetMemberByCode',
+      data: {
+        memcode: memcode
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        var member = res.data.Member;
+        if (member && member.Id > 0) {
+          var memcode = member.Code;
+          var memName = member.Name;
+          var memMonetary = member.Monetary.toFixed(2);
+          _that.setData({
+            member: member,
+            memcode: memcode,
+            topmemcode: memName,
+            lblAccount: memMonetary,
+            login: "退出登录"
+          })
+          wx.setStorage({
+            key: 'memName',
+            data: memName,
+          })
+        } else {
+          _that.onLogout();
+        }
+      }
     })
   }
 })
