@@ -1,39 +1,78 @@
 <!--pages/products/products.wxml-->
+
 <!-- 顶部搜索框 -->
-<view class='pre-block page_row'>
+<view class='page_row search-nav'>
   <!-- 顶部搜索框 -->
-  <view class="search" style='display:flex;'>
-    <view class="search_arr" style='flex:1'>
+  <view class="search search_flex">
+    <view class="search_arr search_flex_input">
       <icon class="search_icon" size='20' type='search'></icon>
       <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
     </view>
-    <view style='width:48rpx;margin:4rpx 10rpx' bindtap='toggleItemList'>
+    <view class='search-nav-icon' bindtap='toggleItemList'>
       <icon class="iconfont {{iconlist}}"></icon>
     </view>
+    <!-- <view class='search-nav-icon'>
+      <icon class="iconfont icon-cart"></icon>
+    </view> -->
   </view>
 </view>
-<view class='pre-block'>
-  <!-- 顶部搜索框 -->
-  <view class="" style='display:flex;justify-content:space-around;padding-bottom:10rpx;border-bottom:1rpx solid #ecf1f0'>
-    <view style=''>
-      <text style='font-size:28rpx'>综合</text>
-      <icon class="iconfont icon-down" style='font-size:14rpx'></icon>
-    </view>
-    <view style=''>
-      <text style='font-size:28rpx'>购买方式</text>
-      <icon class="iconfont icon-down" style='font-size:14rpx'></icon>
-    </view>
-    <view style=''>
-      <text style='font-size:28rpx'>颜色</text>
-      <icon class="iconfont icon-down" style='font-size:14rpx'></icon>
-    </view>
-    <view style=''>
-      <text style='font-size:28rpx'>品牌</text>
-      <icon class="iconfont icon-down" style='font-size:14rpx'></icon>
-    </view>
-    <view style=''>
-      <text style='font-size:28rpx'>是否竞价</text>
-      <icon class="iconfont icon-down" style='font-size:14rpx'></icon>
-    </view>
+
+<view class='search-filter'>
+
+  <view class=" search-filter-nav ">
+    <block wx:for="{{searchFilterList}}" wx:key="id">
+      <view class='search-filter-item search-filter-item-selected' wx:if="{{item.selected}}" bindtap='onSelectFilterPop' data-index="{{item.index}}">
+        <text>{{item.title}}</text>
+        <icon class="iconfont {{item.icon}}"></icon>
+      </view>
+      <view class='search-filter-item' wx:else bindtap='onSelectFilterPop' data-index="{{item.index}}">
+        <text>{{item.title}}</text>
+        <icon class="iconfont {{item.icon}}"></icon>
+      </view>
+    </block>
   </view>
+  <block wx:if="{{searchFilterPop}}">
+    <view class='search-filter-pop'>
+      <view class='search-filter-pop-content'>
+
+        <block wx:for="{{searchFilterItemList}}" wx:key="id">
+          <block wx:if="{{item.index==selectIndex}}">
+            <view style='font-size:32rpx;margin:12rpx;'>{{item.title}}</view>
+            <block wx:for="{{item.item}}" wx:key="id">
+              <block wx:if="{{item.selected}}">
+                <view style="display:inline-block;border:1rpx solid #f0f0f0;background-color:#7bcfb5;border-radius:10rpx;margin:10rpx 10rpx;padding:0 20rpx">
+                  <text style='font-size:24rpx;line-height:48rpx;word-wrap:break-word;color:#fff'>{{item.title}}</text>
+                </view>
+              </block>
+              <block wx:else>
+                <view style="display:inline-block;border:1rpx solid #f0f0f0;background-color:#f0f0f06e;border-radius:10rpx;margin:10rpx 10rpx;padding:0 20rpx">
+                  <text style='font-size:24rpx;line-height:48rpx;word-wrap:break-word;'>{{item.title}}</text>
+                </view>
+              </block>
+            </block>
+          </block>
+          <block wx:if="{{selectIndex==4}}">
+            <view style='font-size:32rpx;margin:12rpx;'>{{item.title}}</view>
+            <block wx:for="{{item.item}}" wx:key="id">
+              <block wx:if="{{item.selected}}">
+                <view style="display:inline-block;border:1rpx solid #f0f0f0;background-color:#7bcfb5;border-radius:10rpx;margin:10rpx 10rpx;padding:0 20rpx">
+                  <text style='font-size:24rpx;line-height:48rpx;word-wrap:break-word;color:#fff'>{{item.title}}</text>
+                </view>
+              </block>
+              <block wx:else>
+                <view style="display:inline-block;border:1rpx solid #f0f0f0;background-color:#f0f0f06e;border-radius:10rpx;margin:10rpx 10rpx;padding:0 20rpx">
+                  <text style='font-size:24rpx;line-height:48rpx;word-wrap:break-word;'>{{item.title}}</text>
+                </view>
+              </block>
+
+            </block>
+          </block>
+        </block>
+        <view style='display:flex;margin-top:20rpx'>
+          <button style='width:300rpx;font-size:30rpx'>重置</button>
+          <button style='width:300rpx;font-size:30rpx;background-color:#7bcfb5;color:#fff;border:1rpx solid #fff'>确定</button>
+        </view>
+      </view>
+    </view>
+  </block>
 </view>

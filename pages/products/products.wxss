@@ -3,6 +3,71 @@
 /* preImageList.wxss */
 @import "../../resource/styles/preSearch.wxss";
 
+.search_flex {
+  display: flex;
+}
+
+.search_flex_input {
+  flex: 1;
+}
+
+.search-filter {
+  margin: 5rpx 30rpx 10rpx 30rpx;
+  min-height: 48rpx;
+}
+
+.search-filter-nav {
+  display: flex;
+  justify-content: space-around;
+  /* padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #ecf1f0; */
+}
+
+.search-filter-item-selected {
+  background-color: #fff;
+  padding: 0 20rpx 10rpx 20rpx;
+}
+
+.search-filter-item-selected text {
+  color: green;
+}
+
+.search-filter-item text {
+  font-size: 28rpx;
+}
+
+.search-filter-item icon {
+  font-size: 14rpx;
+}
+
+.search-filter-item icon.icon-big {
+  font-size: 24rpx;
+}
+
+.search-filter-pop {
+  position: fixed;
+  z-index: 1000;
+}
+
+.search-filter-pop-content {
+  width: 660rpx;
+  /* min-height: 400rpx; */
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.search-nav {
+  margin: 30rpx 30rpx 10rpx 30rpx;
+  min-height: 48rpx;
+}
+
+.search-nav-icon {
+  width: 48rpx;
+  margin: 4rpx 10rpx;
+}
+
 .container {
   margin: 15rpx;
 }
