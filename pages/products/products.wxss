@@ -1,3 +1,12 @@
+/* pages/products/products.wxss */
+
 /* preImageList.wxss */
 @import "../../resource/styles/preSearch.wxss";
-/* pages/products/products.wxss */
+
+.container {
+  margin: 15rpx;
+}
+
+text {
+  font-size: 32rpx;
+}

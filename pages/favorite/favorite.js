@@ -1,3 +1,4 @@
+var app = getApp();
 // pages/favorite/favorite.js
 Page({
 
@@ -5,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    memcode: null,
     nofavorite: "您暂无关注的产品，快去关注您的最爱吧~"
   },
 
@@ -12,7 +14,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var _that = this;
+    wx.getStorage({
+      key: 'memcode',
+      success: function(res) {
+        var memcode = res.data;
+        console.log('memcode:' + memcode);
+        _that.setData({
+          memcode: memcode
+        });
+      },
+      fail: function(res) {
+        console.log(res.errMsg);
+        app.onLogout();
+      }
+    })
   },
 
   /**

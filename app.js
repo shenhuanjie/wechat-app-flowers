@@ -1,8 +1,16 @@
 //app.js
 App({
-  onLaunch: function() {
+  onLaunch: function() {},
+  /**
+   * 用户点击退出登录
+   */
+  onLogout: function() {
+    wx.clearStorage();
+    wx.navigateTo({
+      url: '../../pages/login/login'
+    })
   },
-  uuid:function() {
+  uuid: function() {
     var s = [];
     var hexDigits = "0123456789abcdef";
     for (var i = 0; i < 36; i++) {

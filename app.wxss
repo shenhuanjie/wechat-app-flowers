@@ -1,3 +1,5 @@
+@import "resource/styles/iconfont.wxss";
+
 /**app.wxss**/
 
 page {
@@ -15,11 +17,12 @@ page {
 }
 
 /* 清除浮动 */
+
 .clearfix:after {
-	display: block;
-	height: 0;
-	clear: both;
-	content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  content: '';
 }
 
 .phcolor {

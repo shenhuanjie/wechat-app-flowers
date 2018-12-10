@@ -1,23 +1,32 @@
-var app = getApp();
-// pages/products/products.js
+var app=getApp();
+// pages/category/category.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // brand: null,
-    searchValue: null,
-    iconlist: "icon-list"
+    memcode: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      // brand: options.brand,
-      // searchValue: options.brand,
+    var _that = this;
+    wx.getStorage({
+      key: 'memcode',
+      success: function(res) {
+        var memcode = res.data;
+        console.log('memcode:' + memcode);
+        _that.setData({
+          memcode: memcode
+        });
+      },
+      fail: function(res) {
+        console.log(res.errMsg);
+        app.onLogout();
+      }
     })
   },
 
@@ -68,17 +77,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  toggleItemList: function() {
-    var iconlist = this.data.iconlist;
-    if (iconlist == "icon-list") {
-      this.setData({
-        iconlist: "icon-list-item"
-      })
-    } else {
-      this.setData({
-        iconlist: "icon-list"
-      })
-    }
   }
 })

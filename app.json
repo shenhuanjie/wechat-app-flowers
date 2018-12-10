@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/login/login",
     "pages/register/register",
-    "pages/items/items",
+    "pages/category/category",
     "pages/sites/sites",
     "pages/brands/brands",
     "pages/products/products",
@@ -34,10 +34,10 @@
         "selectedIconPath": "resource/images/ic_home_pressed.png"
       },
       {
-        "pagePath": "pages/items/items",
+        "pagePath": "pages/category/category",
         "text": "分类",
-        "iconPath": "resource/images/ic_items_normal.png",
-        "selectedIconPath": "resource/images/ic_items_pressed.png"
+        "iconPath": "resource/images/ic_category_normal.png",
+        "selectedIconPath": "resource/images/ic_category_pressed.png"
       },
       {
         "pagePath": "pages/favorite/favorite",

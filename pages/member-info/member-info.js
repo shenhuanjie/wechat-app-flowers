@@ -30,7 +30,8 @@ Page({
         _that.getMemberByCode();
       },
       fail: function(res) {
-        _that.onLogout();
+        console.log(res.errMsg);
+        app.onLogout();
       }
     })
   },
@@ -82,15 +83,6 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-  /**
-   * 用户点击退出登录
-   */
-  onLogout: function() {
-    wx.clearStorage();
-    wx.navigateTo({
-      url: '../../pages/login/login'
-    })
   },
   getMemberByCode: function() {
     var _that = this;
