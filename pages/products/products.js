@@ -245,5 +245,35 @@ Page({
         searchFilterList: searchFilterList
       })
     }
+  },
+  /**
+   * 添加关注
+   */
+  addFollow(even) {
+    wx.showToast({
+      title: '添加关注',
+      icon: 'none'
+    })
+    console.log(even);
+  },
+  /**
+   * 跳转商品详情
+   */
+  toProduct: function(even) {
+    wx.showToast({
+      title: '产品详情',
+      icon: 'none'
+    })
+    console.log(even);
+  },
+  /**
+   * 购买
+   */
+  toBuyNow(even) {
+    wx.showToast({
+      title: '购买',
+      icon: 'none'
+    })
+    console.log(even);
   }
 })
