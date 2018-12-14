@@ -1,1 +1,3 @@
-/* pages/product/product.wxss */
+.container {
+    margin: 30rpx;
+}
