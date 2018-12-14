@@ -2,129 +2,139 @@
 
 <!-- 顶部搜索框 -->
 <view class='page_row search-nav'>
-  <!-- 顶部搜索框 -->
-  <view class="search search_flex">
-    <view class="search_arr search_flex_input">
-      <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' bindconfirm="doSearch" />
-    </view>
-    <view class='search-nav-icon' bindtap='toggleItemList'>
-      <icon class="iconfont {{iconlist}}"></icon>
-    </view>
-    <!-- <view class='search-nav-icon'>
+    <!-- 顶部搜索框 -->
+    <view class="search search_flex">
+        <view class='search-nav-icon'>
+            <icon class="iconfont icon-type-list" style='font-size:42rpx;' bindtap='toCategory'></icon>
+        </view>
+        <view class="search_arr search_flex_input">
+            <!-- <icon class="search_icon" size='20' type='search'></icon> -->
+            <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' bindblur='changeSearch' bindconfirm='changeSearch' />
+        </view>
+        <view class='search-nav-icon' bindtap='toggleItemList'>
+            <icon class="iconfont {{iconlist}}"></icon>
+        </view>
+        <view class='search-nav-icon'>
+            <icon class="iconfont icon-follow-action" style='font-size:42rpx;' bindtap='toFavorite'></icon>
+        </view>
+        <view class='search-nav-icon'>
+            <icon class="iconfont icon-cart" bindtap='toCart'></icon>
+        </view>
+
+        <!-- <view class='search-nav-icon'>
       <icon class="iconfont icon-cart"></icon>
     </view> -->
-  </view>
+    </view>
 </view>
 
 <view class='search-filter'>
-  <view class=" search-filter-nav ">
-    <block wx:for="{{searchFilterList}}" wx:key="id">
-      <view class='search-filter-item search-filter-item-selected' wx:if="{{item.selected}}" bindtap='onSelectFilterPop' data-index="{{item.index}}">
-        <text>{{item.title}}</text>
-        <icon class="iconfont {{item.icon}}"></icon>
-      </view>
-      <view class='search-filter-item' wx:else bindtap='onSelectFilterPop' data-index="{{item.index}}">
-        <text>{{item.title}}</text>
-        <icon class="iconfont {{item.icon}}"></icon>
-      </view>
-    </block>
-  </view>
-  <block wx:if="{{searchFilterPop}}">
-    <view class='search-filter-pop'>
-      <view class='search-filter-pop-content'>
-        <block wx:for="{{searchFilterItemList}}" wx:key="id">
-          <block wx:if="{{item.index==selectIndex}}">
-            <view class='filter-item-title'>{{item.title}}</view>
-            <block wx:for="{{item.item}}" wx:key="id">
-              <block wx:if="{{item.selected}}">
-                <view class='filter-item filter-item-selected'>
-                  <text>{{item.title}}</text>
-                </view>
-              </block>
-              <block wx:else>
-                <view class='filter-item'>
-                  <text>{{item.title}}</text>
-                </view>
-              </block>
-            </block>
-          </block>
-          <block wx:if="{{selectIndex==4}}">
-            <view class='filter-item-title'>{{item.title}}</view>
-            <block wx:for="{{item.item}}" wx:key="id">
-              <block wx:if="{{item.selected}}">
-                <view class='filter-item filter-item-selected'>
-                  <text>{{item.title}}</text>
-                </view>
-              </block>
-              <block wx:else>
-                <view class='filter-item'>
-                  <text>{{item.title}}</text>
-                </view>
-              </block>
-            </block>
-          </block>
+    <view class=" search-filter-nav ">
+        <block wx:for="{{searchFilterList}}" wx:key="id">
+            <view class='search-filter-item search-filter-item-selected' wx:if="{{item.selected}}" bindtap='onSelectFilterPop' data-index="{{item.index}}">
+                <text>{{item.title}}</text>
+                <icon class="iconfont {{item.icon}}"></icon>
+            </view>
+            <view class='search-filter-item' wx:else bindtap='onSelectFilterPop' data-index="{{item.index}}">
+                <text>{{item.title}}</text>
+                <icon class="iconfont {{item.icon}}"></icon>
+            </view>
         </block>
-        <view class='filter-pop-content-button-group'>
-          <button>重置</button>
-          <button class='btn-green'>确定</button>
-        </view>
-      </view>
     </view>
-  </block>
+    <block wx:if="{{searchFilterPop}}">
+        <view class='search-filter-pop'>
+            <view class='search-filter-pop-content'>
+                <block wx:for="{{searchFilterItemList}}" wx:key="id" wx:for-index="index">
+                    <block wx:if="{{item.group==selectIndex}}">
+                        <view class='filter-item-title'>{{item.title}}</view>
+                        <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
+                            <block wx:if="{{item.selected}}">
+                                <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                        </block>
+                    </block>
+                    <block wx:if="{{selectIndex==4}}">
+                        <view class='filter-item-title'>{{item.title}}</view>
+                        <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
+                            <block wx:if="{{item.selected}}">
+                                <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                            <block wx:else>
+                                <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                    <text>{{item.title}}</text>
+                                </view>
+                            </block>
+                        </block>
+                    </block>
+                </block>
+                <view class='filter-pop-content-button-group'>
+                    <button bindtap='resetSearch'>重置</button>
+                    <button class='btn-green' bindtap='doSearch'>确定</button>
+                </view>
+            </view>
+        </view>
+    </block>
 </view>
 
 <view class='container_'>
-  <!-- 列表视图 -->
-  <block wx:if="{{iconlist=='icon-list'}}">
-    <view class='pre-list'>
-      <block wx:for="{{productList}}" wx:key="id">
-        <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Id}}'>
-          <view class='pre-list-item-img'>
-            <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
-          </view>
-          <view class='pre-list-item-content'>
-            <text class='content-title'>{{item.Name}}</text>
-            <text class='content-item'>颜色：{{item.Color}}</text>
-            <text class='content-item'>长度：{{item.Slength}}</text>
-            <text class='content-item'>装量：{{item.Packcount}}</text>
-            <text class='content-price'>￥{{item.Price}}</text>
-          </view>
-          <view class='pre-list-item-button-group'>
-            <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
-            <button catchtap='toBuyNow'>购买</button>
-          </view>
+    <!-- 列表视图 -->
+    <block wx:if="{{iconlist=='icon-list'}}">
+        <view class='pre-list'>
+            <block wx:for="{{productList}}" wx:key="id">
+                <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Id}}'>
+                    <view class='pre-list-item-img'>
+                        <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                    </view>
+                    <view class='pre-list-item-content'>
+                        <text class='content-title'>{{item.Name}}</text>
+                        <text class='content-item'>颜色：{{item.Color}}</text>
+                        <text class='content-item'>长度：{{item.Slength}}</text>
+                        <text class='content-item'>装量：{{item.Packcount}}</text>
+                        <text class='content-price'>￥{{item.Price}}</text>
+                    </view>
+                    <view class='pre-list-item-button-group'>
+                        <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
+                        <button catchtap='toBuyNow'>购买</button>
+                    </view>
+                </view>
+            </block>
         </view>
-      </block>
-    </view>
-  </block>
-  <!-- 网格视图 -->
+    </block>
+    <!-- 网格视图 -->
 
-  <block wx:else>
-    <view class='pre-grid'>
-      <block wx:for="{{productList}}" wx:key="id">
-        <view class='pre-grid-item' bindtap='toProduct' data-id='{{item.Id}}'>
-          <view class='pre-grid-item-img'>
-            <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
-          </view>
-          <view class='pre-grid-item-content'>
-            <view class='pre-grid-item-content-text'>
-              <text>{{item.Name}}</text>
-              <text style='color:red;'>￥{{item.Price}}</text>
-            </view>
-            <view class='pre-grid-item-content-button'>
-              <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
-              <button catchtap='toBuyNow'>购买</button>
-            </view>
-          </view>
+    <block wx:else>
+        <view class='pre-grid'>
+            <block wx:for="{{productList}}" wx:key="id">
+                <view class='pre-grid-item' bindtap='toProduct' data-id='{{item.Id}}'>
+                    <view class='pre-grid-item-img'>
+                        <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                    </view>
+                    <view class='pre-grid-item-content'>
+                        <view class='pre-grid-item-content-text'>
+                            <text>{{item.Name}}</text>
+                            <text style='color:red;'>￥{{item.Price}}</text>
+                        </view>
+                        <view class='pre-grid-item-content-button'>
+                            <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
+                            <button catchtap='toBuyNow'>购买</button>
+                        </view>
+                    </view>
+                </view>
+            </block>
         </view>
-      </block>
-    </view>
-  </block>
+    </block>
 </view>
 <block wx:if="{{isHideLoadMore}}">
-  <view class="weui-loadmore">
-    <view class=" weui-loading "></view>
-    <view class="weui-loadmore__tips ">正在加载</view>
-  </view>
+    <view class="weui-loadmore">
+        <view class=" weui-loading "></view>
+        <view class="weui-loadmore__tips ">正在加载</view>
+    </view>
 </block>

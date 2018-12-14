@@ -1,63 +1,52 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/login/login",
-    "pages/register/register",
-    "pages/category/category",
-    "pages/sites/sites",
-    "pages/brands/brands",
-    "pages/products/products",
-    "pages/product/product",
-    "pages/search/search",
-    "pages/favorite/favorite",
-    "pages/cart/cart",
-    "pages/setting/setting",
-    "pages/store/store",
-    "pages/comments/comments",
-    "pages/logistics/logistics",
-    "pages/complaint/complaint",
-    "pages/password-revise/password-revise",
-    "pages/member-info/member-info"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#7bcfb5",
-    "navigationBarTitleText": "缤纷鲜花零售",
-    "navigationBarTextStyle": "light"
-  },
-  "tabBar": {
-    "selectedColor": "#7bcfb5",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "resource/images/ic_home_normal.png",
-        "selectedIconPath": "resource/images/ic_home_pressed.png"
-      },
-      {
-        "pagePath": "pages/category/category",
-        "text": "分类",
-        "iconPath": "resource/images/ic_category_normal.png",
-        "selectedIconPath": "resource/images/ic_category_pressed.png"
-      },
-      {
-        "pagePath": "pages/favorite/favorite",
-        "text": "关注",
-        "iconPath": "resource/images/ic_favorite_normal.png",
-        "selectedIconPath": "resource/images/ic_favorite_pressed.png"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "text": "购物车",
-        "iconPath": "resource/images/ic_cart_normal.png",
-        "selectedIconPath": "resource/images/ic_cart_pressed.png"
-      },
-      {
-        "pagePath": "pages/setting/setting",
-        "text": "个人中心",
-        "iconPath": "resource/images/ic_setting_normal.png",
-        "selectedIconPath": "resource/images/ic_setting_pressed.png"
-      }
-    ]
-  }
+    "pages": [
+        "pages/index/index",
+        "pages/login/login",
+        "pages/register/register",
+        "pages/category/category",
+        "pages/sites/sites",
+        "pages/brands/brands",
+        "pages/products/products",
+        "pages/product/product",
+        "pages/search/search",
+        "pages/favorite/favorite",
+        "pages/cart/cart",
+        "pages/orders/orders",
+        "pages/setting/setting",
+        "pages/store/store",
+        "pages/comments/comments",
+        "pages/logistics/logistics",
+        "pages/complaint/complaint",
+        "pages/password-revise/password-revise",
+        "pages/member-info/member-info"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#7bcfb5",
+        "navigationBarTitleText": "缤纷鲜花零售",
+        "navigationBarTextStyle": "light"
+    },
+    "tabBar": {
+        "selectedColor": "#7bcfb5",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "resource/images/ic_home_normal.png",
+                "selectedIconPath": "resource/images/ic_home_pressed.png"
+            },
+            {
+                "pagePath": "pages/orders/orders",
+                "text": "我的订单",
+                "iconPath": "resource/images/ic_orders_normal.png",
+                "selectedIconPath": "resource/images/ic_orders_pressed.png"
+            },
+            {
+                "pagePath": "pages/setting/setting",
+                "text": "个人中心",
+                "iconPath": "resource/images/ic_setting_normal.png",
+                "selectedIconPath": "resource/images/ic_setting_pressed.png"
+            }
+        ]
+    }
 }
