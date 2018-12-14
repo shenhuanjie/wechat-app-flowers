@@ -6,7 +6,7 @@
   <view class="search search_flex">
     <view class="search_arr search_flex_input">
       <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
+      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' bindconfirm="doSearch" />
     </view>
     <view class='search-nav-icon' bindtap='toggleItemList'>
       <icon class="iconfont {{iconlist}}"></icon>
@@ -77,43 +77,54 @@
 <view class='container_'>
   <!-- 列表视图 -->
   <block wx:if="{{iconlist=='icon-list'}}">
-    <view class='pre-list' style='margin:20rpx'>
-      <view class='pre-list-item' style='display:flex;border:0rpx solid #dfdfdf;border-radius:10rpx;padding:10rpx 10rpx;margin-bottom:10rpx;background-color:#fff' bindtap='toProduct'>
-        <view style='width:200rpx;height:200rpx;'>
-          <image style='width:100%;height:100%' src="/resource/images/index_z1.png" />
+    <view class='pre-list'>
+      <block wx:for="{{productList}}" wx:key="id">
+        <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Id}}'>
+          <view class='pre-list-item-img'>
+            <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+          </view>
+          <view class='pre-list-item-content'>
+            <text class='content-title'>{{item.Name}}</text>
+            <text class='content-item'>颜色：{{item.Color}}</text>
+            <text class='content-item'>长度：{{item.Slength}}</text>
+            <text class='content-item'>装量：{{item.Packcount}}</text>
+            <text class='content-price'>￥{{item.Price}}</text>
+          </view>
+          <view class='pre-list-item-button-group'>
+            <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
+            <button catchtap='toBuyNow'>购买</button>
+          </view>
         </view>
-        <view style='display:flex;flex-direction:column;flex:1;justify-content:space-between;margin:0 10rpx'>
-          <text style='font-size:28rpx;margin-bottom:5rpx'>富贵竹</text>
-          <text style='font-size:20rpx;color:gray'>颜色：绿色</text>
-          <text style='font-size:20rpx;color:gray'>长度：≥100</text>
-          <text style='font-size:20rpx;color:gray'>装量：10支/扎</text>
-          <text style='font-size:28rpx;color:red;margin-top:5rpx;'>￥16</text>
-        </view>
-        <view style='display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;padding-right:5rpx;'>
-          <icon class="iconfont icon-follow" style='font-size:28rpx' catchtap='addFollow'></icon>
-          <button style='font-size:18rpx' catchtap='toBuyNow'>购买</button>
-        </view>
-      </view>
+      </block>
     </view>
   </block>
   <!-- 网格视图 -->
+
   <block wx:else>
-    <view class='pre-grid' style='display:flex;flex-wrap:wrap;justify-content:flex-start;margin:20rpx 10rpx'>
-      <view class='pre-grid-item' style='width:325rpx;padding:10rpx;margin:0 10rpx 10rpx 10rpx;background-color:#fff;border:0rpx solid #dfdfdf;border-radius:10rpx;' bindtap='toProduct'>
-        <view style='width:325rpx;height:200rpx;'>
-          <image style='width:100%;height:100%' src="/resource/images/index_z1.png" />
-        </view>
-        <view style="display:flex;height:120rpx;width:325rpx;">
-          <view style='display:flex;flex-direction:column;flex:1;justify-content:space-around;align-items:flex-start;margin:0 10rpx'>
-            <text style='font-size:28rpx;'>富贵竹</text>
-            <text style='font-size:28rpx;color:red;'>￥16</text>
+    <view class='pre-grid'>
+      <block wx:for="{{productList}}" wx:key="id">
+        <view class='pre-grid-item' bindtap='toProduct' data-id='{{item.Id}}'>
+          <view class='pre-grid-item-img'>
+            <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
           </view>
-          <view style='display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end'>
-            <icon class="iconfont icon-follow" style='font-size:28rpx;' catchtap='addFollow'></icon>
-            <button style='font-size:18rpx' catchtap='toBuyNow'>购买</button>
+          <view class='pre-grid-item-content'>
+            <view class='pre-grid-item-content-text'>
+              <text>{{item.Name}}</text>
+              <text style='color:red;'>￥{{item.Price}}</text>
+            </view>
+            <view class='pre-grid-item-content-button'>
+              <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
+              <button catchtap='toBuyNow'>购买</button>
+            </view>
           </view>
         </view>
-      </view>
+      </block>
     </view>
   </block>
 </view>
+<block wx:if="{{isHideLoadMore}}">
+  <view class="weui-loadmore">
+    <view class=" weui-loading "></view>
+    <view class="weui-loadmore__tips ">正在加载</view>
+  </view>
+</block>

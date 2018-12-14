@@ -6,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgPrefix: app.globalData.imgPrefix,
+    page: 1, //分页
+    pageSize: 20, //分页大小
+    productList: [], //产品列表
     // brand: null,
+    isHideLoadMore: false,
     searchValue: null,
     iconlist: "icon-list",
     searchFilterPop: false, //显示弹出层
@@ -163,7 +168,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    this.getListByCode();
   },
 
   /**
@@ -190,15 +195,17 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    console.log('加载更多');
+    this.setData({
+      isHideLoadMore: true,
+    })
+    this.getListByCode();
   },
 
   /**
@@ -260,11 +267,11 @@ Page({
    * 跳转商品详情
    */
   toProduct: function(even) {
-    wx.showToast({
-      title: '产品详情',
-      icon: 'none'
-    })
     console.log(even);
+    var productId = even.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../../pages/product/product?productId=' + productId,
+    })
   },
   /**
    * 购买
@@ -275,5 +282,58 @@ Page({
       icon: 'none'
     })
     console.log(even);
+  },
+  doSearch: function(even) {
+    console.log(even);
+    var value = even.detail.value;
+    this.setData({
+      searchValue: value,
+      productList: [],
+      page: 1
+    })
+    this.getListByCode();
+  },
+
+  /**
+   * 获取产品列表_Code
+   */
+  getListByCode: function() {
+    var _that = this;
+    var page = _that.data.page;
+    var pageSize = _that.data.pageSize;
+    var kw = _that.data.searchValue;
+    wx.request({
+      url: app.globalData.appUrl + '/Product/GetListByCode',
+      data: {
+        page: page,
+        pageSize: pageSize,
+        productName: kw ? kw : ''
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        var total = res.data.Total;
+        console.log(total);
+        if (total == 0) {
+          wx.showToast({
+            title: '没有更多了',
+            icon: 'none'
+          })
+        }
+        var productList = res.data.Rows;
+        var list = _that.data.productList;
+        if (page > 1) {
+          productList = list.concat(productList);
+        }
+        page++;
+        _that.setData({
+          "productList": productList,
+          "page": page,
+          isHideLoadMore: false,
+        })
+      }
+    })
   }
 })
