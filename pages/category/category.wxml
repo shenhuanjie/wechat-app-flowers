@@ -48,12 +48,11 @@
         <block wx:for="{{sclass}}" wx:key="{{id}}">
             <block wx:if="{{item.Lsort==currentLsort}}">
                 <block wx:if="{{item.selected==true}}">
-                    <text style='width:200rpx;display:inline-block;margin:5rpx;text-align:center;padding:5rpx;background-color:#7bcfb5;color:#fff;' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
+                    <text class='sclass-item-selected' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
                 </block>
                 <block wx:else>
-                    <text style='width:200rpx;display:inline-block;margin:5rpx;text-align:center;padding:5rpx' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
+                    <text class='sclass-item' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
                 </block>
-
             </block>
         </block>
     </view>
