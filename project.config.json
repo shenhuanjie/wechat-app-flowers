@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -124,6 +124,12 @@
 					"name": "product",
 					"pathName": "pages/product/product",
 					"query": "productId=96362"
+				},
+				{
+					"id": -1,
+					"name": "category",
+					"pathName": "pages/category/category",
+					"query": ""
 				}
 			]
 		}

@@ -1,2 +1,60 @@
-<!--pages/category/category.wxml-->
+<view class="container">
+    <view class="fliters-nav">
+        <block wx:for="{{flitersList}}" wx:key="{{id}}">
+            <block wx:if="{{item.isIcon==false}}">
+                <view class='fliters-item {{item.selected}}'>
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class='fliters-item'>
+                    <icon class="iconfont icon-{{item.icon}}"></icon>
+                </view>
+            </block>
+        </block>
+    </view>
+</view>
+<view class="container">
+    <view>
+        <input class='searchInput' placeholder='请输入你要搜索的内容'></input>
+    </view>
+</view>
+<view class="container">
+    <view style='font-size:32rpx;display:flex;'>
+        <view style='width:300rpx;padding-left:0rpx;'>
+            <text>全部产品</text>
+        </view>
+        <view style='width:450rpx'>
+            <text>多选</text>
+        </view>
+    </view>
+</view>
+<view class='container-lsclass'>
+    <view class="lclass">
+        <block wx:for="{{lclass}}" wx:key="{{id}}">
+            <block wx:if="{{item.selected==true}}">
+                <view class='lclass-item  lclass-item-selected' bindtap='onSelectLclass' data-current-lsort='{{item.Lsort}}'>
+                    <text>{{item.Lclass}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class='lclass-item' bindtap='onSelectLclass' data-current-lsort='{{item.Lsort}}'>
+                    <text>{{item.Lclass}}</text>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view class='sclass'>
+        <block wx:for="{{sclass}}" wx:key="{{id}}">
+            <block wx:if="{{item.Lsort==currentLsort}}">
+                <block wx:if="{{item.selected==true}}">
+                    <text style='width:200rpx;display:inline-block;margin:5rpx;text-align:center;padding:5rpx;background-color:#7bcfb5;color:#fff;' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
+                </block>
+                <block wx:else>
+                    <text style='width:200rpx;display:inline-block;margin:5rpx;text-align:center;padding:5rpx' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
+                </block>
 
+            </block>
+        </block>
+    </view>
+</view>
