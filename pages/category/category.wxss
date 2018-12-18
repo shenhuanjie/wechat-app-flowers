@@ -40,7 +40,6 @@
 
 .container-lsclass .lclass {
     width: 300rpx;
-    
 }
 
 .container-lsclass .lclass .lclass-item {
@@ -69,8 +68,6 @@
     text-align: center;
     padding: 5rpx;
 }
-
-.container-lsclass .sclass .sclass-item-selected {
-    background-color: #7bcfb5;
-    color: #fff;
+.container-lsclass .sclass .sclass-item-selected{
+   background-color:#7bcfb5;color:#fff;
 }

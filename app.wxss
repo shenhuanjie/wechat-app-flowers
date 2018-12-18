@@ -1,4 +1,5 @@
 @import "resource/styles/iconfont.wxss";
+@import "resource/styles/loadmore.wxss";
 
 /**app.wxss**/
 

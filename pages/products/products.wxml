@@ -89,7 +89,7 @@
     <block wx:if="{{iconlist=='icon-list'}}">
         <view class='pre-list'>
             <block wx:for="{{productList}}" wx:key="id">
-                <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Id}}'>
+                <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Code}}'>
                     <view class='pre-list-item-img'>
                         <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
                     </view>
@@ -113,7 +113,7 @@
     <block wx:else>
         <view class='pre-grid'>
             <block wx:for="{{productList}}" wx:key="id">
-                <view class='pre-grid-item' bindtap='toProduct' data-id='{{item.Id}}'>
+                <view class='pre-grid-item' bindtap='toProduct' data-id='{{item.Code}}'>
                     <view class='pre-grid-item-img'>
                         <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
                     </view>

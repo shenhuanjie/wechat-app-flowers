@@ -33,7 +33,7 @@
     <view class="lclass">
         <block wx:for="{{lclass}}" wx:key="{{id}}">
             <block wx:if="{{item.selected==true}}">
-                <view class='lclass-item  lclass-item-selected' bindtap='onSelectLclass' data-current-lsort='{{item.Lsort}}'>
+                <view class='lclass-item lclass-item-selected' bindtap='onSelectLclass' data-current-lsort='{{item.Lsort}}'>
                     <text>{{item.Lclass}}</text>
                 </view>
             </block>
@@ -48,7 +48,7 @@
         <block wx:for="{{sclass}}" wx:key="{{id}}">
             <block wx:if="{{item.Lsort==currentLsort}}">
                 <block wx:if="{{item.selected==true}}">
-                    <text class='sclass-item-selected' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
+                    <text class='sclass-item sclass-item-selected' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>
                 </block>
                 <block wx:else>
                     <text class='sclass-item' bindtap='onSelectSclass' data-current-Ssort='{{item.Ssort}}'>{{item.Sclass}}</text>

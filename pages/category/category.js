@@ -144,7 +144,10 @@ Page({
         this.setData({
             currentSsort: currentSsort,
             sclass: sclass
-        })
+        });
+        if (single == true) {
+            this.toProducts();
+        }
     },
     /**
      * 初始化参数
@@ -154,6 +157,28 @@ Page({
         _that.setData({
             memcode: wx.getStorageSync("memcode")
         })
+    },
+    toProducts: function() {
+        var bigType = [];
+        var smallType = [];
+        var currentSsort = this.data.currentSsort;
+        for (var i = 0; i < currentSsort.length; i++) {
+            var item = currentSsort[i];
+            var lclass = item.Lclass;
+            var sclass = item.Sclass;
+            if (bigType.join(',').indexOf(lclass) == -1) {
+                bigType.push(lclass);
+            }
+            if (smallType.join(',').indexOf(sclass) == -1) {
+                smallType.push(sclass);
+            }
+        }
+        wx.setStorageSync('bigType', bigType);
+        wx.setStorageSync('smallType', smallType);
+
+        wx.navigateBack()
+        // url: '../../pages/products/products',
+
     },
     getProductclassaList: function() {
         var _that = this;
@@ -189,7 +214,7 @@ Page({
                 }
                 _that.setData({
                     lclass: lclass,
-                    sclass: sclass
+                    sclass: sclass,
                 })
             }
         })

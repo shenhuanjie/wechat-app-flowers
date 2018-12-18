@@ -1,4 +1,44 @@
-<!--pages/favorite/favorite.wxml-->
+<view class="container">
+    <view class="fliters-nav">
+        <block wx:for="{{flitersList}}" wx:key="{{id}}">
+            <block wx:if="{{item.isIcon==false}}">
+                <view class='fliters-item {{item.selected}}'>
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class='fliters-item {{item.selected}}'>
+                    <icon class="iconfont icon-{{item.icon}}"></icon>
+                </view>
+            </block>
+        </block>
+    </view>
+</view>
+<view class="container">
+    <view>
+        <input class='searchInput' placeholder='请输入你要搜索的内容'></input>
+    </view>
+</view>
 <view class='container'>
-  <text>{{nofavorite}}</text>
+    <!-- 列表视图 -->
+    <view class='pre-list'>
+    <block wx:for="{{productList}}" wx:key="id">
+        <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Productid}}'>
+            <view class='pre-list-item-img'>
+                <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+            </view>
+            <view class='pre-list-item-content'>
+                <text class='content-title'>{{item.Name}}</text>
+                <text class='content-item'>颜色：{{item.Color}}</text>
+                <text class='content-item'>长度：{{item.Slength}}</text>
+                <text class='content-item'>装量：{{item.Packcount}}</text>
+                <text class='content-price'>￥{{item.Price}}</text>
+            </view>
+            <view class='pre-list-item-button-group'>
+                <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
+                <!-- <button catchtap='toBuyNow'>购买</button> -->
+            </view>
+        </view>
+    </block>
+</view>
 </view>
