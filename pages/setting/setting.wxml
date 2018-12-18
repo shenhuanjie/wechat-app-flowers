@@ -18,10 +18,10 @@
           <view class="kind-list-item-bd kind-list-item-bd-show">
             <view class="navigator-box navigator-box-show">
               <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
-                <navigator url="../../pages/{{page.id}}/{{page.id}}" class="navigator">
+                <view catchtap='toNavigate' data-url="../../pages/{{page.id}}/{{page.id}}" data-tab="{{page.isTab}}" class="navigator">
                   <view class="navigator-text">{{page.name}}</view>
                   <view class="navigator-arrow"></view>
-                </navigator>
+                </view>
               </block>
             </view>
           </view>
