@@ -18,8 +18,8 @@
             <text style='color:#757575'>仅限联邦快递24小时可达地区，为方便物流的跟踪，请务必填写收件地址的正确邮编，以免造成投递失败。</text>
         </view>
         <view style='margin-top:20rpx;display:flex;justify-content:space-between;'>
-            <text>快递：￥23.00</text>
-            <text>产地：{{product.Dvadd}}</text>
+            <!-- <text>快递：￥23.00</text> -->
+            <!-- <text>产地：{{product.Dvadd}}</text> -->
         </view>
     </view>
 </view>
@@ -38,17 +38,17 @@
 <view style='margin-bottom:130rpx;'></view>
 <!-- 底部菜单栏 -->
 <view style='position:fixed;bottom:0;width:100%;display:flex;border-top:1rpx solid #ceced0; background-color:#f7f7fa'>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='switchIndex'>
         <icon class="iconfont icon-home" style='font-size:50rpx;'></icon>
         <text style='font-size:28rpx;padding:2rpx'>首页</text>
     </view>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='switchChat'>
         <icon class="iconfont icon-kefu" style='font-size:50rpx;'></icon>
         <text style='font-size:28rpx;padding:2rpx'>客服</text>
     </view>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center'>
+    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='addMyLove'>
         <icon class="iconfont icon-follow" style='font-size:40rpx;'></icon>
-        <text style='font-size:28rpx;padding:2rpx'>关注</text>
+        <text style='font-size:28rpx;padding:2rpx'>{{follow.tip}}</text>
     </view>
     <view style='width:452rpx;height:100rpx;display:flex;justify-content:space-between'>
         <button style='color:#fff;background-color:#00BC71;border-radius:0;font-size:32rpx;padding:10rpx 24rpx;width:226rpx'>加入购物车</button>

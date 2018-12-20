@@ -26,7 +26,7 @@
     </view>
     <view class='block-group'>
         <block wx:for="{{recommendList}}" wx:key="id">
-            <view class='block-group-item' bindtap='toProduct' data-site="{{item.Id}}">
+            <view class='block-group-item' bindtap='toProduct' data-id="{{item.Code}}">
                 <view class='block-group-item-image'>
                     <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
                 </view>
@@ -43,7 +43,7 @@
     </view>
     <view class='block-group'>
         <block wx:for="{{recommendList}}" wx:key="id">
-            <view class='block-group-item' bindtap='toProduct' data-site="{{item.Id}}">
+            <view class='block-group-item' bindtap='toProduct' data-id="{{item.Code}}">
                 <view class='block-group-item-image'>
                     <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
                 </view>

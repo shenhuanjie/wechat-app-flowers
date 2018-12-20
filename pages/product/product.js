@@ -7,8 +7,13 @@ Page({
      */
     data: {
         app: app,
-        productId: "",
-        buyWay: 1,
+        code: "",
+        memCode: "",
+        follow: {
+            tip: "关注",
+            loveId: 0
+        },
+        saleDate: app.formatDate((new Date()), "yyyy-MM-dd"),
         product: {}
     },
 
@@ -71,39 +76,43 @@ Page({
     },
     initView: function(options) {
         var _that = this;
-        var productId = options.productId;
+
+        var code = options.productId;
+        var memCode = wx.getStorageSync('memcode');
         var buyWay = wx.getStorageSync('buyWay');
+        var market = wx.getStorageSync("market");
         this.setData({
             buyWay: buyWay,
-            productId: productId
+            memCode: memCode,
+            code: code,
+            market: market
         })
 
     },
-    getVProduct: function() {
-        var _that = this;
-        var productId = this.data.productId;
-        if (productId == "") {
-            console.log("getVProduct:Error");
-            return 0;
-        }
-
-        var code = "";
-        var site = "";
-        var buyWay = _that.data.buyWay;
-        console.log("buyWay:" + buyWay);
-
-        var url = app.globalData.appUrl + "/Product/GetVProduct";
+    /**
+     * 切换到首页
+     */
+    switchIndex: function() {
+        wx.switchTab({
+            url: '../../pages/index/index',
+        })
+    },
+    /**
+     * 联系客服
+     */
+    switchChat: function() {
+        wx.showToast({
+            title: '客服电话：020-88888888',
+            icon: "none"
+        })
+    },
+    addMyLove: function() {
+        var that = this;
+        var url = app.globalData.appUrl + "/Mylove/AddOrUpdateFromH5";
         var data = {
-            id: productId,
-            code: code,
-            site: site
-        }
-        if (buyWay == 3 || buyWay == 6) {
-            url = app.globalData.appUrl + "/Product/GetVBookProduct";
-            data = {
-                id: productId,
-                code: code
-            }
+            Orderuser: this.data.memCode,
+            Code: this.data.product.Code,
+            Id: this.data.follow.loveId
         }
 
         wx.request({
@@ -113,20 +122,50 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                console.log(res.data.Rows);
+                var data = res.data;
+                console.log(data);
+                var follow = that.data.follow;
+                var loveId = parseInt(data.RecordId);
+                if (loveId > 0) {
+                    follow.loveId=loveId;
+                    follow.tip="已关注"
+                    //已关注
+                } else {
+                    //为未关注
+                    follow.loveId = loveId;
+                    follow.tip = "关注"
+                }
+                that.setData({
+                    follow:follow
+                })
+                wx.showToast({
+                    title: data.Msg,
+                    icon: "none"
+                })
+            }
+        })
+    },
+    getVProduct: function() {
+        var _that = this;
 
-                if (res.data.Rows==null) {
-                    console.log("getVProduct:Error");
-                    wx.showToast({
-                        title: '暂无产品哦，或者你可以换个条件再查查？',
-                        icon: 'none'
-                    })
-                    return 0;
-                }
-                var product = res.data.Rows;
-                if (buyWay == 3 || buyWay == 6) {
-                    product.Price = product.Averprice;
-                }
+        var url = app.globalData.appUrl + "/Product/GetVProduct";
+        var data = {
+            site: this.data.market,
+            code: this.data.code,
+            saleDate: this.data.saleDate,
+            buyWay: this.data.buyWay
+        }
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                console.log(res.data.VProduct);
+                var product = res.data.VProduct;
+                product.Price = product.Miprice + "~" + product.Maprice;
+                product.Picpath = product.Piclist.split(",")[0];
                 _that.setData({
                     product: product
                 })

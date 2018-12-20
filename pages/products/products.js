@@ -536,8 +536,8 @@ Page({
                         }
                     }
                     productList[i].Picpath = productList[i].Piclist.split(',')[0];
-                    productList[i].Slength = productList[i].Slist.split(',')[0];
-                    productList[i].Packcount = productList[i].Plist.split(',')[0];
+                    productList[i].Slength = productList[i].Slist;
+                    productList[i].Packcount = productList[i].Plist;
                 }
                 var list = _that.data.productList;
                 if (page > 1) {
