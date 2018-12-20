@@ -1,10 +1,10 @@
 <!--pages/setting/setting.wxml-->
 <navigator url="pages/{{page.id}}/{{page.id}}" class="navigator navigator-header-bg">
   <view class="navigator-text" bindtap='toMemberInfo'>
-    <view class='navigator-text-item' style='font-size: 28rpx;margin-bottom:10rpx;'>账号：
+    <view class='navigator-text-item' style='font-size: 32rpx;margin-bottom:10rpx;'>账号：
       <text style=''>{{topmemcode}}</text>
     </view>
-    <view style='font-size: 28rpx;'>余额：
+    <view style='font-size: 32rpx;'>余额：
       <text style='color:red;'>{{lblAccount}}元</text>
     </view>
   </view>

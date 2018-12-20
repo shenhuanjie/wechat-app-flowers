@@ -22,12 +22,12 @@
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#7bcfb5",
+        "navigationBarBackgroundColor": "#00BC71",
         "navigationBarTitleText": "缤纷鲜花零售",
         "navigationBarTextStyle": "light"
     },
     "tabBar": {
-        "selectedColor": "#7bcfb5",
+        "selectedColor": "#00BC71",
         "list": [
             {
                 "pagePath": "pages/index/index",

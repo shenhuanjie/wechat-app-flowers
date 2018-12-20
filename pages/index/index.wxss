@@ -5,30 +5,96 @@
 /**index.wxss**/
 
 swiper {
-  height: 460rpx;
-  width: 100%;
+    height: 460rpx;
+    width: 100%;
 }
 
 .slide-image {
-  display: block;
-  width: 750rpx;
-  height: 460rpx;
+    display: block;
+    width: 750rpx;
+    height: 460rpx;
 }
 
 .pre-block {
-  margin: 45rpx 30rpx;
-  min-height: 48rpx;
+    margin: 45rpx 30rpx;
+    min-height: 48rpx;
 }
 
 .pre-block .pre-block-title {
-  float: left;
-  font-size: 48rpx;
-  line-height: 1;
+    float: left;
+    font-size: 48rpx;
+    line-height: 1;
 }
 
 .pre-block .pre-block-more {
-  float: right;
-  font-size: 24rpx;
-  line-height: 2;
-  color: #b0b0b0;
+    float: right;
+    font-size: 24rpx;
+    line-height: 2;
+    color: #b0b0b0;
+}
+
+/* 测试版布局 */
+
+.container {
+    margin: 0 0 0 30rpx;
+}
+
+.container .block-title {
+    margin: 0 30rpx 15rpx 0;
+}
+
+.container .block-title text {
+    font-size: 42rpx;
+}
+
+.container .block-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.container .block-group .block-group-item {
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.container .block-group .block-group-item-module {
+    width: 210rpx;
+    height: 210rpx;
+    position: relative;
+}
+
+.container .block-group .block-group-item-module image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.container .block-group .block-group-item-module text {
+    position: absolute;
+    font-size: 36rpx;
+    color: #fff;
+    top: 80rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.container .block-group .block-group-item .block-group-item-image {
+    width: 330rpx;
+    height: 210rpx;
+}
+
+.container .block-group .block-group-item .block-group-item-image image {
+    width: 100%;
+    height: 100%;
+}
+
+.container .block-group .block-group-item .block-group-item-text {
+    width: 330rpx;
+    text-align: center;
+}
+
+.container .block-group .block-group-item .block-group-item-text text {
+    font-size: 32rpx;
+    width: 100%;
 }

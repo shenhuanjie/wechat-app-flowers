@@ -29,7 +29,7 @@
 
 .container .fliters-nav .fliters-item-selected {
     color: #fff;
-    background: #7bcfb5;
+    background: #00BC71;
 }
 
 .container-lsclass {
@@ -57,7 +57,7 @@
 .container-lsclass .sclass {
     background-color: #fff;
     width: 450rpx;
-    padding: 20rpx 5rpx 20rpx 5rpx;
+    /* padding: 20rpx 5rpx 20rpx 5rpx; */
     font-size: 28rpx;
 }
 
@@ -69,5 +69,5 @@
     padding: 5rpx;
 }
 .container-lsclass .sclass .sclass-item-selected{
-   background-color:#7bcfb5;color:#fff;
+   background-color:#00BC71;color:#fff;
 }

@@ -35,6 +35,7 @@
         </view>
     </view>
 </view>
+<view style='margin-bottom:130rpx;'></view>
 <!-- 底部菜单栏 -->
 <view style='position:fixed;bottom:0;width:100%;display:flex;border-top:1rpx solid #ceced0; background-color:#f7f7fa'>
     <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center'>

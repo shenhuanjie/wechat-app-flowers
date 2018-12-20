@@ -5,13 +5,13 @@
 }
 
 .container text {
-  font-size: 28rpx;
+  font-size: 32rpx;
 }
 
 .info-item {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1rpx solid #afafaf73;
+  border-bottom: 1rpx solid #e4e8ea;
   padding-top: 15rpx;
   padding-bottom: 15rpx;
 }

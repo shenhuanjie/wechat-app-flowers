@@ -445,7 +445,7 @@ Page({
             sore: 0,
             buyWay: 1,
             color: [],
-            searchType: 1,
+            searchType: 0,
             page: 1
         })
         this.onSelectFilterHide();

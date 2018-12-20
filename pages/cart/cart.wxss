@@ -1,1 +1,109 @@
-/* pages/cart/cart.wxss */
+.container {
+	margin: 30rpx 30rpx 15rpx 30rpx;
+}
+.pre-list {
+	margin: 0 0 30rpx 0;
+}
+
+.pre-list-item {
+	display: flex;
+	border: 0rpx solid #dfdfdf;
+	border-radius: 10rpx;
+	padding: 10rpx 10rpx;
+	margin-bottom: 10rpx;
+	background-color: #fff;
+}
+
+.pre-list-item-img {
+	width: 200rpx;
+	height: 200rpx;
+}
+
+.pre-list-item-img image {
+	width: 100%;
+	height: 100%;
+}
+
+.pre-list-item-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: space-between;
+	margin: 0 10rpx;
+}
+
+.pre-list-item-content .content-title {
+	font-size: 28rpx;
+	margin-bottom: 5rpx;
+}
+
+.pre-list-item-content .content-item {
+	font-size: 20rpx;
+	color: gray;
+}
+
+.pre-list-item-content .content-price {
+	font-size: 28rpx;
+	color: red;
+	margin-top: 5rpx;
+}
+
+.pre-list-item-button-group {
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: space-between;
+	align-items: flex-end;
+	padding-right: 5rpx;
+	margin-right: 10rpx;
+	margin-bottom: 10rpx;
+}
+
+.pre-list-item-button-group icon {
+	font-size: 36rpx;
+	color: red;
+}
+
+.pre-list-item-button-group button {
+	font-size: 18rpx;
+}
+
+/*主容器*/
+.stepper {
+	width: 80px;
+	height: 26px;
+	/*给主容器设一个边框*/
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin:0 auto;
+}
+ 
+/*加号和减号*/
+.stepper text {
+	width: 19px;
+	line-height: 26px;
+	text-align: center;
+	float: left;
+}
+ 
+/*数值*/
+.stepper input {
+	width: 40px;
+	height: 26px;
+	float: left;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 12px;
+	/*给中间的input设置左右边框即可*/
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+ 
+/*普通样式*/
+.stepper .normal{
+	color: black;
+}
+ 
+/*禁用样式*/
+.stepper .disabled{
+	color: #ccc;
+}

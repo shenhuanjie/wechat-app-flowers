@@ -29,12 +29,12 @@
 
 .container .fliters-nav .fliters-item-selected {
 	color: #fff;
-	background: #7bcfb5;
+	background: #00BC71;
 }
 
 .container .fliters-nav .fliters-item-selected icon {
 	color: #fff;
-	background: #7bcfb5;
+	background: #00BC71;
 }
 
 .pre-list {

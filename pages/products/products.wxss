@@ -41,7 +41,7 @@
 }
 
 .search-filter-item-selected text {
-    color: #7bcfb5;
+    color: #00BC71;
 }
 
 .search-filter-item text {
@@ -85,7 +85,7 @@
 }
 
 .search-filter-pop-content .filter-item-selected {
-    background-color: #7bcfb5;
+    background-color: #00BC71;
 }
 
 .search-filter-pop-content .filter-item  text {
@@ -109,7 +109,7 @@
 }
 
 .search-filter-pop-content .filter-pop-content-button-group .btn-green {
-    background-color: #7bcfb5;
+    background-color: #00BC71;
     color: #fff;
     border: 1rpx solid #fff;
 }

@@ -1,21 +1,56 @@
 <!-- index.wxml -->
 
-<swiper class="imgbox" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
-  <block wx:for="{{advertList.Rows}}" wx:key="id">
-    <swiper-item>
-      <image src="{{imgPrefix}}{{item.Picpath}}" mode="{{imgMode}}" class="slide-image" />
-    </swiper-item>
-  </block>
+<swiper class="imgbox" style='margin-bottom:30rpx;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
+    <block wx:for="{{advertList}}" wx:key="id">
+        <swiper-item>
+            <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/750" mode="{{imgMode}}" class="slide-image" />
+        </swiper-item>
+    </block>
 </swiper>
-<view class='pre-block'>
-  <view class='pre-block-title'>站点</view>
-  <view class='pre-block-more' bindtap='toSiteList'>更多></view>
-</view>
-<view class='pre-list'>
-  <view class='pre-list-item' wx:for="{{saleSite.Rows}}" wx:key="id">
-    <view class='img-group' bindtap='toBrands' data-site="{{item.Ssite}}">
-      <image src="/resource/images/index_z1.png" />
-      <text class='img-tip'>{{item.Ssite}}</text>
+<view class='container'>
+    <view class='block-title'>
+        <text>请选择板块</text>
     </view>
-  </view>
+    <view class='block-group'>
+        <block wx:for="{{saleSite}}" wx:key="id">
+            <view class='block-group-item block-group-item-module' bindtap='toBrands' data-site="{{item.Ssite}}">
+                <image src="/resource/images/index_z1.png" />
+                <text>{{item.Module}}</text>
+            </view>
+        </block>
+    </view>
+</view>
+<view class='container'>
+    <view class='block-title'>
+        <text>每日一花</text>
+    </view>
+    <view class='block-group'>
+        <block wx:for="{{recommendList}}" wx:key="id">
+            <view class='block-group-item' bindtap='toProduct' data-site="{{item.Id}}">
+                <view class='block-group-item-image'>
+                    <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                </view>
+                <view class='block-group-item-text'>
+                    <text>{{item.Name}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<view class='container'>
+    <view class='block-title'>
+        <text>热销推荐</text>
+    </view>
+    <view class='block-group'>
+        <block wx:for="{{recommendList}}" wx:key="id">
+            <view class='block-group-item' bindtap='toProduct' data-site="{{item.Id}}">
+                <view class='block-group-item-image'>
+                    <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                </view>
+                <view class='block-group-item-text'>
+                    <text>{{item.Name}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
 </view>

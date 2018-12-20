@@ -1,31 +1,32 @@
 <view class="container">
-	<view class="fliters-nav">
-		<block wx:for="{{flitersList}}" wx:key="{{id}}">
-			<block wx:if="{{item.isIcon==false}}">
-				<view class='fliters-item {{item.selected}}'>
-					<text>{{item.title}}</text>
-				</view>
-			</block>
-			<block wx:else>
-				<view class='fliters-item {{item.selected}}'>
-					<icon class="iconfont icon-{{item.icon}}"></icon>
-				</view>
-			</block>
-		</block>
-	</view>
+    <view class="fliters-nav">
+        <block wx:for="{{flitersList}}" wx:key="{{id}}">
+            <block wx:if="{{item.isIcon==false}}">
+                <view class='fliters-item {{item.selected}}'>
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class='fliters-item {{item.selected}}'>
+                    <icon class="iconfont icon-{{item.icon}}"></icon>
+                </view>
+            </block>
+        </block>
+    </view>
 </view>
 <view class="container">
-	<view style='display:flex;justify-content:space-between;align-items:center'>
-		<view style='display:flex;justify-content:space-around;align-items:center;width:550rpx'>
-			<input class='searchInput' style='width:220rpx;' placeholder='{{saleDate}}'></input>
-			<text style='font-size:32rpx;'>至</text>
-			<input class='searchInput' style='width:220rpx;' placeholder='{{saleDate}}'></input>
-		</view>
-		<view style='display:flex'>
-			<button style='font-size:28rpx;margin-left:20rpx;line-height:1;padding:18rpx 28rpx;'>查询</button>
-		</view>
-	</view>
+    <view style='display:flex;justify-content:space-around;align-items:center'>
+        <view style='display:flex;justify-content:space-around;align-items:center;'>
+            <input class='searchInput' style='width:200rpx;' placeholder='{{saleDate}}'></input>
+            <text style='font-size:32rpx;'>至</text>
+            <input class='searchInput' style='width:200rpx;' placeholder='{{saleDate}}'></input>
+        </view>
+        <view style='display:flex'>
+            <button style='font-size:32rpx;margin-left:20rpx;line-height:1;padding:18rpx 28rpx;'>查询</button>
+        </view>
+    </view>
 </view>
 <view class="container">
-	<view style='font-size:28rpx;border-bottom:1rpx solid #e4e8ea;padding-bottom:10rpx'>共<text style="color: red;">3</text>条数据</view>
+    <view style='font-size:32rpx;border-bottom:1rpx solid #e4e8ea;padding-bottom:10rpx'>共
+        <text style="color: red;">3</text>条数据</view>
 </view>
