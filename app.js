@@ -84,6 +84,8 @@ App({
 		// 大图前缀
 		imgPrefix: "http://www.brightenflower.cn/PicPath/",
 		// 缩略图前缀
-		thumbnailsPrefix: "http://www.brightenflower.cn/PicPath/img/"
+		thumbnailsPrefix: "http://www.brightenflower.cn/PicPath/img/",
+		// 腾讯位置服务
+		MapsKey:"LGFBZ-IRO6I-FQDGC-5YPUC-XPDK5-BVBDR"
 	}
 })

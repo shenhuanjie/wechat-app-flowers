@@ -1,15 +1,19 @@
 <!--pages/brands/brands.wxml-->
 <!-- 顶部搜索框 -->
 <view class='pre-block page_row'>
-  <view class="search">
-    <view class="search_arr">
-      <icon class="search_icon" size='20' type='search'></icon>
-      <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' />
+    <view class="search" style='display:flex;align-items:center;'>
+        <view class="search_arr" style='flex:1'>
+            <icon class="search_icon" size='20' type='search'></icon>
+            <input class="" placeholder-class='phcolor' value="{{searchValue}}" placeholder='' bindblur='changeSearch' bindconfirm='changeSearch' />
+        </view>
+        <view class="" style='display:flex;align-items:center;padding:0 15rpx;' bindtap='showToast'>
+            <text style='font-size:32rpx;'>{{city}}</text>
+            <icon class="iconfont icon-location" style='font-size:42rpx;color:#00BC71'></icon>
+        </view>
     </view>
-  </view>
 </view>
 
 <!-- 品牌列表 -->
 <view class='pre-warp'>
-  <text wx:for="{{brandList.Rows}}" wx:key="{{id}}" bindtap='toProductList' data-brand="{{item.Brand}}">{{item.Brand}}</text>
+    <text wx:for="{{filterList}}" wx:key="{{id}}" bindtap='toProductList' data-brand="{{item.Brand}}">{{item.Brand}}</text>
 </view>

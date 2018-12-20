@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.8",
+	"libVersion": "2.4.2",
 	"appid": "wxb0d0a2463f3b98e5",
 	"projectname": "wechat-app-flowers",
 	"condition": {

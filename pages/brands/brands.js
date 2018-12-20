@@ -1,20 +1,29 @@
 var app = getApp();
+// 引入腾讯位置服务SDK核心类
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
+var qqmapsdk;
 // pages/brands/brands.js
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
         searchValue: "",
         site: null,
-        brandList: {}
+        city: '',
+        address: '',
+        brandList: [],
+        filterList: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        // 实例化API核心类
+        qqmapsdk = new QQMapWX({
+            key: app.globalData.MapsKey
+        });
         // 获取参数
         var site = options.site;
         if (site && site != "undefined") {
@@ -38,7 +47,39 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+        var that = this;
+        var latitude = 39.984060;
+        var longitude = 116.307520;
+        //获取当前位置
+        wx.getLocation({
+            success: function(res) {
+                console.log(res);
+                latitude = res.latitude;
+                longitude = res.longitude;
+                // 调用接口
+                qqmapsdk.reverseGeocoder({
+                    location: {
+                        latitude: latitude,
+                        longitude: longitude
+                    },
+                    success: function(res) {
+                        console.log(res);
+                        console.log("当前位置：" + res.result.address);
+                        console.log("当前城市：" + res.result.ad_info.city);
+                        that.setData({
+                            city: res.result.ad_info.city,
+                            address: res.result.address,
+                        })
+                    },
+                    fail: function(res) {
+                        console.log(res);
+                    },
+                    complete: function(res) {
+                        // console.log(res);
+                    }
+                });
+            }
+        })
     },
 
     /**
@@ -75,12 +116,19 @@ Page({
     onShareAppMessage: function() {
 
     },
+    showToast: function() {
+        var that=this;
+        wx.showToast({
+            title: "当前位置："+that.data.address,
+            icon: 'none'
+        })
+    },
     /**
      * 获取品牌列表
      */
     getSaleBrand: function() {
         var _that = this;
-       
+        app.showLoading();
         wx.request({
             url: app.globalData.appUrl + '/Product/GetSaleBrand',
             data: {
@@ -90,11 +138,44 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                console.log(res.data)
+                console.log(res.data.Rows)
+                wx.hideLoading();
                 _that.setData({
-                    "brandList": res.data
+                    "brandList": res.data.Rows,
+                    "filterList": res.data.Rows,
+                    "searchValue": "",
                 })
             }
+        })
+    },
+    /**
+     * 输入监听
+     */
+    changeSearch: function(even) {
+        console.log(even);
+        var value = even.detail.value;
+        this.setData({
+            searchValue: value,
+        })
+        this.doSearch();
+    },
+    /**
+     * 搜索列表
+     */
+    doSearch: function() {
+        var kw = this.data.searchValue;
+        var brandList = this.data.brandList;
+        var filterList = [];
+        console.log(brandList);
+        for (var i = 0; i < brandList.length; i++) {
+            var item = brandList[i];
+            var brand = item.Brand;
+            if (brand.indexOf(kw) != -1) {
+                filterList.push(item);
+            }
+        }
+        this.setData({
+            filterList: filterList
         })
     },
     /**
