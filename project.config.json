@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 20,
 			"list": [
 				{
 					"id": -1,
@@ -152,7 +152,13 @@
 				{
 					"id": -1,
 					"name": "share",
-					"pathName": "pages/share/share"
+					"pathName": "pages/share/share",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order-agent",
+					"pathName": "pages/order-agent/order-agent"
 				}
 			]
 		}

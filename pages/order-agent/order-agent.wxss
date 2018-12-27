@@ -1,1 +1,45 @@
-/* pages/order-agent/order-agent.wxss */
+.container {
+    margin: 30rpx 30rpx 15rpx 30rpx;
+}
+
+.container-items {
+    background-color: #fff;
+    padding: 0 30rpx;
+    border-radius: 5rpx;
+}
+
+.items-group {
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.items-group:last-child {
+    border-bottom: 0rpx solid #f0f0f0;
+}
+
+.items-group-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item-flex-column {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.item-flex .item-flex-icon {
+    margin-right: 30rpx;
+    width: 32rpx;
+}

@@ -1,2 +1,47 @@
-<!--pages/order-agent/order-agent.wxml-->
-<text>pages/order-agent/order-agent.wxml</text>
+<view class="container">
+    <view class='container-items'>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>产品名称：</text>
+                </view>
+                <view style='flex:1'>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品名称'></input>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>订购数量：</text>
+                </view>
+                <view style='flex:1'>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入订购数量'></input>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>产品等级：</text>
+                </view>
+                <view style='flex:1'>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品等级'></input>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>代购要求：</text>
+                </view>
+                <view style='flex:1'>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入要求'></input>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="container">
+    <button style="color:#fff;background-color:#0ac775" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交</button>
+</view>
