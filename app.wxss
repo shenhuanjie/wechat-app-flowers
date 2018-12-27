@@ -4,35 +4,42 @@
 /**app.wxss**/
 
 page {
-  background-color: #f4f8f7;
+    background-color: #f4f8f7;
+}
+
+canvas {
+    width: 200px;
+    height: 200px;
+    display: block;
+    position: relative;
 }
 
 .container-flex {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  /* padding: 200rpx 0; */
-  box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 200rpx 0; */
+    box-sizing: border-box;
 }
 
 /* 清除浮动 */
 
 .clearfix:after {
-  display: block;
-  height: 0;
-  clear: both;
-  content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    content: '';
 }
 
 .phcolor {
-  /* placeholder颜色  */
-  color: #afafaf73;
-  font-size: 36rpx;
+    /* placeholder颜色  */
+    color: #afafaf73;
+    font-size: 36rpx;
 }
 
 .pre-block {
-  margin: 30rpx 30rpx;
-  min-height: 48rpx;
+    margin: 30rpx 30rpx;
+    min-height: 48rpx;
 }

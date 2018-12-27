@@ -26,9 +26,11 @@ Page({
         });
         // 获取参数
         var site = options.site;
+        var memCode = wx.getStorageSync("memcode");
         if (site && site != "undefined") {
             this.setData({
-                site: site
+                site: site,
+                memCode: memCode
             })
             wx.setStorageSync("market", site)
         }
@@ -68,6 +70,7 @@ Page({
                         console.log("当前城市：" + res.result.ad_info.city);
                         that.setData({
                             city: res.result.ad_info.city,
+                            province: res.result.address_component.province,
                             address: res.result.address,
                         })
                     },
@@ -117,9 +120,9 @@ Page({
 
     },
     showToast: function() {
-        var that=this;
+        var that = this;
         wx.showToast({
-            title: "当前位置："+that.data.address,
+            title: "当前位置：" + that.data.address,
             icon: 'none'
         })
     },
@@ -128,11 +131,17 @@ Page({
      */
     getSaleBrand: function() {
         var _that = this;
+        var memCode = this.data.memCode;
+        var province = this.data.province;
+        var city = this.data.city;
         app.showLoading();
         wx.request({
             url: app.globalData.appUrl + '/Product/GetSaleBrand',
             data: {
                 // sSite: wx.getStorageSync('market') ? wx.getStorageSync('market') : '缤纷总网'
+                Province: province ? province : '广东省',
+                City: city ? city : '广州市',
+                memCode: memCode
             },
             header: {
                 'content-type': 'application/json' // 默认值

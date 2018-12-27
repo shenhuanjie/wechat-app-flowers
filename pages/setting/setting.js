@@ -37,7 +37,7 @@ Page({
                 isTab: false
             }, {
                 id: 'comments',
-                name: '提交留言',
+                name: '查看留言',
                 isTab: false
             }, {
                 id: 'logistics',
@@ -46,6 +46,22 @@ Page({
             }, {
                 id: 'view',
                 name: '最新信息',
+                isTab: false
+            }, {
+                id: 'view',
+                name: '常见问题',
+                isTab: false
+            }, {
+                id: 'view',
+                name: '收货地址',
+                isTab: false
+            }, {
+                id: 'share',
+                name: '分享推荐',
+                isTab: false
+            }, {
+                id: 'order-agent',
+                name: '产品代购',
                 isTab: false
             }]
         }]
@@ -139,15 +155,15 @@ Page({
     },
     toNavigate: function(even) {
         console.log(even);
-        var data=even.currentTarget.dataset;
-        var url=data.url;
-        var isTab=data.tab;
+        var data = even.currentTarget.dataset;
+        var url = data.url;
+        var isTab = data.tab;
         console.log(data);
-        if(isTab){
+        if (isTab) {
             wx.switchTab({
                 url: url,
             })
-        }else{
+        } else {
             wx.navigateTo({
                 url: url,
             })

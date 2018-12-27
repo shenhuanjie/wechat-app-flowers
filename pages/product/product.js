@@ -127,8 +127,8 @@ Page({
                 var follow = that.data.follow;
                 var loveId = parseInt(data.RecordId);
                 if (loveId > 0) {
-                    follow.loveId=loveId;
-                    follow.tip="已关注"
+                    follow.loveId = loveId;
+                    follow.tip = "已关注"
                     //已关注
                 } else {
                     //为未关注
@@ -136,7 +136,7 @@ Page({
                     follow.tip = "关注"
                 }
                 that.setData({
-                    follow:follow
+                    follow: follow
                 })
                 wx.showToast({
                     title: data.Msg,
@@ -147,13 +147,24 @@ Page({
     },
     getVProduct: function() {
         var _that = this;
-
+        var codeType = this.data.code;
+        //基础产品数据接口
         var url = app.globalData.appUrl + "/Product/GetVProduct";
         var data = {
             site: this.data.market,
             code: this.data.code,
             saleDate: this.data.saleDate,
             buyWay: this.data.buyWay
+        }
+        //code大于4位时，切换到单一产品接口
+        if (codeType > 9999) {
+            url = app.globalData.appUrl + "/Product/GetProductDetail";
+            data = {
+                productId: this.data.code
+            }
+            codeType = 1;
+        } else {
+            codeType = 0;
         }
         wx.request({
             url: url,
@@ -164,8 +175,10 @@ Page({
             success(res) {
                 console.log(res.data.VProduct);
                 var product = res.data.VProduct;
-                product.Price = product.Miprice + "~" + product.Maprice;
-                product.Picpath = product.Piclist.split(",")[0];
+                if (codeType == 0) { //code大于4位时，处理特殊数据
+                    product.Price = product.Miprice + "~" + product.Maprice;
+                    product.Picpath = product.Piclist.split(",")[0];
+                }
                 _that.setData({
                     product: product
                 })

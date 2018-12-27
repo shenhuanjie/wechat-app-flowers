@@ -82,7 +82,7 @@ App({
 		// QINIU_PREFIX
 		qiniuPrefix: "http://complaint.brightenflower.cn/",
 		// 大图前缀
-		imgPrefix: "http://www.brightenflower.cn/PicPath/",
+        imgPrefix: "http://img.brightenflower.cn/",
 		// 缩略图前缀
 		thumbnailsPrefix: "http://www.brightenflower.cn/PicPath/img/",
 		// 腾讯位置服务
