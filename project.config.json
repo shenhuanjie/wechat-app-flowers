@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 20,
+			"current": 22,
 			"list": [
 				{
 					"id": -1,
@@ -158,7 +158,20 @@
 				{
 					"id": -1,
 					"name": "order-agent",
-					"pathName": "pages/order-agent/order-agent"
+					"pathName": "pages/order-agent/order-agent",
+					"query": ""
+				},
+				{
+					"id": 21,
+					"name": "news-list",
+					"pathName": "pages/news-list/news-list",
+					"query": "t=1"
+				},
+				{
+					"id": -1,
+					"name": "news-detail",
+					"pathName": "pages/news-detail/news-detail",
+					"query": "id=219"
 				}
 			]
 		}

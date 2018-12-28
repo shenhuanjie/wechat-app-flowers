@@ -1,36 +1,36 @@
 <!--pages/setting/setting.wxml-->
 <navigator url="pages/{{page.id}}/{{page.id}}" class="navigator navigator-header-bg">
-  <view class="navigator-text" bindtap='toMemberInfo'>
-    <view class='navigator-text-item' style='font-size: 32rpx;margin-bottom:10rpx;'>账号：
-      <text style=''>{{topmemcode}}</text>
+    <view class="navigator-text" bindtap='toMemberInfo'>
+        <view class='navigator-text-item' style='font-size: 32rpx;margin-bottom:10rpx;'>账号：
+            <text style=''>{{topmemcode}}</text>
+        </view>
+        <view style='font-size: 32rpx;'>余额：
+            <text style='color:red;'>{{lblAccount}}元</text>
+        </view>
     </view>
-    <view style='font-size: 32rpx;'>余额：
-      <text style='color:red;'>{{lblAccount}}元</text>
-    </view>
-  </view>
-  <view class="navigator-arrow"></view>
+    <view class="navigator-arrow"></view>
 </navigator>
 <view class="index">
-  <view class="index-bd">
-    <view class="kind-list">
-      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-        <view class="kind-list-item">
-          <view class="kind-list-item-bd kind-list-item-bd-show">
-            <view class="navigator-box navigator-box-show">
-              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
-                <view catchtap='toNavigate' data-url="../../pages/{{page.id}}/{{page.id}}" data-tab="{{page.isTab}}" class="navigator">
-                  <view class="navigator-text">{{page.name}}</view>
-                  <view class="navigator-arrow"></view>
+    <view class="index-bd">
+        <view class="kind-list">
+            <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+                <view class="kind-list-item">
+                    <view class="kind-list-item-bd kind-list-item-bd-show">
+                        <view class="navigator-box navigator-box-show">
+                            <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+                                <view catchtap='toNavigate' data-url="../../pages/{{page.id}}/{{page.id}}" data-tab="{{page.isTab}}" data-param="{{page.param}}" class="navigator">
+                                    <view class="navigator-text">{{page.name}}</view>
+                                    <view class="navigator-arrow"></view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
                 </view>
-              </block>
-            </view>
-          </view>
+            </block>
         </view>
-      </block>
     </view>
-  </view>
 </view>
 
 <view class='pre-block'>
-  <button bindtap='onLogout'>{{login}}</button>
+    <button bindtap='onLogout'>{{login}}</button>
 </view>

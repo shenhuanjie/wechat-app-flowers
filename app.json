@@ -1,53 +1,56 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/login/login",
-		"pages/register/register",
-		"pages/category/category",
-		"pages/sites/sites",
-		"pages/brands/brands",
-		"pages/products/products",
-		"pages/product/product",
-		"pages/search/search",
-		"pages/favorite/favorite",
-		"pages/cart/cart",
-		"pages/orders/orders",
-		"pages/order-agent/order-agent",
-		"pages/setting/setting",
-		"pages/store/store",
-		"pages/share/share",
-		"pages/comments/comments",
-		"pages/logistics/logistics",
-		"pages/complaint/complaint",
-		"pages/password-revise/password-revise",
-		"pages/member-info/member-info"
-	],
-	"window": {
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#00BC71",
-		"navigationBarTitleText": "缤纷鲜花零售",
-		"navigationBarTextStyle": "light"
-	},
-	"tabBar": {
-		"selectedColor": "#00BC71",
-		"list": [{
-				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "resource/images/ic_home_normal.png",
-				"selectedIconPath": "resource/images/ic_home_pressed.png"
-			},
-			{
-				"pagePath": "pages/orders/orders",
-				"text": "我的订单",
-				"iconPath": "resource/images/ic_orders_normal.png",
-				"selectedIconPath": "resource/images/ic_orders_pressed.png"
-			},
-			{
-				"pagePath": "pages/setting/setting",
-				"text": "个人中心",
-				"iconPath": "resource/images/ic_setting_normal.png",
-				"selectedIconPath": "resource/images/ic_setting_pressed.png"
-			}
-		]
-	}
+    "pages": [
+        "pages/index/index",
+        "pages/login/login",
+        "pages/register/register",
+        "pages/category/category",
+        "pages/sites/sites",
+        "pages/brands/brands",
+        "pages/products/products",
+        "pages/product/product",
+        "pages/search/search",
+        "pages/favorite/favorite",
+        "pages/cart/cart",
+        "pages/orders/orders",
+        "pages/order-agent/order-agent",
+        "pages/setting/setting",
+        "pages/store/store",
+        "pages/share/share",
+        "pages/comments/comments",
+        "pages/logistics/logistics",
+        "pages/complaint/complaint",
+        "pages/password-revise/password-revise",
+        "pages/news-list/news-list",
+        "pages/news-detail/news-detail",
+        "pages/member-info/member-info"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#00BC71",
+        "navigationBarTitleText": "缤纷鲜花零售",
+        "navigationBarTextStyle": "light"
+    },
+    "tabBar": {
+        "selectedColor": "#00BC71",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "resource/images/ic_home_normal.png",
+                "selectedIconPath": "resource/images/ic_home_pressed.png"
+            },
+            {
+                "pagePath": "pages/orders/orders",
+                "text": "我的订单",
+                "iconPath": "resource/images/ic_orders_normal.png",
+                "selectedIconPath": "resource/images/ic_orders_pressed.png"
+            },
+            {
+                "pagePath": "pages/setting/setting",
+                "text": "个人中心",
+                "iconPath": "resource/images/ic_setting_normal.png",
+                "selectedIconPath": "resource/images/ic_setting_pressed.png"
+            }
+        ]
+    }
 }

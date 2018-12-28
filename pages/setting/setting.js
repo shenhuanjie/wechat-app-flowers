@@ -18,50 +18,62 @@ Page({
             pages: [{
                 id: 'orders',
                 name: '订单查询',
+                param: '',
                 isTab: true
             }, {
                 id: 'view',
                 name: '账单查询',
+                param: '',
                 isTab: false
             }, {
                 id: 'view',
                 name: '发货查询',
+                param: '',
                 isTab: false
             }, {
                 id: 'password-revise',
                 name: '修改密码',
+                param: '',
                 isTab: false
             }, {
                 id: 'complaint',
                 name: '投诉建议',
+                param: '',
                 isTab: false
             }, {
                 id: 'comments',
                 name: '查看留言',
+                param: '',
                 isTab: false
             }, {
-                id: 'logistics',
+                id: 'news-list',
                 name: '物流信息',
+                param: '?t=2',
                 isTab: false
             }, {
-                id: 'view',
+                id: 'news-list',
                 name: '最新信息',
+                param: '?t=1',
                 isTab: false
             }, {
-                id: 'view',
+                id: 'news-list',
                 name: '常见问题',
+                param: '?t=3',
                 isTab: false
             }, {
                 id: 'view',
                 name: '收货地址',
+                param: '',
                 isTab: false
             }, {
                 id: 'share',
                 name: '分享推荐',
+                param: '',
                 isTab: false
             }, {
                 id: 'order-agent',
                 name: '产品代购',
+                param: '',
                 isTab: false
             }]
         }]
@@ -158,14 +170,15 @@ Page({
         var data = even.currentTarget.dataset;
         var url = data.url;
         var isTab = data.tab;
+        var param = data.param;
         console.log(data);
         if (isTab) {
             wx.switchTab({
-                url: url,
+                url: url + param,
             })
         } else {
             wx.navigateTo({
-                url: url,
+                url: url + param,
             })
         }
     },

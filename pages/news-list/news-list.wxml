@@ -1,0 +1,12 @@
+<view class="container">
+    <view class='container-items'>
+        <block wx:for="{{list}}" wx:key="id">
+            <view class='items-group items-group-flex' bindtap='toDetail' data-id='{{item.Id}}'>
+                <view class="item-flex">
+                    <text class='font-content'>{{item.Title}}</text>
+                    <icon class="iconfont icon-right font-color-gray"></icon>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

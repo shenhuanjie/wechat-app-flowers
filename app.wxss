@@ -59,7 +59,7 @@ canvas {
 }
 
 .font-item {
-    font-size: 24rpx;
+    font-size: 28rpx;
     line-height: 1.5;
 }
 

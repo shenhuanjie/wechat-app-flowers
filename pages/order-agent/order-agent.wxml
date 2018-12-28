@@ -6,7 +6,7 @@
                     <text class='font-content'>产品名称：</text>
                 </view>
                 <view style='flex:1'>
-                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品名称'></input>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品名称' value="{{name}}" bindinput='bindName'></input>
                 </view>
             </view>
         </view>
@@ -16,7 +16,7 @@
                     <text class='font-content'>订购数量：</text>
                 </view>
                 <view style='flex:1'>
-                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入订购数量'></input>
+                    <input type="number" class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入订购数量' value="{{orderCount}}" bindinput='bindCount'></input>
                 </view>
             </view>
         </view>
@@ -26,7 +26,7 @@
                     <text class='font-content'>产品等级：</text>
                 </view>
                 <view style='flex:1'>
-                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品等级'></input>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入产品等级' value="{{grade}}" bindinput='bindGrade'></input>
                 </view>
             </view>
         </view>
@@ -36,12 +36,12 @@
                     <text class='font-content'>代购要求：</text>
                 </view>
                 <view style='flex:1'>
-                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入要求'></input>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='输入要求' value="{{require}}" bindinput='bindRequire'></input>
                 </view>
             </view>
         </view>
     </view>
 </view>
 <view class="container">
-    <button style="color:#fff;background-color:#0ac775" open-type="getUserInfo" bindgetuserinfo="getUserInfo">提交</button>
+    <button style="color:#fff;background-color:#0ac775" bindtap='saveOrderagent'>提交</button>
 </view>
