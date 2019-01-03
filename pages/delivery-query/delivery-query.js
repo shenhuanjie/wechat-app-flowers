@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/delivery-query/delivery-query.js
 Page({
 
@@ -12,11 +13,11 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
 
     },
 
-    bindDateChange: function (e) {
+    bindDateChange: function(e) {
         var that = this;
         console.log(e);
         console.log('picker发送选择改变，携带值为', e.detail.value)
