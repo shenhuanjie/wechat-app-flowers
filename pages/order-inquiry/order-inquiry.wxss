@@ -1,0 +1,38 @@
+.container {
+	margin: 30rpx 30rpx 15rpx 30rpx;
+}
+
+.container .searchInput {
+	border: 1rpx solid #e4e8ea;
+	font-size: 32rpx;
+	background-color: #fff;
+	border-radius: 10rpx;
+	padding: 10rpx 15rpx;
+}
+
+.container .fliters-nav {
+	display: flex;
+	justify-content: space-between;
+	font-size: 36rpx;
+	line-height: 64rpx;
+}
+
+.container .fliters-nav .fliters-item {
+	padding: 7rpx 25rpx;
+	border-radius: 10rpx;
+}
+
+.container .fliters-nav icon {
+	font-size: 36rpx;
+	color: red;
+}
+
+.container .fliters-nav .fliters-item-selected {
+	color: #fff;
+	background: #00BC71;
+}
+
+.container .fliters-nav .fliters-item-selected icon {
+	color: #fff;
+	background: #00BC71;
+}

@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 22,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -172,6 +172,29 @@
 					"name": "news-detail",
 					"pathName": "pages/news-detail/news-detail",
 					"query": "id=219"
+				},
+				{
+					"id": -1,
+					"name": "address-list",
+					"pathName": "pages/address-list/address-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "address-add",
+					"pathName": "pages/address-add/address-add",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order-inquiry",
+					"pathName": "pages/order-inquiry/order-inquiry",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bill-inquiry",
+					"pathName": "pages/bill-inquiry/bill-inquiry"
 				}
 			]
 		}

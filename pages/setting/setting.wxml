@@ -31,6 +31,6 @@
     </view>
 </view>
 
-<view class='pre-block'>
+<view class='pre-block' style='margin-top:0;'>
     <button bindtap='onLogout'>{{login}}</button>
 </view>

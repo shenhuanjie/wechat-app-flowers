@@ -16,17 +16,17 @@ Page({
             name: '视图容器',
             open: false,
             pages: [{
-                id: 'orders',
+                id: 'order-inquiry',
                 name: '订单查询',
                 param: '',
-                isTab: true
+                isTab: false
             }, {
-                id: 'view',
+                    id: 'bill-inquiry',
                 name: '账单查询',
                 param: '',
                 isTab: false
             }, {
-                id: 'view',
+                id: 'delivery-query',
                 name: '发货查询',
                 param: '',
                 isTab: false
@@ -61,7 +61,7 @@ Page({
                 param: '?t=3',
                 isTab: false
             }, {
-                id: 'view',
+                id: 'address-list',
                 name: '收货地址',
                 param: '',
                 isTab: false

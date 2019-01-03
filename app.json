@@ -22,7 +22,12 @@
         "pages/password-revise/password-revise",
         "pages/news-list/news-list",
         "pages/news-detail/news-detail",
-        "pages/member-info/member-info"
+        "pages/address-list/address-list",
+        "pages/address-add/address-add",
+        "pages/member-info/member-info",
+        "pages/delivery-query/delivery-query",
+        "pages/order-inquiry/order-inquiry",
+        "pages/bill-inquiry/bill-inquiry"
     ],
     "window": {
         "backgroundTextStyle": "light",

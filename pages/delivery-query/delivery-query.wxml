@@ -1,0 +1,20 @@
+<view class="container">
+    <view style='display:flex;justify-content:space-around;align-items:center'>
+        <view style='display:flex;justify-content:space-around;align-items:center;'>
+            <picker id='dateStart' mode="date" value="{{dateStart}}"  bindchange="bindDateChange">
+                <input class='searchInput' style='width:200rpx;' value='{{dateStart}}'></input>
+            </picker>
+            <text style='font-size:32rpx;margin:0 10rpx;'>至</text>
+            <picker id='dateEnd' mode="date" value="{{dateEnd}}"  bindchange="bindDateChange">
+                <input class='searchInput' style='width:200rpx;' value='{{dateEnd}}'></input>
+            </picker>
+        </view>
+        <view style='display:flex'>
+            <button style='font-size:32rpx;margin-left:20rpx;line-height:1;padding:18rpx 28rpx;'>查询</button>
+        </view>
+    </view>
+</view>
+<view class="container">
+    <view style='font-size:32rpx;border-bottom:1rpx solid #e4e8ea;padding-bottom:10rpx'>共
+        <text style="color: red;">3</text>条数据</view>
+</view>

@@ -1,0 +1,65 @@
+<view class="container">
+    <view class='container-items'>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>收货人：</text>
+                </view>
+                <view style='flex:1'>
+                    <text class='font-content'>{{memName}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>联系电话：</text>
+                </view>
+                <view style='flex:1'>
+                    <input type="number" class='font-content' placeholder-class='font-content font-color-gray' placeholder='请填写手机号码' value="{{phone}}" bindinput='bindPhone'></input>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>所在地区：</text>
+                </view>
+                <view style='flex:1'>
+                    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                        <view class="picker">
+                            <text class='font-content {{fontColorGray}}'>{{region[0]}} {{region[1]}} {{region[2]}}</text>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex">
+                <view>
+                    <text class='font-content'>详细地址：</text>
+                </view>
+                <view style='flex:1'>
+                    <input class='font-content' placeholder-class='font-content font-color-gray' placeholder='请填写详细地址' value="{{address}}" bindinput='bindAddress'></input>
+                </view>
+            </view>
+        </view>
+        <view class='items-group items-group-flex'>
+            <view class="item-flex-start" bindtap='switchIsDefault'>
+                <view wx:if="{{isDefault==true}}">
+                    <icon class="iconfont icon-select-fill font-color-green"></icon>
+                </view>
+                <view wx:else>
+                    <icon class="iconfont icon-unselected"></icon>
+
+                </view>
+                <view style='margin-left:10rpx;'>
+                    <text class='font-content'>设为默认地址</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="container">
+    <button style="color:#fff;background-color:#0ac775" bindtap='saveAddress'>提交</button>
+</view>
