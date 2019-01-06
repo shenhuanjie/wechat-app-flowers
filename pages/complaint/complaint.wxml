@@ -1,20 +1,21 @@
 <!--pages/complaint/complaint.wxml-->
-<view class='pre-block'>
-  <view class='pre-block-item' style='margin-bottom:40rpx;'>
-    <label>主题：</label>
-    <input></input>
-  </view>
-  <view class='pre-block-item' style='margin-bottom:60rpx;'>
-    <label>类型：</label>
-    <input></input>
-  </view>
-  <view class='pre-block-item'>
-    <label>投诉建议内容：</label>
-  </view>
-  <view class='pre-block-item'>
-    <textarea placeholder='' placeholder-class=''></textarea>
-  </view>
-  <view class='pre-block-item'>
-    <button bindtap='onComment'>提交投诉</button>
-  </view>
+<view class='container'>
+    <view class='container-group'>
+        <label>主题：</label>
+        <input bindinput='bindTitle' value='{{dataTitle}}'></input>
+    </view>
+    <view class='container-group'>
+        <label>类型：</label>
+        <picker bindchange='bindPickerChange' value='{{index}}' range='{{ddlType}}'>
+            <input value='{{ddlType[index]}}' disabled='disabled'></input>
+        </picker>
+    </view>
+    <view class='container-group' style='flex-direction:column;justify-content: flex-start; align-items: flex-start;'>
+        <label>投诉建议内容：</label>
+        <textarea bindinput='bindMsg' placeholder='请详细描述你的问题和意见……' placeholder-class=''></textarea>
+
+    </view>
+    <view class='container-group'>
+        <button bindtap='bindSubmit'>提交投诉</button>
+    </view>
 </view>

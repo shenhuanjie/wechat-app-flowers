@@ -1,42 +1,47 @@
 /* pages/complaint/complaint.wxss */
 
-.pre-block {
-  margin: 30rpx 30rpx;
-  min-height: 48rpx;
+.container {
+    margin: 30rpx 30rpx 15rpx 30rpx;
 }
 
-.pre-block-item {
-  margin-bottom: 20rpx;
+.container .container-group {
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15rpx;
 }
 
-.pre-block-item label {
-  font-size: 28rpx;
+.container .container-group label {
+    font-size: 28rpx;
+    flex: 1;
 }
 
-.pre-block-item input {
-  border-radius: 10rpx;
-  float: right;
-  font-size: 28rpx;
-  padding: 0 15rpx;
-  height: 64rpx;
-  width: 540rpx;
-  border: 1rpx solid #e8e8e8;
-  background-color: #fff;
+.container .container-group input {
+    border-radius: 10rpx;
+    float: right;
+    font-size: 28rpx;
+    padding: 0 15rpx;
+    height: 64rpx;
+    width: 540rpx;
+    border: 1rpx solid #e8e8e8;
+    background-color: #fff;
 }
 
-.pre-block textarea {
-  padding: 15rpx;
-  font-size: 28rpx;
-  width: 660rpx;
-  border-radius: 10rpx;
-  border: 1rpx solid #e8e8e8;
-  box-shadow: 5rpx;
-  color: #000;
-  background-color: #fff;
-  margin-bottom: 60rpx;
+.container .container-group textarea {
+    margin-top: 15rpx;
+    padding: 15rpx;
+    font-size: 28rpx;
+    width: 630rpx;
+    border-radius: 10rpx;
+    border: 1rpx solid #e8e8e8;
+    color: #000;
+    background-color: #fff;
+    margin-bottom: 60rpx;
 }
 
-.pre-block button {
-  color: #fff;
-  background-color: #00BC71;
+.container .container-group button {
+    color: #fff;
+    background-color: #00bc71;
+    width: 660rpx;
 }
