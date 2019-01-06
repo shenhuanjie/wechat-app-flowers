@@ -1,38 +1,51 @@
 .container {
-	margin: 30rpx 30rpx 15rpx 30rpx;
+    margin: 30rpx 30rpx 15rpx 30rpx;
 }
 
-.container .searchInput {
-	border: 1rpx solid #e4e8ea;
-	font-size: 32rpx;
-	background-color: #fff;
-	border-radius: 10rpx;
-	padding: 10rpx 15rpx;
+.container .picker-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.container .fliters-nav {
-	display: flex;
-	justify-content: space-between;
-	font-size: 36rpx;
-	line-height: 64rpx;
+.container .picker-group .picker-group__item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.container .fliters-nav .fliters-item {
-	padding: 7rpx 25rpx;
-	border-radius: 10rpx;
+.container .picker-group .picker-group__item text {
+    font-size: 32rpx;
+    margin: 0 10rpx;
 }
 
-.container .fliters-nav icon {
-	font-size: 36rpx;
-	color: red;
+.container .picker-group .picker-group__button {
+    display: flex;
 }
 
-.container .fliters-nav .fliters-item-selected {
-	color: #fff;
-	background: #00BC71;
+.container .picker-group .picker-group__button button {
+    font-size: 32rpx;
+    margin-left: 20rpx;
+    line-height: 1;
+    padding: 18rpx 28rpx;
 }
 
-.container .fliters-nav .fliters-item-selected icon {
-	color: #fff;
-	background: #00BC71;
+.container .picker-group .picker-group__item .searchInput {
+    border: 1rpx solid #e4e8ea;
+    font-size: 32rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 10rpx 15rpx;
+    width: 200rpx;
+}
+
+.container .list-title {
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #e4e8ea;
+    padding-bottom: 10rpx;
+}
+
+.container .list-title text {
+    color: red;
+    padding: 0 10rpx;
 }
