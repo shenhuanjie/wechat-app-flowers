@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 27,
+			"current": 28,
 			"list": [
 				{
 					"id": -1,
@@ -200,7 +200,13 @@
 				{
 					"id": -1,
 					"name": "delivery-query",
-					"pathName": "pages/delivery-query/delivery-query"
+					"pathName": "pages/delivery-query/delivery-query",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "comments-list",
+					"pathName": "pages/comments-list/comments-list"
 				}
 			]
 		}

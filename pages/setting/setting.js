@@ -21,7 +21,7 @@ Page({
                 param: '',
                 isTab: false
             }, {
-                    id: 'bill-inquiry',
+                id: 'bill-inquiry',
                 name: '账单查询',
                 param: '',
                 isTab: false
@@ -41,7 +41,7 @@ Page({
                 param: '',
                 isTab: false
             }, {
-                id: 'comments',
+                id: 'comments-list',
                 name: '查看留言',
                 param: '',
                 isTab: false

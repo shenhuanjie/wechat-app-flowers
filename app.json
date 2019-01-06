@@ -17,6 +17,7 @@
         "pages/store/store",
         "pages/share/share",
         "pages/comments/comments",
+        "pages/comments-list/comments-list",
         "pages/logistics/logistics",
         "pages/complaint/complaint",
         "pages/password-revise/password-revise",

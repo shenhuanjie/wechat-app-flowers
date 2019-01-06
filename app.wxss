@@ -44,7 +44,6 @@ canvas {
     min-height: 48rpx;
 }
 
-
 /* font-style */
 
 .font-title {
@@ -74,6 +73,12 @@ canvas {
 .font-color-green {
     color: #0ac775;
 }
+
+.btn-color-green {
+    background-color: #0ac775;
+    color: #fff;
+}
+
 .font-color-red {
     color: red;
 }

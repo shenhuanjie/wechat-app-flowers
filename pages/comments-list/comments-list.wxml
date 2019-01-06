@@ -1,0 +1,20 @@
+<view class="container" style='margin-bottom:160rpx;'>
+    <block wx:for="{{dataList}}" wx:key="id">
+        <view class="container-group">
+            <view class="container-group-item container-group-item-border">
+                <text>{{item.Ordertime}}</text>
+            </view>
+            <view class="container-group-item container-group-item-border">
+                <text>留言内容：</text>
+                <rich-text>{{item.Ordertext}}</rich-text>
+            </view>
+            <view class="container-group-item">
+                <text style='flex:1'>回复：</text>
+                <rich-text style='color:red;flex:6;'>{{item.Answertext}}</rich-text>
+            </view>
+        </view>
+    </block>
+</view>
+<view class='container-bottom' style=''>
+    <button bindtap='bingSubmit' class="btn-color-green">提交留言</button>
+</view>
