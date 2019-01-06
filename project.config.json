@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 27,
 			"list": [
 				{
 					"id": -1,
@@ -194,7 +194,13 @@
 				{
 					"id": -1,
 					"name": "bill-inquiry",
-					"pathName": "pages/bill-inquiry/bill-inquiry"
+					"pathName": "pages/bill-inquiry/bill-inquiry",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "delivery-query",
+					"pathName": "pages/delivery-query/delivery-query"
 				}
 			]
 		}
