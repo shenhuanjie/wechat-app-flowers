@@ -1,0 +1,103 @@
+<view class='container'>
+    <view class=' container-items '>
+        <block wx:for="{{dataList}}" wx:key="id">
+            <view class='items-group items-group-flex'>
+                <view class="item-flex">
+                    <text class='font-content'>{{item.Saledate}}</text>
+                    <text class='font-content'>发货方式：{{item.Logisticstype}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>航班号：</text>
+                    <text class='font-content'>{{item.Flightnum}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>落地时间：</text>
+                    <text class='font-content'>{{item.Landingtime}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>件数：</text>
+                    <text class='font-content'>{{item.Boxnum}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>重量：</text>
+                    <text class='font-content'>{{item.Lweight}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>服务费：</text>
+                    <text class='font-content'>{{item.Servicefee}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>箱号：</text>
+                    <view wx:if="{{item.Packnum1>0}}">
+                        <text class='font-content font-emu'>10#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum1}}</text>
+                    </view>
+                    <view wx:if="{{item.Packnum2>0}}">
+                        <text class='font-content font-emu'>20#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum2}}</text>
+                    </view>
+                    <view wx:if="{{item.Packnum3>0}}">
+                        <text class='font-content font-emu'>30#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum3}}</text>
+                    </view>
+                    <view wx:if="{{item.Packnum4>0}}">
+                        <text class='font-content font-emu'>40#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum4}}</text>
+                    </view>
+                    <view wx:if="{{item.Packnum5>0}}">
+                        <text class='font-content font-emu'>50#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum5}}</text>
+                    </view>
+                    <view wx:if="{{item.Packnum6>0}}">
+                        <text class='font-content font-emu'>60#</text>
+                        <text class='font-content font-color-red'>{{item.Packnum6}}</text>
+                    </view>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>单价：</text>
+                    <text class='font-content'>{{item.Price}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>运费：</text>
+                    <text class='font-content'>{{item.Freight}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>配货费：</text>
+                    <text class='font-content'>{{item.Pickingcosts}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>纸箱费：</text>
+                    <text class='font-content'>{{item.Cartoncosts}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>短运费：</text>
+                    <text class='font-content'>{{item.Shortfreight}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>桶数：</text>
+                    <text class='font-content'>{{item.Picknum}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>自提费：</text>
+                    <text class='font-content'>{{item.Pickfee}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>保暖选择：</text>
+                    <text wx:if="{{item.Bntype==0}}" class='font-content'>无</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>保暖费：</text>
+                    <text class='font-content'>{{item.Warmthfee}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>保管费：</text>
+                    <text class='font-content'>{{item.Storagefee}}</text>
+                </view>
+                <view class="item-flex">
+                    <text class='font-content'>合计：</text>
+                    <text class='font-content font-color-red'>{{item.Allfee}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

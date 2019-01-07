@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dateStart: app.formatDate((new Date()), "yyyy-MM-dd"),
+        dateStart: app.formatDate((new Date(new Date() - 7 * 24 * 60 * 60 * 1000)), "yyyy-MM-dd"),
         dateEnd: app.formatDate((new Date()), "yyyy-MM-dd"),
         dataTotal: 0,
         dataList: []
@@ -15,7 +15,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: function(options) {
         this.getOrderListByUserCode();
     },
     /**
@@ -50,13 +50,13 @@ Page({
     /**
      * 绑定查询按钮
      */
-    bindSearch: function (e) {
+    bindSearch: function(e) {
         this.getOrderListByUserCode();
     },
     /**
      * 绑定日期选择器事件
      */
-    bindDateChange: function (e) {
+    bindDateChange: function(e) {
         var that = this;
         console.log(e);
         console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -87,5 +87,6 @@ Page({
                 dateEnd: dateEnd
             })
         }
+        this.getOrderListByUserCode();
     },
 })

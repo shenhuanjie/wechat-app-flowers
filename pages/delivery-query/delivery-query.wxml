@@ -18,4 +18,24 @@
     <view class='list-title'>共
         <text>{{dataTotal}}</text>条数据
     </view>
+    <view class='list-title' wx:if="{{dataTotal==0}}">
+        <text>没有找到相关信息</text>
+    </view>
+</view>
+<view class='container'>
+    <view class=' container-items '>
+        <block wx:for="{{dataList}}" wx:key="id">
+            <view class='items-group items-group-flex ' bindtap='toDetail' data-id='{{item.Id}} '>
+                <view class="item-flex">
+                    <view class="item-flex" style='display:flex;justify-content:space-around;flex:1'>
+                        <text class='font-content '>{{item.Saledate}}</text>
+                        <text class='font-content '>发货方式：{{item.Logisticstype}}</text>
+                    </view>
+                    <view class="item-flex">
+                        <icon class="iconfont icon-right font-color-gray"></icon>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
 </view>

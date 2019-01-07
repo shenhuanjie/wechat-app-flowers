@@ -1,32 +1,30 @@
 <view class="container">
     <view class="fliters-nav">
         <block wx:for="{{flitersList}}" wx:key="{{id}}">
-            <block wx:if="{{item.isIcon==false}}">
-                <view class='fliters-item {{item.selected}}'>
+            <block wx:if="{{index==fliterSelected}}">
+                <view class='fliters-item fliters-item-selected'>
                     <text>{{item.title}}</text>
                 </view>
             </block>
             <block wx:else>
-                <view class='fliters-item {{item.selected}}'>
-                    <icon class="iconfont icon-{{item.icon}}"></icon>
+                <view class='fliters-item {{item.selected}}' bindtap='bindSwitchTab' data-index="{{index}}">
+                    <text>{{item.title}}</text>
                 </view>
             </block>
         </block>
     </view>
 </view>
-<view class="container">
-    <view style='display:flex;justify-content:space-around;align-items:center'>
-        <view style='display:flex;justify-content:space-around;align-items:center;'>
-            <input class='searchInput' style='width:200rpx;' placeholder='{{saleDate}}'></input>
-            <text style='font-size:32rpx;'>至</text>
-            <input class='searchInput' style='width:200rpx;' placeholder='{{saleDate}}'></input>
+
+<block wx:for="{{dataList}}" wx:key="{{id}}">
+    <view class='container-flex-group' bindtap='toOrderDetail' data-id='{{item.Id}}' data-buyWay="{{item.Buyway}}">
+        <view class='flex-group'>
+            <text style='flex:1;'>{{item.Ordertime}}</text>
+            <text class='font-color-red'>{{item.Name}}</text>
+            <text>数量：{{item.Ordercount}}</text>
+            <text>金额:￥{{item.Ordermoney}}</text>
         </view>
-        <view style='display:flex'>
-            <button style='font-size:32rpx;margin-left:20rpx;line-height:1;padding:18rpx 28rpx;'>查询</button>
+        <view class='flex-group'>
+            <icon class="iconfont icon-right"></icon>
         </view>
     </view>
-</view>
-<view class="container">
-    <view style='font-size:32rpx;border-bottom:1rpx solid #e4e8ea;padding-bottom:10rpx'>共
-        <text style="color: red;">3</text>条数据</view>
-</view>
+</block>

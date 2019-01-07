@@ -2,52 +2,10 @@
     margin: 30rpx 30rpx 15rpx 30rpx;
 }
 
-.container .picker-group {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.container .picker-group .picker-group__item {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.container .picker-group .picker-group__item text {
-    font-size: 32rpx;
-    margin: 0 10rpx;
-}
-
-.container .picker-group .picker-group__button {
-    display: flex;
-}
-
-.container .picker-group .picker-group__button button {
-    font-size: 32rpx;
-    margin-left: 20rpx;
-    line-height: 1;
-    padding: 18rpx 28rpx;
-}
-
-.container .picker-group .picker-group__item .searchInput {
-    border: 1rpx solid #e4e8ea;
-    font-size: 32rpx;
-    background-color: #fff;
-    border-radius: 10rpx;
-    padding: 10rpx 15rpx;
-    width: 200rpx;
-}
-
 .container .list-title {
     font-size: 32rpx;
     border-bottom: 1rpx solid #e4e8ea;
     padding-bottom: 10rpx;
-}
-
-.container .list-title text {
-    color: red;
-    padding: 0 10rpx;
 }
 
 .container-items {
@@ -70,10 +28,33 @@
     flex-direction: column;
 }
 
+.container-items .items-group-flex-row {
+    display: flex;
+    flex-direction: flex-start;
+    justify-content: space-between;
+}
+
 .container-items .items-group-flex .item-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.container-items .items-group-flex .item-flex-padding {
+    padding: 0 15rpx;
+}
+
+.container-items .items-group-flex .item-flex-padding text {
+    flex: 1;
+}
+
+.container-items .items-group-flex-row .item-flex-title {
+    display: flex;
+    align-items: center;
+}
+
+.container-items .items-group-flex-row .item-flex-title text {
+    margin: 0 10rpx;
 }
 
 .container-items .items-group-flex .item-flex-start {
@@ -91,12 +72,4 @@
 .container-items .items-group-flex .item-flex .item-flex-icon {
     margin-right: 30rpx;
     width: 32rpx;
-}
-
-.container-items .items-group-flex .item-flex-padding {
-    padding: 0 15rpx;
-}
-
-.container-items .items-group-flex .item-flex-padding text {
-    flex: 1;
 }

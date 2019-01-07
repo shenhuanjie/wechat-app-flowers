@@ -12,6 +12,8 @@
         "pages/favorite/favorite",
         "pages/cart/cart",
         "pages/orders/orders",
+        "pages/order-detail/order-detail",
+        "pages/order-confirm/order-confirm",
         "pages/order-agent/order-agent",
         "pages/setting/setting",
         "pages/store/store",
@@ -27,7 +29,9 @@
         "pages/address-add/address-add",
         "pages/member-info/member-info",
         "pages/delivery-query/delivery-query",
+        "pages/delivery-query-detail/delivery-query-detail",
         "pages/order-inquiry/order-inquiry",
+        "pages/order-inquiry-detail/order-inquiry-detail",
         "pages/bill-inquiry/bill-inquiry"
     ],
     "window": {

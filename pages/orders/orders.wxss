@@ -1,38 +1,49 @@
 .container {
-	margin: 30rpx 30rpx 15rpx 30rpx;
-}
-
-.container .searchInput {
-	border: 1rpx solid #e4e8ea;
-	font-size: 32rpx;
-	background-color: #fff;
-	border-radius: 10rpx;
-	padding: 10rpx 15rpx;
+    margin: 30rpx 30rpx 15rpx 30rpx;
 }
 
 .container .fliters-nav {
-	display: flex;
-	justify-content: space-between;
-	font-size: 36rpx;
-	line-height: 64rpx;
+    display: flex;
+    justify-content: space-between;
+    font-size: 36rpx;
+    line-height: 64rpx;
 }
 
 .container .fliters-nav .fliters-item {
-	padding: 7rpx 25rpx;
-	border-radius: 10rpx;
+    padding: 7rpx 25rpx;
+    border-radius: 10rpx;
 }
 
 .container .fliters-nav icon {
-	font-size: 36rpx;
-	color: red;
+    font-size: 36rpx;
+    color: red;
 }
 
 .container .fliters-nav .fliters-item-selected {
-	color: #fff;
-	background: #00BC71;
+    color: #fff;
+    background: #00bc71;
 }
 
 .container .fliters-nav .fliters-item-selected icon {
-	color: #fff;
-	background: #00BC71;
+    color: #fff;
+    background: #00bc71;
+}
+
+.container-flex-group {
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15rpx;
+    border-bottom: 1rpx solid #e4e8ea;
+}
+
+.container-flex-group .flex-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-flex-group .flex-group text {
+    margin: 0 5rpx;
 }

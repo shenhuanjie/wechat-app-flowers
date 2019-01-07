@@ -78,7 +78,7 @@ App({
 	globalData: {
 		userInfo: null,
 		// API_URL
-		appUrl: "http://120.77.233.160:8965",
+		appUrl: "https://api.xy431.com",
 		// QINIU_PREFIX
 		qiniuPrefix: "http://complaint.brightenflower.cn/",
 		// 大图前缀

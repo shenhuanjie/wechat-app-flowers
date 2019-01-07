@@ -1,0 +1,73 @@
+<view class="container">
+    <view class='list-title'>
+        <text>订单号为：</text>
+        <text class='font-color-red'>{{orderNum}}</text>
+        <text>，共</text>
+        <text class='font-color-red'>{{dataTotal}}</text>
+        <text>条数据</text>
+    </view>
+</view>
+
+<view class='container-items'>
+    <block wx:for="{{dataList}}" wx:key="id">
+        <block wx:if="{{selectedIndex==index}}">
+            <view class='items-group items-group-flex-row' style='background-color:#f0f0f0'>
+                <view class='item-flex-title'>
+                    <text class='font-item'>{{item.Brand}}</text>
+                    <text class='font-item font-color-red'>{{item.Name}}</text>
+                    <text class='font-item'>数量：{{item.Ordercount}}</text>
+                    <text class='font-item'>金额：￥{{item.Ordermoney}}</text>
+                </view>
+                <view class="item-flex">
+                    <icon class="iconfont icon-down-copy font-color-gray"></icon>
+                </view>
+            </view>
+            <view class='items-group items-group-flex' style='border:1rpx solid #f0f0f0;border-radius:5rpx;'>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>订购时间：{{item.Ordertime}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>编码：{{item.Code}}</text>
+                    <text class='font-item'>{{item.Name}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>等级：A</text>
+                    <text class='font-item'>颜色：{{item.Color}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>大类：{{item.Lclass}}</text>
+                    <text class='font-item'>小类：{{item.Sclass}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>单价：￥{{item.Orderprice}}</text>
+                    <text class='font-item'>订购数：{{item.Ordercount}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>订购数：{{item.Ordercount}}</text>
+                    <text class='font-item'>退货数：{{item.Backcount}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>有效数：{{item.Ordercount-item.Backcount}}</text>
+                    <text class='font-item'>订购额：￥{{item.Ordermoney}}</text>
+                </view>
+                <view class="item-flex item-flex-padding">
+                    <text class='font-item'>退货额：￥{{item.Backmoney}}</text>
+                    <text class='font-item'>有效额：￥{{item.Ordermoney-item.Backmoney}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class='items-group items-group-flex-row' bindtap='bindSwitchTab' data-index="{{index}}">
+                <view class='item-flex-title'>
+                    <text class='font-item'>{{item.Brand}}</text>
+                    <text class='font-item font-color-red'>{{item.Name}}</text>
+                    <text class='font-item'>数量：{{item.Ordercount}}</text>
+                    <text class='font-item'>金额：￥{{item.Ordermoney}}</text>
+                </view>
+                <view class="item-flex">
+                    <icon class="iconfont icon-right font-color-gray"></icon>
+                </view>
+            </view>
+        </block>
+    </block>
+</view>

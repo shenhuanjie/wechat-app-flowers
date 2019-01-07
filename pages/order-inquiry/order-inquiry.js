@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        dateStart: app.formatDate((new Date()), "yyyy-MM-dd"),
+        dateStart: app.formatDate((new Date(new Date() - 7 * 24 * 60 * 60 * 1000)), "yyyy-MM-dd"),
         dateEnd: app.formatDate((new Date()), "yyyy-MM-dd"),
         dataTotal: 0,
         dataList: []
@@ -40,9 +40,13 @@ Page({
             success(res) {
                 var data = res.data;
                 console.log(data);
+                var dataList = data.Rows;
+                for (var i = 0; i < dataList.length; i++) {
+                    dataList[i].Commitedate = dataList[i].Commitedate.substring(0, 10);
+                }
                 that.setData({
                     dataTotal: data.Total,
-                    dataList: data.Rows
+                    dataList: dataList
                 })
             }
         })
@@ -87,5 +91,12 @@ Page({
                 dateEnd: dateEnd
             })
         }
+        this.getOrderListByUserCode();
     },
+    toDetail: function(e) {
+        var code = e.currentTarget.dataset.code;
+        wx.navigateTo({
+            url: '../../pages/order-inquiry-detail/order-inquiry-detail?code=' + code,
+        })
+    }
 })

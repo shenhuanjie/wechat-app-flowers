@@ -82,3 +82,10 @@ canvas {
 .font-color-red {
     color: red;
 }
+
+.font-emu {
+    padding: 5rpx;
+    margin-right: 10rpx;
+    background-color: #f0f0f0;
+    border-radius: 5rpx;
+}

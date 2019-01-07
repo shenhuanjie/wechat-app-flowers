@@ -1,0 +1,24 @@
+.container {
+    margin: 30rpx 30rpx 15rpx 30rpx;
+}
+
+.container .container-group {
+    font-size: 28rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 15rpx;
+    border: 1rpx solid #e4e8ea;
+}
+
+.container .container-group .group-item {
+    padding: 5rpx 0;
+}
+
+.container .container-group .group-item>text {
+    padding: 0rpx 10rpx;
+}
+
+.container .container-group .group-item-flex {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,9 @@
+<!-- 底部菜单栏 -->
+<view class='container-bottom'>
+    <view style=''>
+        <view style='display:flex;justify-content:center;align-items:center;'>
+            <text style='color:red;font-size:32rpx;padding:2rpx'>合计:￥109.00</text>
+            <button style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;'>去支付</button>
+        </view>
+    </view>
+</view>

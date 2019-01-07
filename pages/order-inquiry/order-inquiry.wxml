@@ -18,4 +18,22 @@
     <view class='list-title'>共
         <text>{{dataTotal}}</text>条数据
     </view>
+    <view class='list-title' wx:if="{{dataTotal==0}}">
+        <text>没有找到相关信息</text>
+    </view>
+</view>
+
+
+<view class='container-items'>
+    <block wx:for="{{dataList}}" wx:key="id">
+        <view class='items-group items-group-flex' bindtap='toDetail' data-code='{{item.Ordernum}}'>
+            <view class="item-flex">
+                <text class='font-item'>{{item.Commitedate}}</text>
+                <text class='font-item font-color-red'>{{item.Ordernum}}</text>
+                <text class='font-item'>数量：{{item.Ordercount}}</text>
+                <text class='font-item'>金额：￥{{item.Ordermoney}}</text>
+                <icon class="iconfont icon-right font-color-gray"></icon>
+            </view>
+        </view>
+    </block>
 </view>

@@ -1,0 +1,41 @@
+<view class="container">
+    <block wx:for="{{dataList}}" wx:key="{{id}}">
+        <view class="container-group">
+            <view class='group-item'>
+                <text class='font-color-gray'>订购时间：{{item.Ordertime}}</text>
+            </view>
+            <view class='group-item group-item-flex' style='justify-content: flex-start;'>
+                <text>{{item.Brand}}</text>
+                <text class='font-color-red'>{{item.Name}}</text>
+                <text>数量：{{item.Ordercount}}</text>
+                <text>金额：￥{{item.Ordermoney}}</text>
+            </view>
+            <view class='group-item group-item-flex'>
+                <view style='width:300rpx;'>
+                    <text>编码：{{item.Code}}</text>
+                </view>
+                <view style='width:300rpx;'>
+                    等级：
+                    <text class='font-color-red'>{{item.Grade}}</text>
+                    <text>{{item.Color}}</text>
+                </view>
+            </view>
+            <view class='group-item group-item-flex'>
+                <view style='width:300rpx;'>
+                    <text>大类：{{item.Lclass}}</text>
+                </view>
+                <view style='width:300rpx;'>
+                    <text>小类：{{item.Sclass}}</text>
+                </view>
+            </view>
+            <view class='group-item group-item-flex'>
+                <view style='width:300rpx;'>
+                    <text>单价：{{item.Orderprice}}</text>
+                </view>
+                <view style='width:300rpx;'>
+                    <text>订购数：{{item.Ordercount}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

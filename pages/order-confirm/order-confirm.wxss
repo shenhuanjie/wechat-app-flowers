@@ -1,0 +1,17 @@
+.container-bottom {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    border-top: 1rpx solid #ceced0;
+    justify-content: flex-end;
+    background-color: #f7f7fa;
+}
+
+.container-bottom .container-bottom-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15rpx;
+}

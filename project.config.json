@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 33,
 			"list": [
 				{
 					"id": -1,
@@ -123,7 +123,7 @@
 					"id": 14,
 					"name": "product",
 					"pathName": "pages/product/product",
-					"query": "productId=5158"
+					"query": "productId=0136"
 				},
 				{
 					"id": -1,
@@ -206,7 +206,38 @@
 				{
 					"id": -1,
 					"name": "comments-list",
-					"pathName": "pages/comments-list/comments-list"
+					"pathName": "pages/comments-list/comments-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order-inquiry",
+					"pathName": "pages/order-inquiry/order-inquiry",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order-detail",
+					"pathName": "pages/order-detail/order-detail",
+					"query": "id=209&buyway=1"
+				},
+				{
+					"id": -1,
+					"name": "order-confirm",
+					"pathName": "pages/order-confirm/order-confirm",
+					"query": ""
+				},
+				{
+					"id": 32,
+					"name": "order-inquiry-detail",
+					"pathName": "pages/order-inquiry-detail/order-inquiry-detail",
+					"query": "code=\"D-6244180110\""
+				},
+				{
+					"id": 33,
+					"name": "delivery-query-detail",
+					"pathName": "pages/delivery-query-detail/delivery-query-detail",
+					"query": "id=82440 "
 				}
 			]
 		}

@@ -1,33 +1,84 @@
+<!-- 选项卡 -->
+<view class="container">
+    <view class="fliters-nav">
+        <block wx:for="{{flitersList}}" wx:key="{{id}}">
+            <block wx:if="{{index==fliterSelected}}">
+                <view class='fliters-item fliters-item-selected'>
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+            <block wx:else>
+                <view class='fliters-item {{item.selected}}' bindtap='bindSwitchTab' data-index="{{index}}">
+                    <text>{{item.title}}</text>
+                </view>
+            </block>
+        </block>
+    </view>
+</view>
+<!-- 列表视图 -->
 <view class='container' style='margin-bottom:145rpx;'>
-    <!-- 列表视图 -->
     <view class='pre-list'>
-        <block wx:for="{{productList}}" wx:key="id">
-            <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Productid}}'>
-                <view class='' style='display:flex;align-items:center;margin-right:10rpx;'>
-                    <icon class="iconfont icon-unselected" style='font-size:42rpx;color:#bfbfbf' catchtap='addFollow'></icon>
-                </view>
-                <view class='pre-list-item-img'>
-                    <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
-                </view>
-                <view class='pre-list-item-content'>
-                    <text class='content-title'>{{item.Name}}</text>
-                    <text class='content-item'>颜色：{{item.Color}}</text>
-                    <text class='content-item'>等级：{{item.Grade}}</text>
-                    <text class='content-item'>品牌：{{item.Brand}}</text>
-                    <text class='content-price'>￥{{item.Orderprice}}</text>
-                </view>
-                <view class='pre-list-item-button-group'>
-                    <!-- 主容器 -->
-                    <view class="stepper">
-                        <!-- 减号 -->
-                        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
-                        <!-- 数值 -->
-                        <input type="number" bindchange="bindManual" value="{{num}}" />
-                        <!-- 加号 -->
-                        <text class="normal" bindtap="bindPlus">+</text>
+        <block wx:if="{{fliterSelected==0}}">
+            <block wx:for="{{presellList}}" wx:key="id">
+                <view class='pre-list-item'>
+                    <view class='pre-list-item__icon'>
+                        <icon wx:if="{{item.selected}}" class="iconfont icon-select-fill" style='color:#00bc71' catchtap='addSelect' data-index="{{index}}"></icon>
+                        <icon wx:else class="iconfont icon-unselected" catchtap='addSelect' data-index="{{index}}"></icon>
+                    </view>
+                    <view class='pre-list-item-img'>
+                        <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                    </view>
+                    <view class='pre-list-item-content'>
+                        <text class='content-title'>{{item.Name}}</text>
+                        <text class='content-item'>颜色：{{item.Color}}</text>
+                        <text class='content-item'>等级：{{item.Grade}}</text>
+                        <text class='content-item'>品牌：{{item.Brand}}</text>
+                        <text class='content-price'>￥{{item.Orderprice}}</text>
+                    </view>
+                    <view class='pre-list-item-button-group'>
+                        <!-- 主容器 -->
+                        <view class="stepper">
+                            <!-- 减号 -->
+                            <text class="{{item.MinusStatus}}" bindtap="bindMinus" data-index='{{index}}'>-</text>
+                            <!-- 数值 -->
+                            <input type="number" bindchange="bindManual" value="{{item.Ordercount}}" data-index='{{index}}' />
+                            <!-- 加号 -->
+                            <text class="normal" bindtap="bindPlus" data-index='{{index}}'>+</text>
+                        </view>
                     </view>
                 </view>
-            </view>
+            </block>
+        </block>
+        <block wx:if="{{fliterSelected==1}}">
+            <block wx:for="{{saleList}}" wx:key="id">
+                <view class='pre-list-item'>
+                    <view class='pre-list-item__icon'>
+                        <icon wx:if="{{item.selected}}" class="iconfont icon-select-fill" style='color:#00bc71' catchtap='addSelect' data-index="{{index}}"></icon>
+                        <icon wx:else class="iconfont icon-unselected" catchtap='addSelect' data-index="{{index}}"></icon>
+                    </view>
+                    <view class='pre-list-item-img'>
+                        <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
+                    </view>
+                    <view class='pre-list-item-content'>
+                        <text class='content-title'>{{item.Name}}</text>
+                        <text class='content-item'>颜色：{{item.Color}}</text>
+                        <text class='content-item'>等级：{{item.Grade}}</text>
+                        <text class='content-item'>品牌：{{item.Brand}}</text>
+                        <text class='content-price'>￥{{item.Orderprice}}</text>
+                    </view>
+                    <view class='pre-list-item-button-group'>
+                        <!-- 主容器 -->
+                        <view class="stepper">
+                            <!-- 减号 -->
+                            <text class="{{item.MinusStatus}}" bindtap="bindMinus" data-index='{{index}}'>-</text>
+                            <!-- 数值 -->
+                            <input type="number" bindchange="bindManual" value="{{item.Ordercount}}" data-index='{{index}}' />
+                            <!-- 加号 -->
+                            <text class="normal" bindtap="bindPlus" data-index='{{index}}'>+</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
         </block>
     </view>
 </view>
@@ -51,16 +102,23 @@
         <text style='font-size:28rpx;padding:2rpx'>全选</text>
     </view> -->
     <view style='width:250rpx;display:flex;justify-content:center;align-items:center;margin:15rpx;'>
-        <view style='width:150rpx;display:flex;justify-content:center;align-items:center;margin:15rpx;'>
-            <icon class="iconfont icon-unselected" style='font-size:48rpx;color:#bfbfbf;margin-right:10rpx'></icon>
+        <view style='width:150rpx;display:flex;justify-content:center;align-items:center;margin:15rpx;' bindtap='bindSelectAll'>
+            <icon wx:if="{{selectAll}}" class="iconfont icon-select-fill" style='font-size:48rpx;color:#00bc71;margin-right:10rpx;'></icon>
+            <icon wx:else class="iconfont icon-unselected" style='font-size:48rpx;color:#bfbfbf;margin-right:10rpx'></icon>
             <text style='font-size:32rpx;padding:2rpx'>全选</text>
         </view>
-        <text style='font-size:32rpx;padding:2rpx'>编辑</text>
+        <text wx:if="{{showEdit}}" style='font-size:32rpx;padding:2rpx' bindtap='bindShowEdit'>完成</text>
+        <text wx:else style='font-size:32rpx;padding:2rpx' bindtap='bindShowEdit'>编辑</text>
     </view>
-    <view style='display:flex;justify-content:center;align-items:center;margin:15rpx;'>
+    <view wx:if="{{showEdit}}" style='display:flex;justify-content:center;align-items:center;margin:15rpx;'>
         <view style='display:flex;justify-content:center;align-items:center;'>
-            <text style='color:red;font-size:32rpx;padding:2rpx'>合计:￥109.00</text>
-            <button style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;'>提交</button>
+            <button style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;' bindtap='bindDelItem'>删除</button>
+        </view>
+    </view>
+    <view wx:else style='display:flex;justify-content:center;align-items:center;margin:15rpx;'>
+        <view style='display:flex;justify-content:center;align-items:center;'>
+            <text style='color:red;font-size:32rpx;padding:2rpx'>合计:￥{{dataTotal}}</text>
+            <button style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;'>去结算</button>
         </view>
     </view>
 </view>

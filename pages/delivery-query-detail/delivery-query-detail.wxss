@@ -74,6 +74,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1rpx solid #f0f0f0;
+    padding: 20rpx;
 }
 
 .container-items .items-group-flex .item-flex-start {
