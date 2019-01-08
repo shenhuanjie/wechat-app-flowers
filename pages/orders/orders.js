@@ -23,7 +23,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        if (!app.checkLogin()) {
+            return false;
+        }
     },
 
     /**
@@ -108,8 +110,8 @@ Page({
         var id = even.currentTarget.dataset.id;
         var buyway = even.currentTarget.dataset.buyway;
         var url = '../../pages/order-detail/order-detail?id=' + id + "&buyway=" + buyway;
-        if (!buyway){
-            url = '../../pages/order-confirm/order-confirm?id=' + id;
+        if (!buyway) {
+            url = '../../pages/order-confirm/order-confirm?cartId=' + id;
         }
         wx.navigateTo({
             url: url,

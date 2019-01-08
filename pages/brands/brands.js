@@ -24,7 +24,6 @@ Page({
         qqmapsdk = new QQMapWX({
             key: app.globalData.MapsKey
         });
-        // 获取参数
         var site = options.site;
         var memCode = wx.getStorageSync("memcode");
         if (site && site != "undefined") {
@@ -34,15 +33,12 @@ Page({
             })
             wx.setStorageSync("market", site)
         }
+        //登录验证
+        if (!app.checkLogin()) {
+            return false;
+        }
         // 获取列表
         this.getSaleBrand();
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
     },
 
     /**
@@ -50,6 +46,11 @@ Page({
      */
     onShow: function() {
         var that = this;
+        // 获取列表
+        var site = that.data.site;
+        wx.setStorageSync("market", site);
+        this.getSaleBrand();
+
         var latitude = 39.984060;
         var longitude = 116.307520;
         //获取当前位置

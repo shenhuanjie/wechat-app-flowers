@@ -1,3 +1,161 @@
 .container {
     margin: 30rpx;
 }
+
+.container .container-image {
+    width: 690rpx;
+    height: 690rpx;
+}
+
+.container .container-image image {
+    width: 100%;
+    height: 100%;
+}
+
+.container-flex .container-flex-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15rpx 0;
+}
+
+.container-full-column {
+    font-size: 30rpx;
+}
+
+.container-full-column .container-full-column-group {
+    margin: 30rpx 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-color: #fff;
+}
+
+.container-full-column .container-full-column-group .container-full-column-group__item {
+    padding: 0 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-full-column .container-full-column-group .container-full-column-group__item icon {
+    font-size: 36rpx;
+    margin-right: 10rpx;
+}
+
+.container-bottom-margin {
+    margin-bottom: 60rpx;
+}
+
+.container-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background-color: #f7f7fa;
+    border-top: 1rpx solid #ceced0;
+}
+
+.container-bottom-pop {
+    bottom: 100rpx;
+    font-size: 28rpx;
+    margin: 0;
+    padding: 30rpx;
+}
+
+.container-bottom .container-bottom-group__icon {
+    width: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-bottom .container-bottom-group__icon icon {
+    font-size: 50rpx;
+}
+
+.container-bottom .container-bottom-group__icon text {
+    font-size: 28rpx;
+    padding: 2rpx;
+}
+
+.container-bottom .container-bottom-group__button {
+    width: 452rpx;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-bottom .container-bottom-group__button button {
+    border-radius: 0;
+    font-size: 32rpx;
+    padding: 10rpx 24rpx;
+    width: 226rpx;
+}
+
+.container-bottom .container-bottom-group__button .button-green {
+    color: #fff;
+    background-color: #00bc71;
+}
+
+.container-bottom .container-bottom-group__button .button-red {
+    background-color: #dd4a32;
+    color: #fff;
+}
+
+/*主容器*/
+
+.stepper {
+    width: 80px;
+    height: 26px;
+    /*给主容器设一个边框*/
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+/*加号和减号*/
+
+.stepper text {
+    width: 19px;
+    line-height: 26px;
+    text-align: center;
+    float: left;
+}
+
+/*数值*/
+
+.stepper input {
+    width: 40px;
+    height: 26px;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    /*给中间的input设置左右边框即可*/
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/*普通样式*/
+
+.stepper .normal {
+    color: black;
+}
+
+/*禁用样式*/
+
+.stepper .disabled {
+    color: #ccc;
+}
+
+.grade-item {
+    padding: 0 20rpx;
+    margin-right: 10rpx;
+    border: 1rpx solid #000;
+    background-color: #f0f0f0;
+    border-radius: 5rpx;
+}
+
+.grade-item-selected {
+    border: 1rpx solid red;
+}

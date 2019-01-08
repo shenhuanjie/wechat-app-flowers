@@ -32,6 +32,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        if (!app.checkLogin()) {
+            return false;
+        }
         var _that = this;
         this.initView();
         this.getShoppingList();
@@ -394,6 +397,40 @@ Page({
                     return;
                 }
             }
+        })
+    },
+    bindConfirmOrder: function() {
+        var that = this;
+        var type = that.data.fliterSelected;
+        var cartList = [];
+        var dataList = [];
+
+        switch (type) {
+            case 0:
+                dataList = that.data.presellList;
+                break;
+            case 1:
+                dataList = that.data.saleList;
+                break;
+        }
+
+        for (var i = 0; i < dataList.length; i++) {
+            var id = dataList[i].Id;
+            var num = dataList[i].Ordercount;
+            if (dataList[i].selected) {
+                cartList.push(id + "_" + num);
+            }
+        }
+        if (cartList.length == 0) {
+            wx.showToast({
+                title: '请至少选择一个产品进行结算',
+                icon: 'none'
+            })
+            return;
+        }
+        wx.setStorageSync("cart", cartList.join(','));
+        wx.navigateTo({
+            url: '../../pages/order-confirm/order-confirm',
         })
     },
     getShoppingList: function() {

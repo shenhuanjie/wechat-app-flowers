@@ -1,57 +1,128 @@
 <!-- 图片展示 -->
-<view class="container container-flex;">
-    <view style='width:690rpx;height:690rpx'>
-        <image src="{{app.globalData.imgPrefix}}{{product.Picpath}}" mode='aspectFit' class="" style='width:100%;height:100%' />
+<view class="container container-flex">
+    <view class="container-image">
+        <image src="{{app.globalData.imgPrefix}}{{vproduct.Picpath}}" mode='aspectFit' />
     </view>
     <!-- 产品基础信息 -->
-    <view style='display:flex;flex-direction:column;align-items:center;margin:15rpx 0'>
-        <text style='font-size:36rpx;'>{{product.Name}}</text>
-        <text style='color:red'>￥{{product.Price}}</text>
+    <view class="container-flex-group">
+        <text style='font-size:36rpx;'>{{vproduct.Name}}</text>
+        <text style='color:red'>￥{{vproduct.Price}}</text>
     </view>
     <!-- 服务条款 -->
     <view style='font-size:28rpx;'>
         <view style='margin:15rpx 0'>
-            <text>本产品可享受指定日期发货服务，请在订单中确认。</text>
+            <text>{{sclause}}</text>
         </view>
         <view style='margin:5rpx 0'>
             <text style='font-weight:bold;'>特别提醒：</text>
-            <text style='color:#757575'>仅限联邦快递24小时可达地区，为方便物流的跟踪，请务必填写收件地址的正确邮编，以免造成投递失败。</text>
-        </view>
-        <view style='margin-top:20rpx;display:flex;justify-content:space-between;'>
-            <!-- <text>快递：￥23.00</text> -->
-            <!-- <text>产地：{{product.Dvadd}}</text> -->
+            <text style='color:#757575'>{{stip}}</text>
         </view>
     </view>
 </view>
 <!-- 质量保障 -->
-<view style='font-size:30rpx;margin-bottom:130rpx;'>
-    <view style='margin:30rpx 0;height:100rpx;line-height:100rpx;background-color:#fff'>
-        <view style='padding:0 30rpx;display:flex;justify-content:space-between;'>
+<view class="container-full-column">
+    <view class="container-full-column-group">
+        <view class="container-full-column-group__item">
             <view>
-                <icon class="iconfont icon-ok" style='font-size:36rpx;margin-right:10rpx;'></icon>
+                <icon class="iconfont icon-ok"></icon>
                 <text>正品保障</text>
             </view>
-            <text>站点：{{product.Ssite}}</text>
+            <text>站点：{{vproduct.Ssite}}</text>
         </view>
     </view>
 </view>
-<view style='margin-bottom:130rpx;'></view>
+<view class='container-bottom-margin'>
+    <icon class="iconfont icon-null"></icon>
+</view>
+<!-- 底部菜单弹出栏 -->
+
+<view wx:if="{{showPop}}" class='container-bottom container-bottom-pop' style='flex-direction:column;padding:20rpx 0;'>
+    <view style='display:flex;'>
+        <view style='width:730rpx;text-align:right;'>
+            <button class='button-red' bindtap='bindBtnSubmit' style='float:right;color:#fff;background-color:orange;font-size:28rpx;width:200rpx;'>确定</button>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx 5rpx 10rpx 5rpx;'>
+        <view style='min-width:200rpx;text-align:right;padding:10rpx 0rpx;'>
+            <text>选择品牌：</text>
+        </view>
+        <view style='width:300rpx;padding:10rpx;margin-right:10rpx;border:1rpx solid #000;background-color:#f0f0f0;border-radius:5rpx;'>
+            <!-- <picker value="{{dataBrand}}" bindchange="bindDateChange"> -->
+            <picker bindchange="bindDateChange" value="{{brandIndex}}" range="{{brandList}}">
+                <text>{{brandList[brandIndex]}}</text>
+            </picker>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>选择级别：</text>
+        </view>
+        <view>
+            <block wx:for="{{gradeList}}" wx:key="{{id}}">
+                <text wx:if="{{gradeIndex==index}}" class='grade-item grade-item-selected'>{{item.Grade}}</text>
+                <text wx:else class='grade-item' bindtap='bindGradeSelect' data-index="{{index}}">{{item.Grade}}</text>
+            </block>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>长度：</text>
+        </view>
+        <view>
+            <text>{{product.Slength}}</text>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>价格：</text>
+        </view>
+        <view>
+            <text class='font-color-red'>￥{{product.Price}}</text>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>库存：</text>
+        </view>
+        <view>
+            <text class='font-color-red'>{{product.Timelycount}}</text>
+        </view>
+    </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>购买数量：</text>
+        </view>
+        <view>
+            <!-- 主容器 -->
+            <view class="stepper">
+                <!-- 减号 -->
+                <text bindtap="bindMinus">-</text>
+                <!-- 数值 -->
+                <input type="number" bindchange="bindManual" value="{{buycount}}" />
+                <!-- 加号 -->
+                <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+
 <!-- 底部菜单栏 -->
-<view style='position:fixed;bottom:0;width:100%;display:flex;border-top:1rpx solid #ceced0; background-color:#f7f7fa'>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='switchIndex'>
-        <icon class="iconfont icon-home" style='font-size:50rpx;'></icon>
-        <text style='font-size:28rpx;padding:2rpx'>首页</text>
+<view class='container-bottom'>
+    <view class='container-bottom-group__icon' bindtap='switchIndex'>
+        <icon class="iconfont icon-home"></icon>
+        <text>首页</text>
     </view>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='switchChat'>
-        <icon class="iconfont icon-kefu" style='font-size:50rpx;'></icon>
-        <text style='font-size:28rpx;padding:2rpx'>客服</text>
+    <view class='container-bottom-group__icon' bindtap='switchChat'>
+        <icon class="iconfont icon-kefu"></icon>
+        <text>客服</text>
     </view>
-    <view style='width:100rpx;display:flex;flex-direction:column;justify-content:center;align-items:center' bindtap='addMyLove'>
-        <icon class="iconfont icon-follow" style='font-size:40rpx;'></icon>
-        <text style='font-size:28rpx;padding:2rpx'>{{follow.tip}}</text>
+    <view class='container-bottom-group__icon' bindtap='addMyLove'>
+        <icon class="iconfont icon-follow"></icon>
+        <text>{{follow.tip}}</text>
     </view>
-    <view style='width:452rpx;height:100rpx;display:flex;justify-content:space-between'>
-        <button style='color:#fff;background-color:#00BC71;border-radius:0;font-size:32rpx;padding:10rpx 24rpx;width:226rpx' bindtap='bindAddCart'>加入购物车</button>
-        <button style='color:#fff;background-color:#DD4A32;border-radius:0;font-size:32rpx;padding:10rpx 24rpx;width:226rpx' bindtap='bindBuyNow'>立即购买</button>
+    <view class='container-bottom-group__button'>
+        <button class='button-green' bindtap='bindAddCart'>加入购物车</button>
+        <button class='button-red' bindtap='bindBuyNow'>立即购买</button>
     </view>
 </view>

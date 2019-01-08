@@ -83,6 +83,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        if (!app.checkLogin()) {
+            return false;
+        }
         var _that = this;
         var member = this.data.member;
         var memcode = this.data.memcode;

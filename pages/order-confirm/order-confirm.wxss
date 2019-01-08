@@ -15,3 +15,74 @@
     align-items: center;
     margin: 15rpx;
 }
+
+.container {
+    margin: 15rpx;
+}
+
+.container-items {
+    background-color: #fff;
+    padding: 0 30rpx;
+    border-radius: 5rpx;
+}
+
+.items-group {
+    padding: 20rpx 0;
+    /* border-bottom: 1rpx solid #f0f0f0; */
+}
+
+.items-group:last-child {
+    border-bottom: 0rpx solid #f0f0f0;
+}
+
+.items-group-flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.item-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-flex icon {
+    font-size: 36rpx;
+}
+
+.item-flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item-flex-column {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.item-flex .item-flex-icon {
+    margin-right: 30rpx;
+    width: 32rpx;
+}
+
+.container-flex__bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.container-flex__bottom  button {
+    width: 690rpx;
+    color: #fff;
+    background-color: #0ac775;
+}
+
+.txt-tip_selected {
+    border-radius: 15%;
+    margin: 15rpx;
+    padding: 0 10rpx;
+    border: red 1rpx solid;
+    color: red;
+}

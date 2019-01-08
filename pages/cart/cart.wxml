@@ -118,7 +118,7 @@
     <view wx:else style='display:flex;justify-content:center;align-items:center;margin:15rpx;'>
         <view style='display:flex;justify-content:center;align-items:center;'>
             <text style='color:red;font-size:32rpx;padding:2rpx'>合计:￥{{dataTotal}}</text>
-            <button style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;'>去结算</button>
+            <button bindtap='bindConfirmOrder' style='font-size:32rpx;color:#fff;background-color:red;padding:0 45rpx;margin:0 10rpx;'>去结算</button>
         </view>
     </view>
 </view>
