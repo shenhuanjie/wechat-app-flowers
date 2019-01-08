@@ -1,36 +1,36 @@
 <!--pages/login/login.wxml-->
 <view class='pre-warp'>
-  <image src="../../resource/images/img_login_bg.png" class='pre-image-bg'></image>
-  <view class='pre-content'>
-    <view class='pre-form'>
-      <view class="pre-form-cell">
-        <label>用户名：</label>
-        <input class="" placeholder-class="phcolor" placeholder="请输入用户名" value='{{username}}' bindinput='bindUserName' />
-      </view>
-      <view class="pre-form-cell">
-        <text decode="true" space="true">密&nbsp;&nbsp;&nbsp;码：</text>
-        <input class="" type='password' placeholder-class="phcolor" placeholder="请输入密码" value='{{password}}' bindinput='bindPassword' />
-      </view>
+    <image src="../../resource/images/img_login_bg.png" class='pre-image-bg'></image>
+    <view class='pre-content'>
+        <view class='pre-form'>
+            <view class="pre-form-cell">
+                <label>用户名：</label>
+                <input class="" placeholder-class="phcolor" placeholder="请输入用户名" value='{{username}}' bindinput='bindUserName' />
+            </view>
+            <view class="pre-form-cell">
+                <text decode="true" space="true">密&nbsp;&nbsp;&nbsp;码：</text>
+                <input class="" type='password' placeholder-class="phcolor" placeholder="请输入密码" value='{{password}}' bindinput='bindPassword' />
+            </view>
 
-      <view class="pre-form-cell" style='position: relative;'>
-        <label>验证码：</label>
-        <input class="" placeholder-class="phcolor" placeholder="验证码" style='width:120rpx' value="{{validCode}}" bindinput='bindValidCode' />
-        <image id="imgCode" class="imgCode" src="{{imgCode}}" />
-        <text class='codeTip' bindtap='toChangeImg'>看不清楚,换一张</text>
-      </view>
-    </view>
-    <label class='pre-chk-save'>
-      <checkbox-group bindchange="checkboxChange">
-        <label class="checkbox" wx:for="{{items}}" wx:key="{{id}}">
-          <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+            <view class="pre-form-cell" style='position: relative;'>
+                <label>验证码：</label>
+                <input class="" placeholder-class="phcolor" placeholder="验证码" style='width:120rpx' value="{{validCode}}" bindinput='bindValidCode' />
+                <image id="imgCode" class="imgCode" src="{{imgCode}}" />
+                <text class='codeTip' bindtap='toChangeImg'>看不清楚,换一张</text>
+            </view>
+        </view>
+        <label class='pre-chk-save'>
+            <checkbox-group bindchange="checkboxChange">
+                <label class="checkbox">
+                    <checkbox value="记住密码" checked="{{savePassword}}" />记住密码
+                </label>
+            </checkbox-group>
         </label>
-      </checkbox-group>
-    </label>
-    <button bindtap='onLogin'>登录</button>
-    <view class='pre-text'>
-      <text>还不是缤纷会员？</text>
-      <text class='pre-color-red' bindtap='toRegister'>立即注册</text>
-      <text class='pre-color-red'>找回密码？</text>
+        <button bindtap='onLogin'>登录</button>
+        <view class='pre-text'>
+            <text>还不是缤纷会员？</text>
+            <text class='pre-color-red' bindtap='toRegister'>立即注册</text>
+            <text class='pre-color-red'>找回密码？</text>
+        </view>
     </view>
-  </view>
 </view>

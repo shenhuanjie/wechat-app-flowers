@@ -32,7 +32,8 @@
         "pages/delivery-query-detail/delivery-query-detail",
         "pages/order-inquiry/order-inquiry",
         "pages/order-inquiry-detail/order-inquiry-detail",
-        "pages/bill-inquiry/bill-inquiry"
+        "pages/bill-inquiry/bill-inquiry",
+        "pages/pay/pay"
     ],
     "window": {
         "backgroundTextStyle": "light",

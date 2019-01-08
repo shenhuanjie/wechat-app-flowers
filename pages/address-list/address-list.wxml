@@ -2,7 +2,7 @@
     <view class="container">
         <view class='container-items'>
             <block wx:for="{{dataList}}" wx:key="{{item.id}}">
-                <view class='items-group items-group-flex'>
+                <view class='items-group items-group-flex' bindtap='selectAddressBack' data-index="{{index}}">
                     <view class="item-flex">
                         <view>
                             <text class='font-content'>{{item.Phone}}</text>
@@ -11,7 +11,9 @@
                         <icon wx:if="{{item.Isdefault==0}}" class="iconfont icon-star" catchtap='starAddressModal' data-id='{{item.Id}}'></icon>
                     </view>
                     <view class="item-flex">
-                        <text class='font-item font-color-gray'>{{item.Detailedaddress}}</text>
+                        <view>
+                            <icon class="iconfont icon-location font-color-gray"></icon>
+                            <text class='font-item font-color-gray'>{{item.Detailedaddress}}</text> </view>
                         <icon class="iconfont icon-trash" catchtap='trashAddressModal' data-id='{{item.Id}}'></icon>
                     </view>
                 </view>
@@ -25,7 +27,7 @@
             <view class='items-group items-group-flex'>
                 <view class="item-flex">
                     <view>
-                        <text class='font-content' >您暂无收货地址</text>
+                        <text class='font-content'>您暂无收货地址</text>
                     </view>
                 </view>
             </view>
@@ -37,5 +39,5 @@
 </view>
 
 <view class="container container-flex__bottom">
-    <button bindtap='toAddAddress' >＋添加收货地址</button>
+    <button bindtap='toAddAddress'>＋添加收货地址</button>
 </view>

@@ -18,12 +18,61 @@ Page({
         this.setData({
             cartId: options.cartId
         })
+    },
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
+        if (!app.checkLogin()) {
+            return false;
+        }
         this.getConfirmList();
     },
     bindToPay: function() {
-        wx.showToast({
-            title: '去支付',
-            icon: 'none'
+        var that = this;
+        var addressList = this.data.addressList;
+        if (Array.prototype.isPrototypeOf(addressList) && addressList.length === 0) {
+            wx.showModal({
+                title: '提示',
+                content: '您还没添加默认收货地址哦~',
+                success(res) {
+                    if (res.confirm) {
+                        setTimeout(function() {
+                            wx.showLoading({});
+                            setTimeout(function() {
+                                that.bindAddress();
+                                wx.hideLoading();
+                            }, 1000);
+                        }, 500);
+                    }
+                }
+            })
+            return 0;
+        }
+
+        var dataList = [];
+        var cartList = that.data.cartList;
+        for (var i = 0; i < cartList.length; i++) {
+            var id = cartList[i].Id;
+            var num = cartList[i].Ordercount;
+            dataList.push(id + "_" + num);
+        }
+        wx.setStorageSync("cart", dataList.join(','));
+
+        wx.setStorageSync("orderRemark", that.data.orderRemark);
+        wx.navigateTo({
+            url: '../../pages/pay/pay',
+        })
+    },
+    bindAddress: function() {
+        var isback = 1; //传参数返回
+        wx.navigateTo({
+            url: '../../pages/address-list/address-list?isback=' + isback,
+        })
+    },
+    bindRemark: function(e) {
+        this.setData({
+            orderRemark: e.detail.value
         })
     },
     /**
@@ -46,11 +95,35 @@ Page({
             success(res) {
                 console.log(res.data);
                 if (res.data.Success) {
+                    var addressList = res.data.AddressList;
+                    if (Array.prototype.isPrototypeOf(addressList) && addressList.length === 0) {
+                        wx.showModal({
+                            title: '提示',
+                            content: '您还没添加默认收货地址哦~',
+                            success(res) {
+                                if (res.confirm) {
+                                    setTimeout(function() {
+                                        wx.showLoading({});
+                                        setTimeout(function() {
+                                            that.bindAddress();
+                                            wx.hideLoading();
+                                        }, 1000);
+                                    }, 500);
+                                }
+                            }
+                        })
+                    }
+                    var cartList = res.data.CartList;
+                    var totalAmount = res.data.TotalAmount;
+                    wx.setStorageSync("totalAmount", totalAmount)
                     that.setData({
-                        addressList: res.data.AddressList,
-                        cartList: res.data.CartList,
-                        totalAmount: res.data.TotalAmount
+                        addressList: addressList,
+                        cartList: cartList,
+                        totalAmount: totalAmount
                     })
+
+
+
                 } else {
                     wx.showToast({
                         title: res.data.Msg,

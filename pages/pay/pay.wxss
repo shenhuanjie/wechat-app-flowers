@@ -1,0 +1,78 @@
+.container {
+}
+
+.container .item-group__title {
+    background-color: #fff;
+    padding: 60rpx 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    justify-items: center;
+    align-content: center; */
+    align-items: center;
+}
+
+.container .item-group__title text {
+    font-size: 36rpx;
+    padding: 15rpx 0;
+}
+
+.container .item-group__title text:last-child {
+    color: red;
+}
+
+.container .item-group__subtitle {
+    padding: 30rpx 0 30rpx 30rpx;
+    font-size: 32rpx;
+}
+
+.container .item-group__payitems {
+    background-color: #fff;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;*//* justify-items: center; *//* align-content: center;  *//* align-items: center; */
+}
+
+.container .item-group__payitems .pay-items__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .item-group__payitems .pay-items__item .pay-item__content {
+    display: flex;
+    justify-content: space-between;
+    /* justify-items: center; *//* align-content: center;  */
+    align-items: center;
+    padding: 30rpx 0;
+    flex: 1;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.container .item-group__payitems .pay-items__item .pay-item__content icon {
+    flex: 1;
+}
+
+.container .item-group__payitems .pay-items__item .pay-item__content text {
+    flex: 9;
+    font-size: 32rpx;
+}
+
+.container-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1rpx solid #ceced0;
+}
+
+.container-bottom .bottom-btn__submit {
+    text-align: center;
+    background: #0ac775;
+    padding: 30rpx 0;
+}
+
+.container-bottom .bottom-btn__submit text {
+    color: #fff;
+    font-size: 32rpx;
+}

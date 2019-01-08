@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 33,
+			"current": 34,
 			"list": [
 				{
 					"id": -1,
@@ -238,6 +238,12 @@
 					"name": "delivery-query-detail",
 					"pathName": "pages/delivery-query-detail/delivery-query-detail",
 					"query": "id=82440 "
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
+					"query": ""
 				}
 			]
 		}

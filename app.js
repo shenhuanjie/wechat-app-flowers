@@ -5,7 +5,18 @@ App({
      * 用户点击退出登录
      */
     onLogout: function() {
+        var userInfo = wx.getStorageSync("userInfo");
         wx.clearStorage();
+        if (userInfo != "") {
+            wx.setStorage({
+                key: 'userInfo',
+                data: {
+                    username: userInfo.username,
+                    password: userInfo.password,
+                    savePassword: userInfo.savePassword
+                },
+            })
+        }
         setTimeout(function() {
             wx.showLoading({});
             setTimeout(function() {
@@ -36,8 +47,8 @@ App({
             setTimeout(function() {
                 wx.navigateBack({});
                 wx.hideLoading();
-            }, 2000);
-        }, 2000);
+            }, 1000);
+        }, 500);
     },
     /**
      * 显示加载
@@ -115,6 +126,6 @@ App({
         // 缩略图前缀
         thumbnailsPrefix: "http://www.brightenflower.cn/PicPath/img/",
         // 腾讯位置服务
-        MapsKey: "LGFBZ-IRO6I-FQDGC-5YPUC-XPDK5-BVBDR"
+        MapsKey: "LGFBZ-IRO6I-FQDGC-5YPUC-XPDK5-BVBDR",
     }
 })

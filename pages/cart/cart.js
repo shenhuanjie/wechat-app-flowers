@@ -148,7 +148,7 @@ Page({
             }
         }
         // 只有大于一件的时候，才能normal状态，否则disable状态
-        var minusStatus = num <= 1 ? 'disabled' : 'normal';
+        var minusStatus = num < 1 ? 'disabled' : 'normal';
 
 
         dataList[index].Ordercount = num;

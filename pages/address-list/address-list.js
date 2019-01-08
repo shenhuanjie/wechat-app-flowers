@@ -5,15 +5,15 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {
-
-    },
+    data: {},
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.getReceivingaddressList();
+        this.setData({
+            isback: parseInt(options.isback)
+        })
     },
     onShow: function() {
         this.getReceivingaddressList();
@@ -39,6 +39,41 @@ Page({
             }
         });
     },
+    selectAddressBack: function(even) {
+        var that = this;
+        var index = even.currentTarget.dataset.index;
+        var dataList = that.data.dataList;
+        var isback = this.data.isback;
+        var address = dataList[index];
+        var isDefault = address.Isdefault;
+        if (isback == 1) {
+            if (isDefault == 1) {
+                app.navigateBack();
+            } else if (isDefault == 0) {
+                wx.showModal({
+                    title: '提示',
+                    content: '确认要设置该地址为默认地址吗？',
+                    success(res) {
+                        if (res.confirm) {
+                            that.starAddress(address.Id);
+                        }
+                    }
+                })
+            }
+        } else {
+            if (isDefault == 0) {
+                wx.showModal({
+                    title: '提示',
+                    content: '确认要设置该地址为默认地址吗？',
+                    success(res) {
+                        if (res.confirm) {
+                            that.starAddress(address.Id);
+                        }
+                    }
+                })
+            }
+        }
+    },
     starAddress: function(id) {
         var that = this;
         wx.showLoading({
@@ -58,6 +93,9 @@ Page({
                 console.log(data);
                 that.getReceivingaddressList();
                 wx.hideLoading();
+                if (that.data.isback == 1) {
+                    app.navigateBack();
+                }
             }
         })
     },
@@ -121,8 +159,9 @@ Page({
             success(res) {
                 var data = res.data;
                 console.log(data);
+                var dataList = data.Rows;
                 that.setData({
-                    dataList: data.Rows,
+                    dataList: dataList,
                     total: data.Total
                 })
                 wx.hideLoading();

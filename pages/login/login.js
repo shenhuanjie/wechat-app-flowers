@@ -12,18 +12,25 @@ Page({
         password: "",
         validCode: "",
         savePassword: false,
-        items: [{
-            name: 'savePwd',
-            value: '记住密码'
-        }]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+        var that = this;
         this.toChangeImg();
-        var 
+        wx.getStorage({
+            key: 'userInfo',
+            success: function(res) {
+                var userInfo = res.data;
+                that.setData({
+                    username: userInfo.username,
+                    password: userInfo.password,
+                    savePassword: userInfo.savePassword
+                })
+            },
+        })
     },
 
     /**
@@ -40,40 +47,7 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    },
     bindUserName: function(event) {
         this.setData({
             username: event.detail.value
@@ -109,6 +83,7 @@ Page({
         var userpassword = this.data.password;
         var validCode = this.data.validCode;
         var guid = this.data.guid;
+        var savePassword = this.data.savePassword;
 
         var checkFlat = true;
         var errorMsg = "";
@@ -131,6 +106,8 @@ Page({
             return false;
         }
 
+
+
         wx.request({
             url: app.globalData.appUrl + '/Member/Userlogin',
             data: {
@@ -151,6 +128,22 @@ Page({
                         key: "memcode",
                         data: username
                     });
+
+                    if (savePassword) {
+                        wx.setStorage({
+                            key: 'userInfo',
+                            data: {
+                                username: username,
+                                password: userpassword,
+                                savePassword: savePassword
+                            },
+                        })
+                    } else {
+                        wx.removeStorage({
+                            key: 'userInfo',
+                            success: function(res) {},
+                        })
+                    }
 
                     var member = data.Rows[0];
                     wx.setStorage({

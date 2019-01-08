@@ -37,13 +37,21 @@
                     </view>
                     <view class='pre-list-item-button-group'>
                         <!-- 主容器 -->
+                        <!-- <view class="stepper" style='display:flex;height:32rpx;'>
+                            <text class="{{item.MinusStatus}}" style='flex:1;height:32rpx;' bindtap="bindMinus" data-index='{{index}}'>-</text>
+                            <input type="number" style='flex:1;height:32rpx;' bindchange="bindManual" value="{{item.Ordercount}}" data-index='{{index}}' />
+                            <text class="normal" style='flex:1;height:32rpx;' bindtap="bindPlus" data-index='{{index}}'>+</text>
+                        </view> -->
                         <view class="stepper">
-                            <!-- 减号 -->
-                            <text class="{{item.MinusStatus}}" bindtap="bindMinus" data-index='{{index}}'>-</text>
-                            <!-- 数值 -->
-                            <input type="number" bindchange="bindManual" value="{{item.Ordercount}}" data-index='{{index}}' />
-                            <!-- 加号 -->
-                            <text class="normal" bindtap="bindPlus" data-index='{{index}}'>+</text>
+                            <view class='stepper__text' bindtap="bindMinus" data-index='{{index}}'>
+                                <text class="{{item.MinusStatus}}">－</text>
+                            </view>
+                            <view class='stepper__input' style='flex:2'>
+                                <input type="number" value="{{item.Ordercount}}" bindchange="bindManual" data-index='{{index}}'></input>
+                            </view>
+                            <view class='stepper__text' bindtap="bindPlus" data-index='{{index}}'>
+                                <text class="normal">＋</text>
+                            </view>
                         </view>
                     </view>
                 </view>

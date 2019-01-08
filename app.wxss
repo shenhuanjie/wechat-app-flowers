@@ -73,7 +73,9 @@ canvas {
 .font-color-green {
     color: #0ac775;
 }
-
+.font-color-yellow {
+    color: #f2b233;
+}
 .btn-color-green {
     background-color: #0ac775;
     color: #fff;

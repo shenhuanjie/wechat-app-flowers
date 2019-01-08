@@ -1,7 +1,7 @@
 <view class="container">
-    <view class='container-items' style='border:1px solid #9bdf70;background:#fff'>
+    <view class='container-items' style='border-bottom:2rpx solid #9bdf70;background:#fff'>
         <block wx:for="{{addressList}}" wx:key="{{item.id}}">
-            <view wx:if="{{item.Isdefault==1}}" class='items-group items-group-flex'>
+            <view wx:if="{{item.Isdefault==1}}" class='items-group items-group-flex' bindtap='bindAddress'>
                 <view class="item-flex">
                     <view>
                         <text class='font-content'>{{item.Phone}}</text>
@@ -20,16 +20,16 @@
     </view>
 </view>
 
-<view class="container" style='margin-bottom:140rpx;'>
+<view class="container">
     <view class='container-items'>
         <block wx:for="{{cartList}}" wx:key="{{item.id}}">
             <view style='display:flex;border-bottom:1rpx solid #f0f0f0;'>
                 <view class='items-group items-group-flex'>
-                    <view style='width:200rpx;height:200rpx;'>
+                    <view style='width:80rpx;height:80rpx;'>
                         <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" style='width:100%;height:100%;' />
                     </view>
                 </view>
-                <view class='items-group items-group-flex'>
+                <view class='items-group items-group-flex' style='flex:3'>
                     <view class="item-flex">
                         <text class='font-content'>{{item.Name}}</text>
                     </view>
@@ -42,6 +42,13 @@
         </block>
     </view>
 </view>
+
+<view class="container" style='margin-bottom:140rpx;'>
+    <view style='background-color:#fff'>
+        <input placeholder='选填：给商家留言（45字内）' bindinput='bindRemark' style='font-size:28rpx;padding:15rpx;'></input>
+    </view>
+</view>
+
 <!-- 底部菜单栏 -->
 <view class='container-bottom'>
     <view style=''>

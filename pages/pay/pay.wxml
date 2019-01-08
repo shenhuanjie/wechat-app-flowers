@@ -1,0 +1,28 @@
+<view class='container'>
+    <view class='item-group__title'>
+        <text>本次订单支付金额</text>
+        <text>￥{{totalAmount}}</text>
+    </view>
+    <view class='item-group__subtitle'>
+        <text>支付方式</text>
+    </view>
+    <view class='item-group__payitems'>
+        <block wx:for="{{dataList}}" wx:key="{{id}}">
+            <view class='pay-items__item' bindtap='bindSwitchTab' data-index="{{index}}">
+                <view class='pay-item__content'>
+                    <icon class="iconfont {{item.icon}} {{item.color}}"></icon>
+                    <text wx:if="{{index==0}}">{{item.name}}</text>
+                    <text wx:else>{{item.name}}（余额：￥{{member.Monetary}}）</text>
+                    <icon wx:if="{{dataIndex!=index}}" class="iconfont icon-unselected"></icon>
+                    <icon wx:else class="iconfont icon-select-fill style='font-color-green'"></icon>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+
+<view class='container-bottom'>
+    <view class='bottom-btn__submit' bindtap='bindSubmit'>
+        <text>确认支付</text>
+    </view>
+</view>

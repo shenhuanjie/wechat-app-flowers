@@ -127,6 +127,7 @@ Page({
                         area: '',
                         address: ''
                     })
+                    app.navigateBack();
                 } else {
                     wx.showToast({
                         title: msg,
