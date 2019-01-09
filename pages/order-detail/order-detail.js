@@ -28,21 +28,13 @@ Page({
             pageSize: 1
         }
         console.log(data);
-        wx.request({
-            url: url,
-            data: data,
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                var data = res.data;
-                console.log(data);
-                that.setData({
-                    dataTotal: data.Total,
-                    dataList: data.Rows
-                })
-            }
-        })
+        app.request(url, data, function(res) {
+            var data = res.data;
+            console.log(data);
+            that.setData({
+                dataTotal: data.Total,
+                dataList: data.Rows
+            })
+        });
     }
-
 })

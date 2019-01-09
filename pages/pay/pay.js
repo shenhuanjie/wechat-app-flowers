@@ -38,10 +38,7 @@ Page({
     bindSubmit: function() {
         var isCreateOrder = this.data.isCreateOrder;
         if (isCreateOrder) {
-            wx.showToast({
-                title: '请勿重复提交订单',
-                icon: 'none'
-            });
+            app.showModal('请勿重复提交订单');
             return;
         }
         this.createOrder();
@@ -68,10 +65,7 @@ Page({
      * 微信支付
      */
     wechatPay: function() {
-        wx.showToast({
-            title: '微信支付正在开发中',
-            icon: 'none'
-        });
+        app.showModal('微信支付正在开发中');
     },
     /**
      * 余额支付
@@ -89,70 +83,49 @@ Page({
             remark: wx.getStorageSync('orderRemark'),
             fatherUser: wx.getStorageSync('fatherUser') ? wx.getStorageSync('fatherUser') : "9995"
         }
-        wx.request({
-            url: url,
-            data: data,
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                console.log(res.data);
-                if (!res.data.Success) {
-                    wx.showToast({
-                        title: res.data.Msg,
-                        icon: 'none'
-                    });
+        app.request(url, data, function(res) {
+            console.log(res.data);
+            if (!res.data.Success) {
+                var msg = res.data.Msg;
+                app.showModal(msg);
+                that.setData({
+                    isCreateOrder: false
+                })
+            } else {
+                if (payWay == 0) {
+                    var requestStr = data.obj.alipayReqStr; //支付串
+                    // mui.toast('创建订单完成，正在跳转支付宝支付');
+                    // plus.payment.request(channel, requestStr, function (result) {
+                    //     plus.nativeUI.alert("支付成功！", function () {
+                    //         mui.back();
+                    //         return;
+                    //     });
+                    // }, function (error) {
+                    //     plus.nativeUI.alert("支付失败！(代码：" + error.code + ")");
+                    // });
                 } else {
-                    if (payWay == 0) {
-                        var requestStr = data.obj.alipayReqStr; //支付串
-                        // mui.toast('创建订单完成，正在跳转支付宝支付');
-                        // plus.payment.request(channel, requestStr, function (result) {
-                        //     plus.nativeUI.alert("支付成功！", function () {
-                        //         mui.back();
-                        //         return;
-                        //     });
-                        // }, function (error) {
-                        //     plus.nativeUI.alert("支付失败！(代码：" + error.code + ")");
-                        // });
-                    } else {
-                        wx.showToast({
-                            title: "支付成功",
-                            icon: 'none'
+                    app.showModal("支付成功", function(res) {
+                        app.setTimeout(function(res) {
+                            app.navigateToIndex();
                         });
-                        setTimeout(function() {
-                            wx.showLoading({});
-                            setTimeout(function() {
-                                wx.switchTab({
-                                    url: '../../pages/index/index',
-                                })
-                                wx.hideLoading();
-                            }, 1000);
-                        }, 500);
-                        return;
-                    }
+                    });
                 }
             }
         })
     },
     getMemberByCode: function() {
+        app.showLoading();
         var that = this;
         var url = app.globalData.appUrl + '/Member/GetMemberByCode'
         var data = {
             memcode: wx.getStorageSync("memcode")
         }
-        wx.request({
-            url: url,
-            data: data,
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                var member = res.data.Member;
-                if (member && member.Id > 0) {
-                    that.setData({
-                        member: member
-                    });
-                }
+        app.request(url, data, function(res) {
+            var member = res.data.Member;
+            if (member && member.Id > 0) {
+                that.setData({
+                    member: member
+                });
             }
         })
     }

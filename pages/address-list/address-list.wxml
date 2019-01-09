@@ -12,8 +12,8 @@
                     </view>
                     <view class="item-flex">
                         <view>
-                            <icon class="iconfont icon-location font-color-gray"></icon>
-                            <text class='font-item font-color-gray'>{{item.Detailedaddress}}</text> </view>
+                            <icon class="iconfont icon-location font-color-red" style='font-size:32rpx;'></icon>
+                            <text class='font-item font-color-gray'>{{item.Province}}{{item.City}}{{item.Area}} {{item.Detailedaddress}}</text> </view>
                         <icon class="iconfont icon-trash" catchtap='trashAddressModal' data-id='{{item.Id}}'></icon>
                     </view>
                 </view>
@@ -21,7 +21,7 @@
         </view>
     </view>
 </block>
-<block wx:else>
+<block wx:if="{{total==0}}">
     <view class="container">
         <view class='container-items'>
             <view class='items-group items-group-flex'>
@@ -38,6 +38,6 @@
     <icon class="iconfont icon-null"></icon>
 </view>
 
-<view class="container container-flex__bottom">
+<view class="container-flex__bottom">
     <button bindtap='toAddAddress'>＋添加收货地址</button>
 </view>

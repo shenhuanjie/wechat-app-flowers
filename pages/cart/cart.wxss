@@ -1,5 +1,9 @@
 .container {
-    margin: 30rpx 30rpx 15rpx 30rpx;
+    margin: 30rpx 20rpx 15rpx 20rpx;
+}
+
+.container:last-child {
+    margin: 15rpx 30rpx 15rpx 30rpx;
 }
 
 .container .fliters-nav {

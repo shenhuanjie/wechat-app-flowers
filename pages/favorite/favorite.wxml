@@ -1,4 +1,4 @@
-<view class="container">
+<!-- <view class="container">
     <view class="fliters-nav">
         <block wx:for="{{flitersList}}" wx:key="{{id}}">
             <block wx:if="{{item.isIcon==false}}">
@@ -13,17 +13,17 @@
             </block>
         </block>
     </view>
-</view>
-<view class="container">
+</view>-->
+<!-- <view class="container">
     <view>
         <input class='searchInput' placeholder='请输入你要搜索的内容'></input>
     </view>
-</view>
+</view>  -->
 <view class='container'>
     <!-- 列表视图 -->
     <view class='pre-list'>
         <block wx:for="{{productList}}" wx:key="id">
-            <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Productid}}'>
+            <view class='pre-list-item' bindtap='toProduct' data-id='{{item.Code}}'>
                 <view class='pre-list-item-img'>
                     <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
                 </view>

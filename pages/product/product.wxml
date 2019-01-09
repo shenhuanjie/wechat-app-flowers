@@ -110,7 +110,7 @@
 <!-- 底部菜单栏 -->
 <view class='container-bottom'>
     <view class='container-bottom-group__icon' bindtap='switchIndex'>
-        <icon class="iconfont icon-home"></icon>
+        <icon class="iconfont icon-home" style='font-size:48rpx;'></icon>
         <text>首页</text>
     </view>
     <view class='container-bottom-group__icon' bindtap='switchChat'>
@@ -118,7 +118,7 @@
         <text>客服</text>
     </view>
     <view class='container-bottom-group__icon' bindtap='addMyLove'>
-        <icon class="iconfont icon-follow"></icon>
+        <icon class="iconfont icon-follow" style='font-size:40rpx;'></icon>
         <text>{{follow.tip}}</text>
     </view>
     <view class='container-bottom-group__button'>

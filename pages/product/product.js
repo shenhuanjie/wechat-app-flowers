@@ -31,7 +31,7 @@ Page({
         this.getVProduct();
     },
     initView: function(options) {
-        var _that = this;
+        var that = this;
 
         var code = options.productId;
         var memCode = wx.getStorageSync('memcode');
@@ -218,45 +218,37 @@ Page({
             codeType = 0;
         }
         console.log(data);
-        wx.request({
-            url: url,
-            data: data,
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                console.log(res.data.VProduct);
-                var product = res.data.VProduct;
-                var vproduct = res.data.VProduct;
-                if (codeType == 0) {
-                    vproduct.Price = vproduct.Miprice + "~" + vproduct.Maprice;
-                    vproduct.Picpath = vproduct.Piclist.split(',')[0];
-                    that.setData({
-                        brandList: product.Brand.substr(0, product.Brand.length - 1).split(","),
-                        brandIndex: 0,
-                        ssite: product.Ssite,
-                        name: product.Name,
-                        product: product,
-                        vproduct: vproduct,
-                        codeType: codeType
-                    })
-                } else {
-                    that.setData({
-                        brandList: product.Brand.split(","),
-                        brandIndex: 0,
-                        ssite: product.Ssite,
-                        name: product.Name,
-                        product: product,
-                        vproduct: vproduct,
-                        codeType: codeType
-                    })
-                }
-                that.getSaleGrade();
-                wx.setNavigationBarTitle({
-                    title: product.Name
+        app.request(url, data, function(res) {
+            console.log(res.data.VProduct);
+            var product = res.data.VProduct;
+            var vproduct = res.data.VProduct;
+            if (codeType == 0) {
+                vproduct.Price = vproduct.Miprice + "~" + vproduct.Maprice;
+                vproduct.Picpath = vproduct.Piclist.split(',')[0];
+                that.setData({
+                    brandList: product.Brand.substr(0, product.Brand.length - 1).split(","),
+                    brandIndex: 0,
+                    ssite: product.Ssite,
+                    name: product.Name,
+                    product: product,
+                    vproduct: vproduct,
+                    codeType: codeType
                 })
-
+            } else {
+                that.setData({
+                    brandList: product.Brand.split(","),
+                    brandIndex: 0,
+                    ssite: product.Ssite,
+                    name: product.Name,
+                    product: product,
+                    vproduct: vproduct,
+                    codeType: codeType
+                })
             }
+            that.getSaleGrade();
+            wx.setNavigationBarTitle({
+                title: product.Name
+            })
         })
     },
     /**

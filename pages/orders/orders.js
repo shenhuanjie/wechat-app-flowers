@@ -23,15 +23,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        if (!app.checkLogin()) {
-            return false;
-        }
+
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        if (!app.checkLogin()) {
+            return false;
+        }
         this.getMyOrderListe();
     },
     /**
@@ -40,25 +41,10 @@ Page({
     bindSwitchTab: function(e) {
         var that = this;
         var index = e.currentTarget.dataset.index;
-        var dataList = [];
-        switch (index) {
-            case 0:
-                dataList = that.data.allOrderList;
-                break;
-            case 1:
-                dataList = that.data.cartList;
-                break;
-            case 2:
-                dataList = that.data.unsendList;
-                break;
-            case 3:
-                dataList = that.data.finishList;
-                break;
-        }
         this.setData({
             fliterSelected: index,
-            dataList: dataList
         })
+        this.getMyOrderListe();
     },
     getMyOrderListe: function() {
         var that = this;
@@ -67,42 +53,35 @@ Page({
             memCode: wx.getStorageSync("memcode")
         }
         console.log(data);
-        wx.request({
-            url: url,
-            data: data,
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                var data = res.data;
-                console.log(data);
-                var dataList = [];
-                var allOrderList = that.formatData(data.AllOrderList);
-                var cartList = that.formatData(data.CartList);
-                var unsendList = that.formatData(data.UnsendList);
-                var finishList = that.formatData(data.FinishList);
-                switch (that.data.fliterSelected) {
-                    case 0:
-                        dataList = allOrderList;
-                        break;
-                    case 1:
-                        dataList = cartList;
-                        break;
-                    case 2:
-                        dataList = unsendList;
-                        break;
-                    case 3:
-                        dataList = finishList;
-                        break;
-                }
-                that.setData({
-                    dataList: dataList,
-                    allOrderList: allOrderList,
-                    cartList: cartList,
-                    finishList: finishList,
-                    unsendList: unsendList
-                })
+        app.request(url, data, function(res) {
+            var data = res.data;
+            console.log(data);
+            var dataList = [];
+            var allOrderList = that.formatData(data.AllOrderList);
+            var cartList = that.formatData(data.CartList);
+            var unsendList = that.formatData(data.UnsendList);
+            var finishList = that.formatData(data.FinishList);
+            switch (that.data.fliterSelected) {
+                case 0:
+                    dataList = allOrderList;
+                    break;
+                case 1:
+                    dataList = cartList;
+                    break;
+                case 2:
+                    dataList = unsendList;
+                    break;
+                case 3:
+                    dataList = finishList;
+                    break;
             }
+            that.setData({
+                dataList: dataList,
+                allOrderList: allOrderList,
+                cartList: cartList,
+                finishList: finishList,
+                unsendList: unsendList
+            })
         })
     },
     toOrderDetail: function(even) {

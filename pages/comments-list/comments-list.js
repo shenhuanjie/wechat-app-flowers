@@ -60,6 +60,9 @@ Page({
      * 正则过滤
      */
     delHtmlTag: function(str) {
+        if(str==null){
+            str="";
+        }
         if (str == "") {
             return str;
         }

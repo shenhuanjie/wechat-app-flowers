@@ -101,8 +101,8 @@
                         <text class='content-price'>￥{{item.Price}}</text>
                     </view>
                     <view class='pre-list-item-button-group'>
-                        <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
-                        <button catchtap='toBuyNow'>购买</button>
+                        <icon class="iconfont icon-follow" catchtap='toProduct' data-id='{{item.Code}}'></icon>
+                        <button catchtap='toProduct' data-id='{{item.Code}}'>购买</button>
                     </view>
                 </view>
             </block>
@@ -123,8 +123,8 @@
                             <text style='color:red;'>￥{{item.Price}}</text>
                         </view>
                         <view class='pre-grid-item-content-button'>
-                            <icon class="iconfont icon-follow" catchtap='addFollow'></icon>
-                            <button catchtap='toBuyNow'>购买</button>
+                            <icon class="iconfont icon-follow" catchtap='toProduct' data-id='{{item.Code}}'></icon>
+                            <button catchtap='toProduct' data-id='{{item.Code}}'>购买</button>
                         </view>
                     </view>
                 </view>

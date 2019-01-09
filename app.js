@@ -5,6 +5,7 @@ App({
      * 用户点击退出登录
      */
     onLogout: function() {
+        var app = this;
         var userInfo = wx.getStorageSync("userInfo");
         wx.clearStorage();
         if (userInfo != "") {
@@ -17,22 +18,17 @@ App({
                 },
             })
         }
-        setTimeout(function() {
-            wx.showLoading({});
-            setTimeout(function() {
-                wx.navigateTo({
-                    url: '../../pages/login/login'
-                })
-                wx.hideLoading();
-            }, 1000);
-        }, 500);
+        app.setTimeout(function() {
+            wx.navigateTo({
+                url: '../../pages/login/login'
+            })
+        });
     },
     checkLogin: function() {
+        var app = this;
         if (!wx.getStorageSync("memcode")) {
-            this.onLogout();
-            wx.showToast({
-                title: '请登录后操作',
-                icon: 'none'
+            app.showModal('请登录后操作', function(res) {
+                app.onLogout();
             })
             console.log("登录验证失败");
             return false;
@@ -40,22 +36,38 @@ App({
         console.log("登录验证成功");
         return true;
     },
-    navigateBack: function() {
-        var that = this;
+    /**
+     * wx.setTimeout定时器封装
+     * 
+     * fun:执行的方法function()
+     */
+    setTimeout: function(fun) {
+        var app = this;
         setTimeout(function() {
-            wx.showLoading({});
+            app.showLoading({});
             setTimeout(function() {
-                wx.navigateBack({});
-                wx.hideLoading();
+                fun();
+                app.hideLoading();
             }, 1000);
         }, 500);
+    },
+    navigateBack: function() {
+        var app = this;
+        app.setTimeout(function(res) {
+            wx.navigateBack({});
+        });
+    },
+    navigateToIndex: function() {
+        wx.switchTab({
+            url: '../../pages/index/index',
+        })
     },
     /**
      * 显示加载
      */
     showLoading: function() {
         wx.showLoading({
-            title: '加载中，请稍候...'
+            title: '加载中,请稍候……'
         })
     },
     /**
@@ -63,6 +75,35 @@ App({
      */
     hideLoading: function() {
         wx.hideLoading();
+    },
+    /**
+     * 对wx.showModal的封装
+     */
+    showModal: function(content, callback, showCancel) {
+        wx.showModal({
+            title: '温馨提示',
+            content: content,
+            showCancel: showCancel ? showCancel == true ? true : false : false,
+            success: callback
+        })
+    },
+    /**
+     * 对wx.request的基本封装
+     */
+    request: function(url, data, callback) {
+        var that = this;
+        that.showLoading();
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            complete(res) {
+                that.hideLoading();
+            },
+            success: callback
+        })
     },
     /**
      * 日期格式化

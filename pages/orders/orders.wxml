@@ -15,16 +15,20 @@
     </view>
 </view>
 
-<block wx:for="{{dataList}}" wx:key="{{id}}">
-    <view class='container-flex-group' bindtap='toOrderDetail' data-id='{{item.Id}}' data-buyWay="{{item.Buyway}}">
-        <view class='flex-group'>
-            <text style='flex:1;'>{{item.Ordertime}}</text>
-            <text class='font-color-red'>{{item.Name}}</text>
-            <text>数量：{{item.Ordercount}}</text>
-            <text>金额:￥{{item.Ordermoney}}</text>
+<view class='container'>
+    <block wx:for="{{dataList}}" wx:key="{{id}}">
+        <view class='container-flex-group__list' style=''>
+            <view class='container-flex-group' bindtap='toOrderDetail' data-id='{{item.Id}}' data-buyWay="{{item.Buyway}}">
+                <view class='flex-group'>
+                    <text style='flex:1;'>{{item.Ordertime}}</text>
+                    <text class='font-color-red'>{{item.Name}}</text>
+                    <text>数量：{{item.Ordercount}}</text>
+                    <text>金额:￥{{item.Ordermoney}}</text>
+                </view>
+                <view class='flex-group'>
+                    <icon class="iconfont icon-right"></icon>
+                </view>
+            </view>
         </view>
-        <view class='flex-group'>
-            <icon class="iconfont icon-right"></icon>
-        </view>
-    </view>
-</block>
+    </block>
+</view>

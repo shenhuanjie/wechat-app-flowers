@@ -114,7 +114,13 @@ Page({
      * 用户点击退出登录
      */
     onLogout: function() {
-        app.onLogout();
+        app.showModal("是否退出登录？", function(res) {
+            console.log(res);
+            if (res.confirm) {
+                app.onLogout();
+            }
+        }, true)
+
     },
     toMemberInfo: function() {
         wx.navigateTo({
@@ -139,37 +145,31 @@ Page({
         }
     },
     getMemberByCode: function() {
-        var _that = this;
-        var memcode = _that.data.memcode;
-        wx.request({
-            url: app.globalData.appUrl + '/Member/GetMemberByCode',
-            data: {
-                memcode: memcode
-            },
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            success(res) {
-                console.log(res.data)
-                var member = res.data.Member;
-                if (member && member.Id > 0) {
-                    var memcode = member.Code;
-                    var memName = member.Name;
-                    var memMonetary = member.Monetary.toFixed(2);
-                    _that.setData({
-                        member: member,
-                        memcode: memcode,
-                        topmemcode: memName,
-                        lblAccount: memMonetary,
-                        login: "退出登录"
-                    })
-                    wx.setStorage({
-                        key: 'memName',
-                        data: memName,
-                    })
-                } else {
-                    _that.onLogout();
-                }
+        var that = this;
+        var url = app.globalData.appUrl + '/Member/GetMemberByCode';
+        var data = {
+            memcode: that.data.memcode
+        };
+        app.request(url, data, function(res) {
+            console.log(res.data)
+            var member = res.data.Member;
+            if (member && member.Id > 0) {
+                var memcode = member.Code;
+                var memName = member.Name;
+                var memMonetary = member.Monetary.toFixed(2);
+                that.setData({
+                    member: member,
+                    memcode: memcode,
+                    topmemcode: memName,
+                    lblAccount: memMonetary,
+                    login: "退出登录"
+                })
+                wx.setStorage({
+                    key: 'memName',
+                    data: memName,
+                })
+            } else {
+                app.onLogout();
             }
         })
     }

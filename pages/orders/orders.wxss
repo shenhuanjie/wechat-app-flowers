@@ -1,5 +1,6 @@
 .container {
-    margin: 30rpx 30rpx 15rpx 30rpx;
+    margin: 15rpx 15rpx 15rpx 15rpx;
+    border-radius: 5rpx;
 }
 
 .container .fliters-nav {
@@ -29,13 +30,22 @@
     background: #00bc71;
 }
 
+.container-flex-group__list {
+    background-color: #fff;
+    padding: 0 20rpx;
+}
+
 .container-flex-group {
     font-size: 28rpx;
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
-    padding: 15rpx;
+    /* background-color: #fff; */
+    padding: 20rpx 0;
     border-bottom: 1rpx solid #e4e8ea;
+}
+
+.container-flex-group__list:last-child .container-flex-group {
+    border-bottom: none;
 }
 
 .container-flex-group .flex-group {
