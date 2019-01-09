@@ -9,11 +9,13 @@ Page({
         dataList: [{
             name: "微信",
             icon: "icon-weixinzhifu",
-            color: "font-color-green"
+            color: "font-color-green",
+            bgcolor:"font-color-green"
         }, {
             name: "余额钱包",
             icon: "icon-shouzhimingxicaifuqianbao",
-            color: "font-color-yellow"
+            color: "font-color-yellow",
+            bgcolor: "font-color-green"
         }],
         dataIndex: -1
     },
@@ -73,8 +75,17 @@ Page({
      * TODO:https://developers.weixin.qq.com/miniprogram/dev/api/wx.requestPayment.html
      */
     wechatPay: function() {
-        // app.showModal('微信支付正在开发中');
         var that = this;
+        app.showModal('微信支付正在开发中', function(res) {
+            var dataList = that.data.dataList;
+            dataList[0].color = "font-color-gray";
+            dataList[0].bgcolor = "font-color-gray";
+            that.setData({
+                dataList: dataList
+            })
+        });
+
+
         wx.login({
             success(res) {
                 if (res.code) {

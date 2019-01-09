@@ -14,7 +14,7 @@
                     <text wx:if="{{index==0}}">{{item.name}}</text>
                     <text wx:else>{{item.name}}（余额：￥{{member.Monetary}}）</text>
                     <icon wx:if="{{dataIndex!=index}}" class="iconfont icon-unselected"></icon>
-                    <icon wx:else class="iconfont icon-select-fill style='font-color-green'"></icon>
+                    <icon wx:else class="iconfont icon-select-fill {{item.bgcolor}}"></icon>
                 </view>
             </view>
         </block>
