@@ -22,7 +22,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        this.setData({
+            appid: app.globalData.AppID,
+            secret: app.globalData.AppSecret
+        })
     },
     onShow: function() {
         this.setData({
@@ -43,6 +46,9 @@ Page({
         }
         this.createOrder();
     },
+    /**
+     * 创建订单
+     */
     createOrder: function() {
         var that = this;
         var dataIndex = this.data.dataIndex;
@@ -63,10 +69,134 @@ Page({
     },
     /**
      * 微信支付
+     * 
+     * TODO:https://developers.weixin.qq.com/miniprogram/dev/api/wx.requestPayment.html
      */
     wechatPay: function() {
-        app.showModal('微信支付正在开发中');
+        // app.showModal('微信支付正在开发中');
+        var that = this;
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    console.log(res);
+                    // 发起网络请求
+                    wx.request({
+                        url: 'https://api.weixin.qq.com/sns/jscode2session',
+                        data: {
+                            appid: app.globalData.AppID,
+                            secret: app.globalData.AppSecret,
+                            js_code: res.code,
+                            grant_type: "authorization_code"
+                        },
+                        success(res) {
+                            console.log(res.data);
+                            var data = res.data;
+                            if (data.errcode) {
+                                var errmsg = data.errmsg;
+                                var errcode = data.errcode;
+                                switch (errcode) {
+                                    case -1:
+                                        console.log("系统繁忙，此时请开发者稍候再试");
+                                        break;
+                                    case 0:
+                                        console.log("请求成功");
+                                        break;
+                                    case 40029:
+                                        console.log("code 无效");
+                                        break;
+                                    case 45011:
+                                        console.log("频率限制，每个用户每分钟100次");
+                                        break;
+                                    default:
+                                        console.log(errmsg);
+                                        break;
+                                }
+                                return 0;
+                            }
+                            that.setData({
+                                session_key: data.session_key,
+                                openid: data.openid
+                            })
+                            that.unifiedorder();
+                        }
+                    })
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
+        })
     },
+    unifiedorder: function() {
+        var that = this;
+        // 发起网络请求
+        wx.request({
+            url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+            data: {
+                appid: that.data.appid,
+                mch_id: "1230000109",
+                device_info: "013467007045764",
+                nonce_str: "5K8264ILTKCH16CQ2502SI8ZNMTM67VS",
+                sign: "C380BEC2BFD727A4B6845133519F3AD6",
+                sign_type: "MD5",
+                body: "腾讯充值中心-QQ会员充值",
+                detail: "",
+                attach: "深圳分店",
+                out_trade_no: "20150806125346",
+                fee_type: "CNY",
+                total_fee: "88",
+                spbill_create_ip: "123.12.12.123",
+                time_start: "20091225091010",
+                time_expire: "20091227091010",
+                goods_tag: "WXG",
+                notify_url: "http://www.weixin.qq.com/wxpay/pay.php",
+                trade_type: "JSAPI",
+                product_id: "12235413214070356458058",
+                limit_pay: "no_credit",
+                openid: that.data.openid,
+                receipt: "Y",
+                scene_info: {
+                    "store_info": {
+                        "id": "SZTX001",
+                        "name": "腾大餐厅",
+                        "area_code": "440305",
+                        "address": "科技园中一路腾讯大厦"
+                    }
+                }
+
+            },
+            header: {
+                'content-type': 'application/xml'
+            },
+            method: "POST",
+            success(res) {
+                console.log(res.data);
+                var data = res.data;
+                if (data.errcode) {
+                    var errmsg = data.errmsg;
+                    var errcode = data.errcode;
+                    switch (errcode) {
+                        case -1:
+                            console.log("系统繁忙，此时请开发者稍候再试");
+                            break;
+                        case 0:
+                            console.log("请求成功");
+                            break;
+                        case 40029:
+                            console.log("code 无效");
+                            break;
+                        case 45011:
+                            console.log("频率限制，每个用户每分钟100次");
+                            break;
+                        default:
+                            console.log(errmsg);
+                            break;
+                    }
+                    return 0;
+                }
+            }
+        })
+    },
+
     /**
      * 余额支付
      */

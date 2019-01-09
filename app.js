@@ -157,6 +157,9 @@ App({
         return uuid;
     },
     globalData: {
+        // WEIXIN_PAY
+        AppID: "",
+        AppSecret: "",
         userInfo: null,
         // API_URL
         appUrl: "https://api.xy431.com",
