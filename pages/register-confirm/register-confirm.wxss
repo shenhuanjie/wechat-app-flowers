@@ -1,0 +1,100 @@
+/* pages/register/register.wxss */
+
+.pre-warp {
+  height: 100%;
+  position: relative;
+  background-color: #f4f8f7;
+  overflow: hidden;
+}
+
+.pre-warp image {
+  width: 750rpx;
+  height: 1334rpx;
+}
+
+.pre-warp .pre-content {
+  width: 667rpx;
+  min-height: 310rpx;
+  height: auto;
+  margin: 0 42rpx;
+  position: absolute;
+  top: 269rpx;
+}
+
+.pre-warp .pre-content .pre-form {
+  width: 667rpx;
+  min-height: 310rpx;
+  height: auto;
+  margin-bottom: 32rpx;
+  background-color: #fff;
+}
+
+.pre-warp .pre-content .pre-form .pre-form-cell {
+  font-size: 32rpx;
+  width: 100%;
+  height: 56rpx;
+  padding: 24rpx;
+  border-bottom: 1px solid #f8f8f8;
+  line-height: 56rpx;
+}
+
+.pre-warp .pre-content .pre-form .pre-form-cell label,
+.pre-warp .pre-content .pre-form .pre-form-cell text {
+  width: 162rpx;
+  float: left;
+  line-height: 48rpx;
+  height: 48rpx;
+}
+
+.pre-warp .pre-content .pre-form .pre-form-cell input {
+  width: 420rpx;
+  /* border: 1px solid red; */
+  line-height: 48rpx;
+  height: 48rpx;
+}
+
+.pre-chk-save {
+  margin-bottom: 32rpx;
+  display: block;
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.pre-warp .pre-content button {
+  color: #fff;
+  background-color: #00BC71;
+  margin-bottom: 16rpx;
+}
+
+.pre-warp .pre-content>.pre-text {
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
+}
+
+.pre-warp .pre-content>.pre-text text {
+  display: inline-block;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 0 5rpx;
+}
+
+.pre-color-red {
+  color: red;
+}
+#imgCode {
+  width: 150rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 251rpx;
+  top: 25rpx;
+}
+
+.codeTip {
+  color: red;
+  font-size: 22rpx;
+  position: absolute;
+  right: 85rpx;
+  top: 25rpx;
+  text-decoration: underline;
+}

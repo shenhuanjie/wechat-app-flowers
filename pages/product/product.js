@@ -20,6 +20,11 @@ Page({
         showPop: false,
         isNullProduct: false,
         buycount: 1,
+
+        submitType: {
+            type: -1,
+        },
+        buttonColor: "button-green"
     },
 
     /**
@@ -320,28 +325,38 @@ Page({
     },
 
     bindAddCart: function() {
-        this.bindHidePop();
+        this.bindHidePop(0);
         this.setData({
             submitType: {
                 type: 0,
                 title: "addCart"
-            }
-        })
+            },
+            buttonColor: "#01bc72"
+        });
     },
 
     bindBuyNow: function() {
-        this.bindHidePop();
+        this.bindHidePop(1);
         this.setData({
             submitType: {
                 type: 1,
                 title: "buyNow"
-            }
-        })
+            },
+            buttonColor: "#dd4a32"
+        });
+
     },
-    bindHidePop: function() {
-        this.setData({
-            showPop: !this.data.showPop
-        })
+    bindHidePop: function(type) {
+        var submitType = this.data.submitType.type;
+        if (!submitType || submitType == type) {
+            this.setData({
+                showPop: !this.data.showPop
+            })
+        } else {
+            this.setData({
+                showPop: true
+            })
+        }
     },
     bindDateChange: function(e) {
         this.setData({

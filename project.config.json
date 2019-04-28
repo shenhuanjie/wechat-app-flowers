@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 34,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -84,9 +84,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "logistics",
-					"pathName": "pages/logistics/logistics",
+					"id": 8,
+					"name": "index",
+					"pathName": "pages/index/index",
 					"query": ""
 				},
 				{
@@ -243,6 +243,30 @@
 					"id": -1,
 					"name": "pay",
 					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": 35,
+					"name": "register-confirm",
+					"pathName": "pages/register-confirm/register-confirm",
+					"query": "phone=13609086289"
+				},
+				{
+					"id": -1,
+					"name": "agreement",
+					"pathName": "pages/agreement/agreement",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "register-confirm",
+					"pathName": "pages/password-back/password-back",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "password-back",
+					"pathName": "pages/password-back/password-back",
 					"query": ""
 				}
 			]

@@ -25,6 +25,20 @@ Page({
     onLoad: function(options) {
 
     },
+    onShow: function() {
+        var _that = this;
+        if (!wx.getStorageSync('memcode')) {
+
+            wx.showToast({
+                title: "请登录后操作",
+                icon: 'none',
+                duration: 2000
+            })
+            setTimeout(function() {
+                _that.toLogin();
+            }, 4000);
+        }
+    },
     /**
      * 输入框绑定
      */
@@ -48,6 +62,11 @@ Page({
             province: e.detail.value[0],
             city: e.detail.value[1],
             area: e.detail.value[2],
+        })
+    },
+    toLogin: function() {
+        wx.navigateTo({
+            url: '../../pages/login/login'
         })
     },
     /**

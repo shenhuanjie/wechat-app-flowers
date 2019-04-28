@@ -26,11 +26,11 @@ swiper {
     line-height: 1;
 }
 
-.pre-block .pre-block-more {
-    float: right;
-    font-size: 24rpx;
+.pre-block .block-title .pre-block-more {
+    /* float: left; */
+    font-size: 32rpx;
     line-height: 2;
-    color: #b0b0b0;
+    color: gray;
 }
 
 /* 测试版布局 */
@@ -89,6 +89,31 @@ swiper {
     height: 100%;
 }
 
+.container .block-group .block-group-item .block-group-item-text-address {
+    width: 100%;
+    text-align: center;
+    padding: 10rpx;
+    display: flex;
+    align-items: center;
+    background-color: #f7fff6;
+    border-radius: 15%;
+}
+
+.container .block-group .block-group-item .block-group-item-text-address text {
+    padding: 20rpx 20rpx;
+    line-height: 36rpx;
+    font-size: 28rpx;
+    color: #006d23;
+}
+
+.container .block-group .block-group-item .block-group-item-text-address button {
+    background-color: #01bc72;
+    font-size: 28rpx;
+    border-radius: 5%;
+    color: #fff;
+    width: 200rpx;
+}
+
 .container .block-group .block-group-item .block-group-item-text {
     width: 330rpx;
     text-align: center;
@@ -97,4 +122,25 @@ swiper {
 .container .block-group .block-group-item .block-group-item-text text {
     font-size: 32rpx;
     width: 100%;
+}
+
+/* 收货地址弹出栏 */
+
+.container .block-address-pop {
+    border: 1rpx solid #01bc72;
+    padding: 15rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    width: 400rpx;
+    line-height: 1.5;
+}
+
+.container .block-address-pop button {
+    background-color: #01bc72;
+    color: #fff;
+    margin-top: 10rpx;
+}
+
+.container .block-address-pop text, .container .block-address-pop button {
+    font-size: 28rpx;
 }

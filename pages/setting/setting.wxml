@@ -19,6 +19,7 @@
                         <view class="navigator-box navigator-box-show">
                             <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
                                 <view catchtap='toNavigate' data-url="../../pages/{{page.id}}/{{page.id}}" data-tab="{{page.isTab}}" data-param="{{page.param}}" class="navigator">
+                                    <image class='navigator-img' src="/resource/images/{{page.img}}" style=""/>
                                     <view class="navigator-text">{{page.name}}</view>
                                     <view class="navigator-arrow"></view>
                                 </view>

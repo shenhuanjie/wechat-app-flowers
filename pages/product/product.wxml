@@ -37,11 +37,7 @@
 <!-- 底部菜单弹出栏 -->
 
 <view wx:if="{{showPop}}" class='container-bottom container-bottom-pop' style='flex-direction:column;padding:20rpx 0;'>
-    <view style='display:flex;'>
-        <view style='width:730rpx;text-align:right;'>
-            <button class='button-red' bindtap='bindBtnSubmit' style='float:right;color:#fff;background-color:orange;font-size:28rpx;width:200rpx;'>确定</button>
-        </view>
-    </view>
+
     <view style='display:flex;margin:5rpx 5rpx 10rpx 5rpx;'>
         <view style='min-width:200rpx;text-align:right;padding:10rpx 0rpx;'>
             <text>选择品牌：</text>
@@ -103,6 +99,9 @@
                 <text class="normal" bindtap="bindPlus">+</text>
             </view>
         </view>
+    </view>
+    <view style='display:flex;'>
+        <button class='button-submit' bindtap='bindBtnSubmit' style='background-color:{{buttonColor}}'>确定</button>
     </view>
 </view>
 

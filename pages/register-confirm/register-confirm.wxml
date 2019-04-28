@@ -1,0 +1,25 @@
+<!--pages/register/register.wxml-->
+<view class='pre-warp'>
+    <image src="../../resource/images/img_login_bg.png" class='pre-image-bg'></image>
+    <view class='pre-content'>
+        <view class='pre-form'>
+            <view class="pre-form-cell">
+                <text decode="true" space="true">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</text>
+                <input class="" placeholder-class="phcolor" placeholder="请输入用户名" value='{{username}}' bindinput='bindUserName' />
+            </view>
+            <view class="pre-form-cell">
+                <text decode="true" space="true">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</text>
+                <input class="" type='password' placeholder-class="phcolor" placeholder="请输入密码" value='{{password}}' bindinput='bindPassword' />
+            </view>
+            <view class="pre-form-cell">
+                <label>确认密码：</label>
+                <input class="" type='password' placeholder-class="phcolor" placeholder="请确认密码" value='{{confirmPassword}}' bindinput='bindConfirmPassword' />
+            </view>
+            <view class="pre-form-cell">
+                <text decode="true" space="true">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</text>
+                <input class="" placeholder-class="phcolor" placeholder="请输入邮箱" value='{{email}}' bindinput='bindEmail' />
+            </view>
+        </view>
+        <button bindtap='onSave'>保存</button>
+    </view>
+</view>

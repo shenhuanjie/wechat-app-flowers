@@ -7,34 +7,37 @@
         </swiper-item>
     </block>
 </swiper>
-<view class='container'>
-    <view class='block-title'>
-        <text>请选择板块</text>
-    </view>
-    <view class='block-group'>
-        <block wx:for="{{saleSite}}" wx:key="id">
-            <view class='block-group-item block-group-item-module' bindtap='toBrands' data-site="{{item.Ssite}}">
-                <image src="/resource/images/index_z1.png" />
-                <text>{{item.Module}}</text>
+<view class='container pre-block'>
+    <view class='block-address-pop' style='display:{{popDisplay}}'>
+        <block wx:for="{{addressList}}" wx:key="id">
+            <view>
+                <text bindtap='toBrands'>{{item.Province+item.City+item.Detailedaddress}}</text>
             </view>
         </block>
+        <block wx:if="{{addressList.length<=3}}">
+            <button bindtap='toAddressAdd'>添加收货地址</button>
+        </block>
     </view>
-</view>
-<view class='container'>
     <view class='block-title'>
-        <text>每日一花</text>
+        <text>收货地址</text>
+        <block wx:if="{{addressList.length!=0}}">
+            <text class='pre-block-more' bindtap='onPopDisplay'>【切换】</text>
+        </block>
     </view>
     <view class='block-group'>
-        <block wx:for="{{recommendList}}" wx:key="id">
-            <view class='block-group-item' bindtap='toProduct' data-id="{{item.Code}}">
-                <view class='block-group-item-image'>
-                    <image src="{{imgPrefix}}{{item.Picpath}}?imageView2/1/w/400" />
-                </view>
-                <view class='block-group-item-text'>
-                    <text>{{item.Name}}</text>
-                </view>
+        <view class='block-group-item' bindtap='toBrands'>
+            <view class='block-group-item-text-address'>
+                <block wx:for="{{addressList}}" wx:key="id">
+                    <block wx:if="{{item.Isdefault==1}}">
+                        <text>{{item.Province+item.City+item.Detailedaddress}}</text>
+                        <button>进入</button>
+                    </block>
+                </block>
+                <block wx:if="{{addressList.length==0}}">
+                    <button bindtap='toAddressAdd' style='width:400rpx;'>添加收货地址</button>
+                </block>
             </view>
-        </block>
+        </view>
     </view>
 </view>
 <view class='container'>

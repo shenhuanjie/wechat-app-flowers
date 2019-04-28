@@ -162,7 +162,7 @@ App({
         AppSecret: "",
         userInfo: null,
         // API_URL
-        appUrl: "https://api.xy431.com",
+        appUrl: "http://120.77.233.160:8965",
         // QINIU_PREFIX
         qiniuPrefix: "http://complaint.brightenflower.cn/",
         // 大图前缀

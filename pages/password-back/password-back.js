@@ -8,8 +8,8 @@ Page({
     data: {
         phone: "",
         validCode: "",
-        recommendCode: "", //推荐码
-        readAndAgree: false, //阅读并接受
+        password: "",
+        confirmPassword: "",
 
         tip: "获取验证码",
         disabled: "",
@@ -29,6 +29,19 @@ Page({
         });
     },
     /**
+     * 密码输入监听
+     */
+    bindPassword: function(event) {
+        this.setData({
+            password: event.detail.value
+        });
+    },
+    bindConfirmPassword: function(event) {
+        this.setData({
+            confirmPassword: event.detail.value
+        });
+    },
+    /**
      * 监听验证码
      */
     bindValidCode: function(event) {
@@ -37,22 +50,14 @@ Page({
         });
     },
     /**
-     * 选项框监听
+     * 获取验证码
      */
-    checkboxChange: function(e) {
-        if (e.detail.value == "") {
-            this.setData({
-                readAndAgree: false
-            })
-        } else {
-            this.setData({
-                readAndAgree: true
-            })
-        }
-    },
     onValidCode: function() {
         var _that = this;
         var phone = _that.data.phone;
+        var validCode = _that.data.validCode;
+        var password = _that.data.password;
+        var confirmPassword = _that.data.confirmPassword;
 
         var checkFlat = true;
         var errorMsg = "";
@@ -105,19 +110,15 @@ Page({
         })
     },
     /**
-     * 注册
+     * 重置密码
      */
-    onRegister: function() {
+    onResetPassword: function() {
         var _that = this;
-        var guid = this.data.guid;
-
-        var username = this.data.username;
+        var phone = this.data.phone;
         var password = this.data.password;
         var confirmPassword = this.data.confirmPassword;
-        var linkman = this.data.linkman;
-        var phone = this.data.phone;
         var validCode = this.data.validCode;
-        var readAndAgree = this.data.readAndAgree;
+
 
         var checkFlat = true;
         var errorMsg = "";
@@ -128,8 +129,14 @@ Page({
         } else if (checkFlat && validCode == "") {
             errorMsg = "请输入验证码";
             checkFlat = false;
-        } else if (checkFlat && !readAndAgree) {
-            errorMsg = "请阅读并同意协议";
+        }  else if (checkFlat && password == "") {
+            errorMsg = "请输入你的密码";
+            checkFlat = false;
+        } else if (checkFlat && confirmPassword == "") {
+            errorMsg = "请输入确认密码";
+            checkFlat = false;
+        } else if (checkFlat && password != confirmPassword) {
+            errorMsg = "两次密码不一致，请重新输入";
             checkFlat = false;
         }
         if (!checkFlat) {
@@ -142,17 +149,11 @@ Page({
         }
         // 验证通过
         wx.request({
-            url: app.globalData.appUrl + '/Member/Reg',
+            url: app.globalData.appUrl + '/Member/ResetPwd',
             data: {
-                name: phone,
-                pwd: phone,
                 phone: phone,
-                validCode: validCode,
-                linkman: recommendCode,
-                introDept: recommendCode,
-                introMgr: recommendCode,
-                serviceDept: '',
-                serviceMgr: ''
+                pwd: password,
+                validCode: validCode
             },
             header: {
                 'content-type': 'application/json' // 默认值
@@ -163,12 +164,12 @@ Page({
                 var msg = data.Msg;
                 if (data.Success) {
                     wx.showToast({
-                        title: "注册成功，请继续完善个人信息",
+                        title: msg,
                         icon: 'none',
                         duration: 2000
                     });
                     setTimeout(function() {
-                        _that.toRegisterConfirm();
+                        _that.toLogin();
                     }, 1000);
                 } else {
                     wx.showToast({
@@ -181,38 +182,12 @@ Page({
         })
     },
     /**
-     * 跳转会员协议
-     */
-    toAgreement() {
-        console.log("toAgreement");
-        wx.navigateTo({
-            url: '../../pages/agreement/agreement'
-        })
-    },
-    toRegisterConfirm() {
-        console.log("toRegisterConfirm");
-        wx.navigateTo({
-            url: '../../pages/register-confirm/register-confirm?phone=' + this.data.phone
-        })
-    },
-    /**
      * 跳转登录
      */
     toLogin() {
         console.log("toLogin");
         wx.navigateTo({
             url: '../../pages/login/login'
-        })
-    },
-    /**
-     * 刷新验证码
-     */
-    toChangeImg: function() {
-        var _that = this;
-        var _uuid = app.uuid();
-        _that.setData({
-            "imgCode": app.globalData.appUrl + "/RandomCode/GetRandomCode?guid=" + _uuid,
-            "guid": _uuid
         })
     },
     //倒计时

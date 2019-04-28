@@ -92,12 +92,12 @@
     width: 226rpx;
 }
 
-.container-bottom .container-bottom-group__button .button-green {
+.button-green {
     color: #fff;
     background-color: #00bc71;
 }
 
-.container-bottom .container-bottom-group__button .button-red {
+.button-red {
     background-color: #dd4a32;
     color: #fff;
 }
@@ -158,4 +158,12 @@
 
 .grade-item-selected {
     border: 1rpx solid red;
+}
+
+.button-submit {
+    width: 100%;
+    color: #fff;
+    background-color: #01bc72;
+    font-size: 28rpx;
+    margin: 15rpx 15rpx 5rpx 15rpx;
 }

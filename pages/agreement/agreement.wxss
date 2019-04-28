@@ -1,0 +1,28 @@
+/* pages/agreement/agreement.wxss */
+
+.pre-warp {
+    font-size: 20rpx;
+    color: #3c3c3c;
+    padding: 20rpx;
+}
+
+.desc-title h1 {
+    display: block;
+    font-weight: normal;
+    margin: 5rpx 10rpx;
+    font-size: 36rpx;
+    color: #353535;
+}
+
+.desc-content {
+    margin: 0 20rpx;
+    font-size: 28rpx;
+    color: #353535;
+}
+
+.desc-content text {
+    display: block;
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 15rpx 10rpx;
+}

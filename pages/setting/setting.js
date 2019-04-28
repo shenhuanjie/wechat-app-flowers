@@ -19,61 +19,73 @@ Page({
                 id: 'order-inquiry',
                 name: '订单查询',
                 param: '',
+                img: 'icon_1.png',
                 isTab: false
             }, {
                 id: 'bill-inquiry',
                 name: '账单查询',
                 param: '',
+                img: 'icon_2.png',
                 isTab: false
             }, {
                 id: 'delivery-query',
                 name: '发货查询',
                 param: '',
+                img: 'icon_3.png',
                 isTab: false
             }, {
                 id: 'password-revise',
                 name: '修改密码',
                 param: '',
+                img: 'icon_4.png',
                 isTab: false
             }, {
                 id: 'complaint',
                 name: '投诉建议',
                 param: '',
+                img: 'icon_5.png',
                 isTab: false
             }, {
                 id: 'comments-list',
                 name: '查看留言',
                 param: '',
+                img: 'icon_6.png',
                 isTab: false
             }, {
                 id: 'news-list',
                 name: '物流信息',
                 param: '?t=2',
+                img: 'icon_7.png',
                 isTab: false
             }, {
                 id: 'news-list',
                 name: '最新信息',
                 param: '?t=1',
+                img: 'icon_8.png',
                 isTab: false
             }, {
                 id: 'news-list',
                 name: '常见问题',
                 param: '?t=3',
+                img: 'icon_9.png',
                 isTab: false
             }, {
                 id: 'address-list',
                 name: '收货地址',
                 param: '',
+                img: 'icon_10.png',
                 isTab: false
             }, {
                 id: 'share',
                 name: '分享推荐',
                 param: '',
+                img: 'icon_11.png',
                 isTab: false
             }, {
                 id: 'order-agent',
                 name: '产品代购',
                 param: '',
+                img: 'icon_12.png',
                 isTab: false
             }]
         }]

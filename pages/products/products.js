@@ -32,7 +32,7 @@ Page({
 			selected: false,
 		}, {
 			index: 1,
-			title: "购买方式",
+			title: "送货时间",
 			icon: "icon-down",
 			selected: false
 		}, {

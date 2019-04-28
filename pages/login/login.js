@@ -156,9 +156,7 @@ Page({
                         duration: 2000
                     });
                     setTimeout(function() {
-                        wx.navigateBack({
-
-                        })
+                        _that.toIndex();
                     }, 1000);
                 } else {
                     wx.showToast({
@@ -178,7 +176,7 @@ Page({
     toIndex() {
         console.log("onLogin");
         wx.switchTab({
-            url: '../../pages/setting/setting',
+            url: '../../pages/index/index',
             success(res) {
                 let page = getCurrentPages().pop()
                 if (page == undefined || page == null) {
@@ -208,5 +206,14 @@ Page({
             "imgCode": app.globalData.appUrl + "/RandomCode/GetRandomCode?guid=" + _uuid,
             "guid": _uuid
         })
-    }
+    },
+    /**
+     * 跳转找回密码
+     */
+    toPasswordBack() {
+        console.log("toPasswordBack");
+        wx.navigateTo({
+            url: '../../pages/password-back/password-back'
+        })
+    },
 })
