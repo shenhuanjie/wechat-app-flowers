@@ -15,8 +15,11 @@
                 </view>
             </view>
             <view class="pre-form-cell">
-                <label>推荐码：</label>
-                <button class='btn-scan-pic' bindtap='onScanPic'>从相册选择二维码</button>
+                <text decode="true" space="true">推荐码：</text>
+                <view class='disp-flex'>
+                    <input class="txt-valid-code" placeholder-class="phcolor" placeholder="推荐码" disabled="disabled" value='{{recommendCode}}' />
+                    <button class='btn-valid-code' bindtap='onChooseImg'>扫描二维码</button>
+                </view>
             </view>
         </view>
         <label class='pre-chk-save'>

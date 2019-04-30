@@ -1,4 +1,5 @@
 var app = getApp();
+var ImageUtil = require('../../utils/WxImageUtil.js');
 // pages/register/register.js
 Page({
 
@@ -104,6 +105,22 @@ Page({
             }
         })
     },
+    onChooseImg: function() {
+        // var imgPath = ImageUtil.chooseImage();
+        // var result = ImageUtil.scanCode();
+
+        var that = this;
+        // 允许从相机和相册扫码
+        wx.scanCode({
+            success(res) {
+                console.log(res);
+                that.setData({
+                    recommendCode: res.result
+                })
+                console.log(that.data.recommendCode);
+            }
+        })
+    },
     /**
      * 注册
      */
@@ -118,6 +135,7 @@ Page({
         var phone = this.data.phone;
         var validCode = this.data.validCode;
         var readAndAgree = this.data.readAndAgree;
+        var recommendCode = this.data.recommendCode;
 
         var checkFlat = true;
         var errorMsg = "";
@@ -139,6 +157,9 @@ Page({
                 duration: 2000
             })
             return false;
+        }
+        if (recommendCode == "") {
+            recommendCode = 'brightenit';
         }
         // 验证通过
         wx.request({
