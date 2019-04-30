@@ -8,12 +8,20 @@ Page({
      * 页面的初始数据
      */
     data: {
+        memCode: "",
         searchValue: "",
-        site: null,
-        city: '',
+        latitude: "39.984060",
+        longitude: "116.307520",
+        province: '广东省',
+        city: '广州市',
+        district: '天河区',
         address: '',
+        brand: [],
         brandList: [],
-        filterList: []
+        brandAllList: [],
+        filterList: [],
+
+        locationShow: false
     },
 
     /**
@@ -24,21 +32,15 @@ Page({
         qqmapsdk = new QQMapWX({
             key: app.globalData.MapsKey
         });
-        var site = options.site;
         var memCode = wx.getStorageSync("memcode");
-        if (site && site != "undefined") {
-            this.setData({
-                site: site,
-                memCode: memCode
-            })
-            wx.setStorageSync("market", site)
-        }
+
+        this.setData({
+            memCode: memCode
+        })
         //登录验证
         if (!app.checkLogin()) {
             return false;
         }
-        // 获取列表
-        this.getSaleBrand();
     },
 
     /**
@@ -49,10 +51,49 @@ Page({
         // 获取列表
         var site = that.data.site;
         wx.setStorageSync("market", site);
-        this.getSaleBrand();
+        this.getLocation();
+    },
+    /**
+     * 显示位置信息
+     */
+    showLocation: function() {
+        console.log("showLocation");
+        var that = this;
+        that.setData({
+            locationShow: !this.data.locationShow
+        });
+    },
+    /**
+     * 切换位置信息
+     */
+    switchLocation: function(e) {
+        console.log("switchLocation");
+        var item = e.currentTarget.dataset.brand;
+        var that = this;
+        wx.showToast({
+            title: "当前位置：" + item.Province + item.City + item.Area,
+            icon: 'none'
+        });
 
-        var latitude = 39.984060;
-        var longitude = 116.307520;
+        that.setData({
+            province: item.Province,
+            city: item.City,
+            district: item.Area,
+            address: item.Province + item.City + item.Area,
+        })
+
+        // 获取列表
+        that.getSaleBrand();
+
+        that.showLocation();
+    },
+    /**
+     * 获取用户当前位置
+     */
+    getLocation: function() {
+        var that = this;
+        var latitude = that.data.latitude;
+        var longitude = that.data.longitude;
         //获取当前位置
         wx.getLocation({
             success: function(res) {
@@ -70,8 +111,9 @@ Page({
                         console.log("当前位置：" + res.result.address);
                         console.log("当前城市：" + res.result.ad_info.city);
                         that.setData({
+                            province: res.result.ad_info.province,
                             city: res.result.ad_info.city,
-                            province: res.result.address_component.province,
+                            district: res.result.ad_info.district,
                             address: res.result.address,
                         })
                     },
@@ -79,82 +121,57 @@ Page({
                         console.log(res);
                     },
                     complete: function(res) {
-                        // console.log(res);
+                        // 获取列表
+                        that.getSaleBrand();
                     }
                 });
             }
-        })
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    },
-    showToast: function() {
-        var that = this;
-        wx.showToast({
-            title: "当前位置：" + that.data.address,
-            icon: 'none'
         })
     },
     /**
      * 获取品牌列表
      */
     getSaleBrand: function() {
+        console.log("getSaleBrand");
         var _that = this;
         var memCode = this.data.memCode;
         var province = this.data.province;
         var city = this.data.city;
+        var district = this.data.district;
         app.showLoading();
         wx.request({
             url: app.globalData.appUrl + '/Product/GetSaleBrand',
             data: {
-                // sSite: wx.getStorageSync('market') ? wx.getStorageSync('market') : '缤纷总网'
                 Province: province ? province : '广东省',
                 City: city ? city : '广州市',
+                Area: district ? district : '天河区',
                 memCode: memCode
             },
             header: {
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                console.log(res.data.Rows)
+                var brandList = res.data.Rows;
+                var brandAllList = res.data.AllRows;
+                if (_that.data.brandAllList != null && _that.data.brandAllList.length > 0) {
+                    brandAllList = _that.data.brandAllList;
+                }
+                console.log(res.data);
                 wx.hideLoading();
                 _that.setData({
-                    "brandList": res.data.Rows,
-                    "filterList": res.data.Rows,
-                    "searchValue": "",
-                })
+                    brandList: brandList,
+                    filterList: brandList,
+                    brandAllList: brandAllList,
+                    searchValue: "",
+                });
+
+                // 空值提醒
+                if (brandList == null || brandList.length == 0) {
+                    wx.showToast({
+                        title: "您所在的当前区域暂无品牌，可在右上方切换至您的注册地址。",
+                        icon: 'none'
+                    })
+                }
             }
         })
     },
@@ -166,7 +183,7 @@ Page({
         var value = even.detail.value;
         this.setData({
             searchValue: value,
-        })
+        });
         this.doSearch();
     },
     /**
@@ -187,18 +204,32 @@ Page({
         this.setData({
             filterList: filterList
         })
+        
+        if (filterList != null && filterList.length == 0) {
+            wx.showToast({
+                title: "当前无结果：请输入其他关键字",
+                icon: 'none'
+            });
+        }
     },
     /**
      * 跳转品牌列表
      */
     toProductList: function(e) {
-        var brand = e.currentTarget.dataset.brand;
-        wx.setStorage({
-            key: "brand",
-            data: brand
-        });
+        var data = e.currentTarget.dataset.brand;
+        wx.setStorageSync("brand", data.Brand);
+        wx.setStorageSync("bigType", "");
+        wx.setStorageSync("smallType", "");
+        wx.setStorageSync('fatherUser', data.Fatheruser); //设置主账号
+        wx.setStorageSync('morningSite', data.Ssitemorning); //设置早上站点
+        wx.setStorageSync('afternoonSite', data.Ssiteafternoon); //设置下午站点
+        wx.setStorageSync('everningSite', data.Ssiteevening); //设置晚上站点
+        wx.setStorageSync('morningTime', data.Timemorning); //设置早上站点物流时间
+        wx.setStorageSync('afternoonTime', data.Timeafternoon); //设置下午站点物流时间
+        wx.setStorageSync('everningTime', data.Timeevening); //设置晚上站点物流时间
+        wx.setStorageSync('site', data.Ssite); //设置鲜花站点
         wx.navigateTo({
-            url: '../../pages/products/products?brand=' + brand,
+            url: '../../pages/products/products',
         })
     }
 })

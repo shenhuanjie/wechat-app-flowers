@@ -124,6 +124,18 @@
     border-radius: 10rpx;
 }
 
+.stepper .stepper-minus, .stepper .stepper-plus {
+    padding: 0 5rpx;
+}
+
+.stepper .stepper-minus {
+    border-right: 1rpx solid #bfbfbf;
+}
+
+.stepper .stepper-plus {
+    border-left: 1rpx solid #bfbfbf;
+}
+
 /*加号和减号*/
 
 .stepper__text {

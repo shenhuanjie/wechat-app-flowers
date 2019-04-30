@@ -46,8 +46,8 @@
                             <view class='stepper__text' bindtap="bindMinus" data-index='{{index}}'>
                                 <text class="{{item.MinusStatus}}">－</text>
                             </view>
-                            <view class='stepper__input' style='flex:2'>
-                                <input type="number" value="{{item.Ordercount}}" bindchange="bindManual" data-index='{{index}}'></input>
+                            <view class='stepper__input' style='flex:2;'>
+                                <input type="number" value="{{item.Ordercount}}" style='text-align:center;' bindchange="bindManual" data-index='{{index}}'></input>
                             </view>
                             <view class='stepper__text' bindtap="bindPlus" data-index='{{index}}'>
                                 <text class="normal">＋</text>
@@ -78,11 +78,11 @@
                         <!-- 主容器 -->
                         <view class="stepper">
                             <!-- 减号 -->
-                            <text class="{{item.MinusStatus}}" bindtap="bindMinus" data-index='{{index}}'>-</text>
+                            <text class="{{item.MinusStatus}} stepper-minus" bindtap="bindMinus" data-index='{{index}}'>-</text>
                             <!-- 数值 -->
-                            <input type="number" bindchange="bindManual" value="{{item.Ordercount}}" data-index='{{index}}' />
+                            <input type="number" bindchange="bindManual" style='text-align:center;' value="{{item.Ordercount}}" data-index='{{index}}' />
                             <!-- 加号 -->
-                            <text class="normal" bindtap="bindPlus" data-index='{{index}}'>+</text>
+                            <text class="normal stepper-plus" bindtap="bindPlus" data-index='{{index}}'>+</text>
                         </view>
                     </view>
                 </view>

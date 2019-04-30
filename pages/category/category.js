@@ -6,94 +6,85 @@ Page({
      * 页面的初始数据
      */
     data: {
-        memcode: null,
+        memcode: wx.getStorageSync("memcode"),
         lclass: [],
         sclass: [],
         currentLsort: 0,
         currentSsort: [],
         single: true, //默认单选
-        flitersList: [{
-            title: "分类",
-            selected: "fliters-item-selected",
-            isIcon: false,
-            icon: "follow"
-        }, {
-            title: "关注",
-            selected: '',
-            isIcon: true,
-            icon: "follow"
-        }, {
-            title: "现售",
-            selected: '',
-            isIcon: false,
-            icon: "follow"
-        }, {
-            title: "预定",
-            selected: '',
-            isIcon: false,
-            icon: "follow"
-        }, {
-            title: "竞购",
-            selected: '',
-            isIcon: false,
-            icon: "follow"
-        }]
+        brand: wx.getStorageSync("brand"),
+        site: wx.getStorageSync("site")
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        //初始化页面参数
-        this.initView();
-        this.getProductclassaList();
+        this.getRetailandclassList();
+    },
+    bindSingle: function() {
+        this.setData({
+            single: !this.data.single
+        })
+    },
+    getRetailandclassList: function() {
+        var that = this;
+        var url = app.globalData.appUrl + "/Retailandclass/GetRetailandclassList";
+        var data = {
+            pageSize: 1000,
+            bBrand: this.data.brand,
+            bSite: this.data.site
+        }
+        app.showLoading();
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            method: "GET",
+            success(res) {
+                wx.hideLoading();
+                var list = res.data.Rows;
+                console.log(list);
+
+                var lclass = [];
+                var sclass = [];
+                var lsort = -1;
+                var ssort = -1;
+
+                for (var i = 0; i < list.length; i++) {
+                    var item = list[i];
+                    item.selected = false;
+                    if (lsort < item.Lsort) {
+                        lsort = item.Lsort
+                        lclass.push(item);
+                    }
+                    sclass.push(item);
+                }
+
+                that.setData({
+                    lclass: lclass,
+                    sclass: sclass,
+                })
+                that.initSelectLclass();
+            }
+        })
+
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 初始选择
      */
-    onReady: function() {},
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
+    initSelectLclass: function() {
+        var lclass = this.data.lclass;
+        if (lclass.length != 0) {
+            lclass[0].selected = true;
+        }
+        this.setData({
+            currentLsort: lclass[0].Lsort,
+            lclass: lclass
+        })
     },
     /**
      * 选择大类
@@ -119,6 +110,7 @@ Page({
         console.log(even);
 
         var sSort = even.currentTarget.dataset.currentSsort;
+        var sSortId = even.currentTarget.dataset.currentSsortId;
         var lSort = this.data.currentLsort;
 
         var currentSsort = this.data.currentSsort;
@@ -130,7 +122,7 @@ Page({
             currentSsort = [];
             for (var i = 0; i < sclass.length; i++) {
                 var item = sclass[i];
-                if (item.Lsort == lSort && item.Ssort == sSort) {
+                if (item.Lsort == lSort && item.Ssort == sSort && item.Id == sSortId) {
                     currentSsort.push(item);
                     sclass[i].selected = true;
                 } else {
@@ -138,7 +130,14 @@ Page({
                 }
             }
         } else {
-
+            currentSsort = [];
+            for (var i = 0; i < sclass.length; i++) {
+                var item = sclass[i];
+                if (item.Lsort == lSort && item.Ssort == sSort && item.Id == sSortId) {
+                    currentSsort.push(item);
+                    sclass[i].selected = true;
+                } 
+            }
         }
 
         this.setData({
@@ -146,18 +145,10 @@ Page({
             sclass: sclass
         });
         if (single == true) {
-            this.toProducts();
+            // this.toProducts();
         }
     },
-    /**
-     * 初始化参数
-     */
-    initView: function() {
-        var _that = this;
-        _that.setData({
-            memcode: wx.getStorageSync("memcode")
-        })
-    },
+
     toProducts: function() {
         var bigType = [];
         var smallType = [];
@@ -165,7 +156,7 @@ Page({
         for (var i = 0; i < currentSsort.length; i++) {
             var item = currentSsort[i];
             var lclass = item.Lclass;
-            var sclass = item.Sclass;
+            var sclass = lclass + "_" + item.Sclass;
             if (bigType.join(',').indexOf(lclass) == -1) {
                 bigType.push(lclass);
             }
@@ -173,51 +164,12 @@ Page({
                 smallType.push(sclass);
             }
         }
-        wx.setStorageSync('bigType', bigType);
+        // wx.setStorageSync('bigType', bigType);
         wx.setStorageSync('smallType', smallType);
 
         wx.navigateBack()
         // url: '../../pages/products/products',
 
     },
-    getProductclassaList: function() {
-        var _that = this;
-        app.showLoading();
-        var url = app.globalData.appUrl + "/Productclassa/GetProductclassaList";
-        wx.request({
-            url: url,
-            data: {
-                pageSize: 1000
-            },
-            header: {
-                'content-type': 'application/json' // 默认值
-            },
-            method: "GET",
-            success(res) {
-                wx.hideLoading();
-                var list = res.data.Rows;
-                console.log(list);
 
-                var lclass = [];
-                var sclass = [];
-                var lsort = -1;
-                var ssort = -1;
-
-                for (var i = 0; i < list.length; i++) {
-                    var item = list[i];
-                    item.selected = false;
-                    if (lsort < item.Lsort) {
-                        lsort = item.Lsort
-                        lclass.push(item);
-                    }
-                    sclass.push(item);
-                }
-                _that.setData({
-                    lclass: lclass,
-                    sclass: sclass,
-                })
-            }
-        })
-
-    }
 })

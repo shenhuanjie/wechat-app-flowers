@@ -27,7 +27,7 @@ Page({
      */
     getListByUserCode: function() {
         var that = this;
-        var url = app.globalData.appUrl + "/Ordercommit/GetListByUserCode";
+        var url = app.globalData.appUrl + "/TrOrdercommit/GetRetailSubList"; 
         var data = {
             orderNum: that.data.orderNum,
             memCode: wx.getStorageSync("memcode"),

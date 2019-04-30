@@ -1,17 +1,48 @@
 @import "../../resource/styles/preSearch.wxss";
 
 /* pages/brands/brands.wxss */
-.pre-warp{
-margin:10rpx 15rpx;
-min-height:48rpx;
+
+.pre-warp {
+    margin: 10rpx 15rpx;
+    min-height: 48rpx;
 }
+
 .pre-warp text {
-  display: inline-block;
-  border: 1rpx solid #c1c2c2;
-  height: 36rpx;
-  border-radius: 10rpx;
-  background-color: #f4f4f4;
-  padding: 15rpx 40rpx;
-  margin: 15rpx 15rpx;
-  font-size: 28rpx;
+    display: inline-block;
+    border: 1rpx solid #c1c2c2;
+    height: 36rpx;
+    border-radius: 10rpx;
+    background-color: #f4f4f4;
+    padding: 15rpx 40rpx;
+    margin: 15rpx 15rpx;
+    font-size: 28rpx;
+}
+
+.pre-warp-location {
+    margin: 0 20rpx;
+    min-height: 48rpx;
+    border: 1rpx solid #c1c2c2;
+    border-radius: 10rpx;
+    background-color: #f4f4f4;
+    font-size: 28rpx;
+}
+
+.pre-warp-location text {
+    display: block;
+    margin: 0 20rpx;
+    padding: 25rpx 15rpx;
+    border-bottom: 1rpx solid #c1c2c2
+}
+.pre-warp-location text:last-child {
+    border-bottom: 0rpx solid #c1c2c2
+}
+.pre-location {
+    display: flex;
+    align-items: center;
+    padding: 0 15rpx;
+}
+
+.icon-location {
+    font-size: 42rpx;
+    color: #00bc71;
 }

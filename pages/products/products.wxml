@@ -45,32 +45,54 @@
             <view class='search-filter-pop-content'>
                 <block wx:for="{{searchFilterItemList}}" wx:key="id" wx:for-index="index">
                     <block wx:if="{{item.group==selectIndex}}">
-                        <view class='filter-item-title'>{{item.title}}</view>
-                        <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
-                            <block wx:if="{{item.selected}}">
-                                <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
-                                    <text>{{item.title}}</text>
-                                </view>
+                        <block wx:if="{{item.group!=1}}">
+                            <view class='filter-item-title'>{{item.title}}</view>
+                            <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
+                                <block wx:if="{{item.selected}}">
+                                    <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </block>
                             </block>
-                            <block wx:else>
-                                <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
-                                    <text>{{item.title}}</text>
+                        </block>
+                        <block wx:if="{{item.group==1}}">
+                            <view class='filter-item-title'>{{item.title}}</view>
+                            <picker class='picker-group' mode="date" value="{{sendDate}}" bindchange="bindDateChange">
+                                <view class='picker-group'>
+                                    <input class='searchInput' value='{{sendDate}}' disabled='disabled'></input>
+                                    <button class='pickerDate'>选中送货日期</button>
                                 </view>
-                            </block>
+                            </picker>
                         </block>
                     </block>
                     <block wx:if="{{selectIndex==4}}">
-                        <view class='filter-item-title'>{{item.title}}</view>
-                        <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
-                            <block wx:if="{{item.selected}}">
-                                <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
-                                    <text>{{item.title}}</text>
+                        <block wx:if="{{item.group==1}}">
+                            <view class='filter-item-title'>{{item.title}}</view>
+                            <picker mode="date" value="{{sendDate}}" bindchange="bindDateChange">
+                                <view class='picker-group'>
+                                    <input class='searchInput' value='{{sendDate}}' disabled='disabled'></input>
+                                    <button class='pickerDate'>选中送货日期</button>
                                 </view>
-                            </block>
-                            <block wx:else>
-                                <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
-                                    <text>{{item.title}}</text>
-                                </view>
+                            </picker>
+                        </block>
+                        <block wx:if="{{item.group!=1}}">
+                            <view class='filter-item-title'>{{item.title}}</view>
+                            <block wx:for="{{item.item}}" wx:key="id" wx:for-index="subIndex">
+                                <block wx:if="{{item.selected}}">
+                                    <view class='filter-item filter-item-selected' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <view class='filter-item' catchtap='selectFilterItem' data-index="{{index}}" data-subIndex="{{subIndex}}" data-value="{{item.value}}">
+                                        <text>{{item.title}}</text>
+                                    </view>
+                                </block>
                             </block>
                         </block>
                     </block>
@@ -95,10 +117,10 @@
                     </view>
                     <view class='pre-list-item-content'>
                         <text class='content-title'>{{item.Name}}</text>
-                        <text class='content-item'>颜色：{{item.Color}}</text>
-                        <text class='content-item'>长度：{{item.Slength}}</text>
-                        <text class='content-item'>装量：{{item.Packcount}}</text>
-                        <text class='content-price'>￥{{item.Price}}</text>
+                        <text class='content-item' decode='true'>颜色：{{item.Color}}</text>
+                        <text class='content-item' decode='true'>长度：{{item.Slength}}</text>
+                        <text class='content-item' decode='true'>装量：{{item.Packcount}}</text>
+                        <text class='content-price' decode='true'>￥{{item.Price}}<block wx:if="{{buyWay!=3}}">&nbsp;&nbsp;库存：{{item.Timelycount}}</block></text>
                     </view>
                     <view class='pre-list-item-button-group'>
                         <icon class="iconfont icon-follow" catchtap='toProduct' data-id='{{item.Code}}'></icon>

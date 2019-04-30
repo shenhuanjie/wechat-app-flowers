@@ -96,7 +96,7 @@ swiper {
     display: flex;
     align-items: center;
     background-color: #f7fff6;
-    border-radius: 15%;
+    /* border-radius: 15%; */
 }
 
 .container .block-group .block-group-item .block-group-item-text-address text {

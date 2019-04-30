@@ -72,7 +72,13 @@ Page({
                     dataList = unsendList;
                     break;
                 case 3:
-                    dataList = finishList;
+                    dataList = [];
+                    for (var i = 0; i < finishList.length; i++) {
+                        var item = finishList[i];
+                        item.Ordertime = app.formatDate((new Date(item.Commitedate)), "yyyy-MM-dd");
+                        item.Name = item.Ordernum;
+                        dataList.push(item);
+                    }
                     break;
             }
             that.setData({
@@ -85,12 +91,22 @@ Page({
         })
     },
     toOrderDetail: function(even) {
-        console.log(even);
-        var id = even.currentTarget.dataset.id;
-        var buyway = even.currentTarget.dataset.buyway;
-        var url = '../../pages/order-detail/order-detail?id=' + id + "&buyway=" + buyway;
-        if (!buyway) {
-            url = '../../pages/order-confirm/order-confirm?cartId=' + id;
+        var item = even.currentTarget.dataset.item;
+        var url = "";
+
+        switch (this.data.fliterSelected) {
+            case 0:
+                url = "../../pages/order-detail/order-detail?id=" + item.Id + "&buyway=" + item.Buyway;
+                break;
+            case 1:
+                url = '../../pages/order-confirm/order-confirm?cartId=' + item.Id;
+                break;
+            case 2:
+                url = '../../pages/product/product?id=' + item.Code;
+                break;
+            case 3:
+                url = '../../pages/order-inquiry-detail/order-inquiry-detail?code=' + item.Ordernum;
+                break;
         }
         wx.navigateTo({
             url: url,

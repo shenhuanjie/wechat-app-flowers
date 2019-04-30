@@ -265,3 +265,24 @@
 .pre-grid-item-content-button button {
     font-size: 18rpx;
 }
+
+.picker-group {
+    display: flex;
+    align-content: space-between
+}
+
+.searchInput {
+    border: 1rpx solid #e4e8ea;
+    font-size: 28rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 10rpx 15rpx;
+    text-align: center;
+    width: 300rpx;
+}
+
+.pickerDate {
+    width: 250rpx;
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}

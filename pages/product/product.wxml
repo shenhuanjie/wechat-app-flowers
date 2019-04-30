@@ -1,12 +1,12 @@
 <!-- 图片展示 -->
 <view class="container container-flex">
     <view class="container-image">
-        <image src="{{app.globalData.imgPrefix}}{{vproduct.Picpath}}" mode='aspectFit' />
+        <image src="{{app.globalData.imgPrefix}}{{product.Picpath}}" mode='aspectFit' />
     </view>
     <!-- 产品基础信息 -->
     <view class="container-flex-group">
-        <text style='font-size:36rpx;'>{{vproduct.Name}}</text>
-        <text style='color:red'>￥{{vproduct.Price}}</text>
+        <text style='font-size:36rpx;'>{{product.Name}}</text>
+        <text style='color:red'>￥{{product.Price}}</text>
     </view>
     <!-- 服务条款 -->
     <view style='font-size:28rpx;'>
@@ -27,10 +27,35 @@
                 <icon class="iconfont icon-ok"></icon>
                 <text>正品保障</text>
             </view>
-            <text>站点：{{vproduct.Ssite}}</text>
+            <text>站点：{{product.Ssite}}</text>
         </view>
     </view>
 </view>
+
+<view style='margin:0 15rpx'>
+    <text style='font-size:28rpx;'>产品详情</text>
+</view>
+<view class="container-full-column">
+    <view style='text-align:center;background-color:#fff;'>
+        <text>规格参数</text>
+    </view>
+    <view class="table bg-w" style='font-size:24rpx;padding:0 15rpx;'>
+        <view class="tr">
+            <view class="td td-2">装量</view>
+            <view class="td td-10" style='text-align:left'>{{product.Plist}}</view>
+        </view>
+        <view class="tr">
+            <view class="td td-2">品牌</view>
+            <view class="td td-10" style='text-align:left'>{{product.Brand}}</view>
+        </view>
+        <view class="tr">
+            <view class="td td-2">长度</view>
+            <view class="td td-10" style='text-align:left'>{{product.Slist}}</view>
+        </view>
+    </view>
+</view>
+
+
 <view class='container-bottom-margin'>
     <icon class="iconfont icon-null"></icon>
 </view>
@@ -42,9 +67,9 @@
         <view style='min-width:200rpx;text-align:right;padding:10rpx 0rpx;'>
             <text>选择品牌：</text>
         </view>
-        <view style='width:300rpx;padding:10rpx;margin-right:10rpx;border:1rpx solid #000;background-color:#f0f0f0;border-radius:5rpx;'>
-            <!-- <picker value="{{dataBrand}}" bindchange="bindDateChange"> -->
-            <picker bindchange="bindDateChange" value="{{brandIndex}}" range="{{brandList}}">
+        <view style='width:300rpx;padding:10rpx;margin-right:10rpx;border:1rpx solid #ccc;background-color:#f0f0f0;border-radius:5rpx;'>
+            <!-- <picker value="{{dataBrand}}" bindchange="bindDataChange"> -->
+            <picker bindchange="bindDataChange" value="{{brandIndex}}" range="{{brandList}}">
                 <text>{{brandList[brandIndex]}}</text>
             </picker>
         </view>
@@ -55,8 +80,8 @@
         </view>
         <view>
             <block wx:for="{{gradeList}}" wx:key="{{id}}">
-                <text wx:if="{{gradeIndex==index}}" class='grade-item grade-item-selected'>{{item.Grade}}</text>
-                <text wx:else class='grade-item' bindtap='bindGradeSelect' data-index="{{index}}">{{item.Grade}}</text>
+                <text wx:if="{{gradeIndex==index}}" class='grade-item grade-item-selected'>{{item}}</text>
+                <text wx:else class='grade-item' bindtap='bindGradeSelect' data-index="{{index}}">{{item}}</text>
             </block>
         </view>
     </view>
@@ -65,7 +90,7 @@
             <text>长度：</text>
         </view>
         <view>
-            <text>{{product.Slength}}</text>
+            <text>{{product.Slist}}</text>
         </view>
     </view>
     <view style='display:flex;margin:5rpx;'>
@@ -100,6 +125,38 @@
             </view>
         </view>
     </view>
+    <view style='display:flex;margin:5rpx;'>
+        <view style='min-width:200rpx;text-align:right;'>
+            <text>最低出价：</text>
+        </view>
+        <view>
+            <text class='font-color-red'>{{product.Floorprice}}</text>
+        </view>
+    </view>
+    <block wx:if="{{buyWay==2||buyWay==4}}">
+        <view style='display:flex;margin:5rpx;'>
+            <view style='min-width:200rpx;text-align:right;'>
+                <text>出价：</text>
+            </view>
+            <view>
+                <input type='number' style='border:1rpx solid #ccc;padding:0 10rpx;'></input>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{buyWay==3||buyWay==6}}">
+        <view style='display:flex;margin:5rpx;'>
+            <view style='min-width:200rpx;text-align:right;'>
+                <text>发货日期：</text>
+            </view>
+            <view style='border:1rpx solid #ccc;padding:0 10rpx;'>
+                <picker mode="date" value="{{sendDate}}" bindchange="bindDateChange">
+                    <view class='picker-group'>
+                        <input value='{{sendDate}}' disabled='disabled'></input>
+                    </view>
+                </picker>
+            </view>
+        </view>
+    </block>
     <view style='display:flex;'>
         <button class='button-submit' bindtap='bindBtnSubmit' style='background-color:{{buttonColor}}'>确定</button>
     </view>

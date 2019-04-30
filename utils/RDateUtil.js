@@ -89,6 +89,10 @@ var RDateUtil = {
         newDate.setDate(newDate.getDate() + s);
         return newDate;
     },
+    addFormatDate: function(date, s, format) {
+        var newDate = RDateUtil.formatDate(RDateUtil.addDate(date, s), format);
+        return newDate;
+    },
     addHour: function(date, s) {
         if (!date) {
             return null;
@@ -190,5 +194,6 @@ var RDateUtil = {
     }
 };
 module.exports = {
-    formatDate: RDateUtil.formatDate()
+    formatDate: RDateUtil.formatDate,
+    addFormatDate: RDateUtil.addFormatDate
 }

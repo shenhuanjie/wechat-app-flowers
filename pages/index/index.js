@@ -108,10 +108,10 @@ Page({
      */
     toProduct: function(even) {
         console.log(even);
-        var productId = even.currentTarget.dataset.id;
-        console.log(productId);
+        var id = even.currentTarget.dataset.id;
+        console.log(id);
         wx.navigateTo({
-            url: '../../pages/product/product?productId=' + productId,
+            url: '../../pages/product/product?id=' + id,
         })
     },
 })

@@ -7,6 +7,7 @@ Page({
      */
     data: {
         app: app,
+        productId: "",
         code: "",
         memCode: "",
         follow: {
@@ -16,6 +17,7 @@ Page({
         sclause: "本产品可享受指定日期发货服务，请在订单中确认。",
         stip: "仅限联邦快递24小时可达地区，为方便物流的跟踪，请务必填写收件地址的正确邮编，以免造成投递失败。",
         saleDate: app.formatDate((new Date()), "yyyy-MM-dd"),
+        sendDate: app.formatDate((new Date()), "yyyy-MM-dd"),
         product: {},
         showPop: false,
         isNullProduct: false,
@@ -33,21 +35,36 @@ Page({
     onLoad: function(options) {
         console.log(options);
         this.initView(options);
-        this.getVProduct();
     },
     initView: function(options) {
+
         var that = this;
 
-        var code = options.productId;
+
+        var code = options.code;
+        var productId = options.id;
         var memCode = wx.getStorageSync('memcode');
         var buyWay = wx.getStorageSync('buyWay');
         var market = wx.getStorageSync("market");
+        var brand = wx.getStorageSync("brand");
+        var site = wx.getStorageSync("site");
         this.setData({
             buyWay: buyWay,
             memCode: memCode,
             code: code,
-            market: market
+            productId: productId,
+            market: market,
+            brand: brand,
+            site: site
         })
+
+        // that.getMyLove();
+
+        if (code) {
+            that.getProduct()
+        } else {
+            that.getSingleProduct();
+        }
 
     },
     /**
@@ -66,6 +83,52 @@ Page({
             title: '客服电话：020-88888888',
             icon: "none"
         })
+    },
+    getMyLove: function() {
+        if (!app.checkLogin()) {
+            return false;
+        }
+        var that = this;
+        var code = this.data.code;
+        var productId = this.data.productId;
+        var pid = productId ? productId : code;
+        var memCode = this.data.memCode;
+
+        var url = app.globalData.appUrl + "/Mylove/GetMyloveList";
+        var data = {
+            memCode: memCode,
+            productId: pid
+        }
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                var data = res.data;
+                console.log(data);
+                var follow = that.data.follow;
+                var loveId = data.length;
+                if (loveId > 0) {
+                    follow.loveId = loveId;
+                    follow.tip = "已关注"
+                    //已关注
+                } else {
+                    //为未关注
+                    follow.loveId = loveId;
+                    follow.tip = "关注"
+                }
+                that.setData({
+                    follow: follow
+                })
+                wx.showToast({
+                    title: data.Msg,
+                    icon: "none"
+                })
+            }
+        })
+
     },
     addMyLove: function() {
         if (!app.checkLogin()) {
@@ -110,6 +173,7 @@ Page({
     },
     //加入购物车:0?立即购买:1
     addToCart: function(isConfirm) {
+
         if (!app.checkLogin()) {
             return false;
         }
@@ -128,9 +192,9 @@ Page({
             Ssite: currentProduct.Ssite,
             Code: currentProduct.Code,
             Name: currentProduct.Name,
-            Grade: currentProduct.Grade,
+            Grade: that.data.gradeList[that.data.gradeIndex],
             Brand: currentProduct.Brand,
-            Brandcode: currentProduct.Brandcode,
+            Brandcode: that.data.vproduct.Brandcode,
             Color: currentProduct.Color,
             Lclass: currentProduct.Lclass,
             Sclass: currentProduct.Sclass,
@@ -169,9 +233,16 @@ Page({
     getSaleGrade: function() {
         var that = this;
         var url = app.globalData.appUrl + "/Product/GetSaleGrade";
+        var brand = that.data.brandList[that.data.brandIndex];
+        if (brand.indexOf("《") == -1) {
+            brand = "《" + brand + "》";
+        }
         var data = {
             code: that.data.code,
-            brand: that.data.brandList[that.data.brandIndex],
+            brand: brand,
+            buyWay: that.data.buyWay,
+            bBrand: that.data.brand,
+            bSite: that.data.site
         }
         wx.request({
             url: url,
@@ -187,69 +258,54 @@ Page({
                     gradeList: dataList,
                     gradeIndex: 0,
                 });
-                if (that.data.codeType == 0) {
-                    that.getProductDetail();
-                } else {
-                    that.setData({
-                        gradeList: [{
-                            Grade: that.data.product.Grade
-                        }],
-                        gradeIndex: 0,
-                    });
-                }
+                that.getProductDetail();
             }
         })
     },
-    getVProduct: function() {
+    getProduct: function() {
         var that = this;
-        var codeType = this.data.code;
         //基础产品数据接口
         var url = app.globalData.appUrl + "/Product/GetVProduct";
         var data = {
             site: this.data.market,
             code: this.data.code,
             saleDate: this.data.saleDate,
-            buyWay: this.data.buyWay
-        }
-        console.log(data);
-        //code大于4位时，切换到单一产品接口
-        if (codeType > 9999) {
-            url = app.globalData.appUrl + "/Product/GetProductDetail";
-            data = {
-                productId: this.data.code
-            }
-            codeType = 1;
-        } else {
-            codeType = 0;
+            buyWay: this.data.buyWay,
+            bBrand: this.data.brand,
+            bSite: this.data.site
         }
         console.log(data);
         app.request(url, data, function(res) {
-            console.log(res.data.VProduct);
+            console.log(res.data);
+
+            var buyWay = that.data.buyWay;
+
             var product = res.data.VProduct;
-            var vproduct = res.data.VProduct;
-            if (codeType == 0) {
-                vproduct.Price = vproduct.Miprice + "~" + vproduct.Maprice;
-                vproduct.Picpath = vproduct.Piclist.split(',')[0];
-                that.setData({
-                    brandList: product.Brand.substr(0, product.Brand.length - 1).split(","),
-                    brandIndex: 0,
-                    ssite: product.Ssite,
-                    name: product.Name,
-                    product: product,
-                    vproduct: vproduct,
-                    codeType: codeType
-                })
+
+            //初始化品牌选择框
+
+            var brandList = product.Brand.substr(0, product.Brand.length).split(",");
+
+            if (buyWay == 3 || buyWay == 6) {
+                product.Price = product.Averprice;
             } else {
-                that.setData({
-                    brandList: product.Brand.split(","),
-                    brandIndex: 0,
-                    ssite: product.Ssite,
-                    name: product.Name,
-                    product: product,
-                    vproduct: vproduct,
-                    codeType: codeType
-                })
+                product.Price = product.Miprice == product.Maprice ? product.Miprice : product.Miprice + "~" + product.Maprice;
             }
+
+
+            if (product.Piclist) {
+                product.Picpath = product.Piclist.split(',')[0];
+            }
+
+            var vproduct = res.data.VProduct;
+            that.setData({
+                brandList: brandList,
+                brandIndex: 0,
+                ssite: product.Ssite,
+                name: product.Name,
+                product: product,
+                vproduct: vproduct
+            })
             that.getSaleGrade();
             wx.setNavigationBarTitle({
                 title: product.Name
@@ -259,19 +315,13 @@ Page({
     /**
      * 获取当前产品信息
      */
-    getProductDetail: function() {
+    getSingleProduct: function() {
         var that = this;
         //基础产品数据接口
         var url = app.globalData.appUrl + "/Product/GetProductDetail";
-        var product = that.data.product;
+        var productId = that.data.productId;
         var data = {
-            site: that.data.ssite,
-            code: that.data.code,
-            saleDate: that.data.saleDate,
-            buyWay: wx.getStorageSync("buyWay"),
-            brand: that.data.brandList[that.data.brandIndex],
-            grade: that.data.gradeList[that.data.gradeIndex].Grade,
-            name: that.data.name,
+            productId: productId
         }
         console.log(data);
         wx.request({
@@ -281,25 +331,79 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success(res) {
-                console.log(res.data);
-                that.setData({
-                    product: res.data.VProduct,
-                    isNullProduct: false
-                })
-                if (res.data.VProduct == null) {
+                var data = res.data;
+                if (data && data.VProduct) {
+
+                    var product = data.VProduct;
+                    var vproduct = res.data.VProduct;
+                    var brandList = product.Brand.substr(0, product.Brand.length).split(",");
+
+
+                    product.Plist = product.Packcount;
+                    product.Slist = product.Slength;
+
+
+                    console.log(res.data);
+
                     that.setData({
-                        isNullProduct: true
-                    })
-                    wx.showToast({
-                        title: '当前类别暂无信息',
-                        icon: 'none'
+                        brandList: brandList,
+                        brandIndex: 0,
+                        gradeList: [product.Grade],
+                        gradeIndex: 0,
+                        ssite: product.Ssite,
+                        name: product.Name,
+                        product: product,
+                        vproduct: vproduct
+                    });
+                    wx.setNavigationBarTitle({
+                        title: product.Name
                     })
                 }
-
-
             }
         })
 
+    },
+    getProductDetail: function() {
+        var that = this;
+
+        var url = app.globalData.appUrl + "/Product/GetProductDetail";
+        var data = {
+            site: this.data.market,
+            code: this.data.code,
+            saleDate: this.data.saleDate,
+            buyWay: this.data.buyWay,
+            brand: "《" + this.data.brandList[this.data.brandIndex] + "》",
+            grade: this.data.gradeList[this.data.gradeIndex],
+            name: this.data.product.Name
+        };
+        console.log(data);
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+                var data = res.data;
+                console.log(data);
+                if (data && data.VProduct) {
+
+                    var vproduct = data.VProduct;
+                    var product = that.data.product;
+                    product.Timelycount = vproduct.Timelycount;
+                    product.Price = vproduct.Price;
+                    product.Floorprice = vproduct.Floorprice;
+                    product.Plist = vproduct.Packcount;
+                    product.Slist = vproduct.Slength;
+                    product.Picpath = vproduct.Picpath;
+                    that.setData({
+                        vproduct: vproduct,
+                        product: product,
+                        isNullProduct: false
+                    })
+                }
+            }
+        })
     },
     bindGradeSelect: function(e) {
         this.setData({
@@ -358,11 +462,24 @@ Page({
             })
         }
     },
-    bindDateChange: function(e) {
+    bindDataChange: function(e) {
         this.setData({
             brandIndex: e.detail.value,
         })
         this.getSaleGrade();
+    },
+
+    /**
+     * 绑定日期选择器事件
+     */
+    bindDateChange: function(e) {
+        var that = this;
+        console.log(e);
+        console.log('picker发送选择改变，携带值为', e.detail.value);
+        var sendDate = e.detail.value
+        that.setData({
+            sendDate: sendDate
+        })
     },
     bindMinus: function(e) {
         var num = this.data.buycount;

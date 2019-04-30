@@ -18,7 +18,7 @@
 <view class='container'>
     <block wx:for="{{dataList}}" wx:key="{{id}}">
         <view class='container-flex-group__list' style=''>
-            <view class='container-flex-group' bindtap='toOrderDetail' data-id='{{item.Id}}' data-buyWay="{{item.Buyway}}">
+            <view class='container-flex-group' bindtap='toOrderDetail' data-item='{{item}}'>
                 <view class='flex-group'>
                     <text style='flex:1;'>{{item.Ordertime}}</text>
                     <text class='font-color-red'>{{item.Name}}</text>
